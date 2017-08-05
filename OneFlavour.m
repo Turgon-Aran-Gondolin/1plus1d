@@ -8,13 +8,18 @@ Msum::usage=
  Options: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the inteval. "
 
 
+(*ParallelEvaluate[Print[$KernelID]];*)
+
+
 Begin["`Private`"]
 
 
-ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
+(*ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];*)
 (*ParallelEvaluate[On[General::stop]];*)
+(*ParallelEvaluate[Print[$KernelID]];
+Print["Loading"];*)
 If[$OperatingSystem=="Windows",{dir="D:/Documents/2-d-data";},{dir="~/Documents/2-d-data";}];
-ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
+(*ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];*)
 (*Global`x=x;*)
 (*The amplitude*)
 (*If targeting the position, then use [\[Omega]1,\[Omega]2]*)
@@ -86,8 +91,8 @@ Mn[n_][vals_]:=vals[[n+1]];
 S\[Omega]1[\[Omega]1_][M1_,M2_,M3_,M4_]:=(M1^2/(1-\[Omega]1+\[Omega]2p[\[Omega]1][M1,M2,M3,M4])+M2^2/\[Omega]1)(1+\[Omega]2p[\[Omega]1][M1,M2,M3,M4]);*)
 \[Omega]1S[s_][M1_,M2_,M3_,M4_]:=(-M1^2+M2^2+s-Sqrt[s] Sqrt[(M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
 \[Omega]2S[s_][M1_,M2_,M3_,M4_]:=(-M3^2+M4^2+s-Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
-Options[Msum]={SRange->{10^-3,2,0.01}};
-Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[]]:=
+
+Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[{SRange->{10^-3,2,0.01}}]]:=
 Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mQ;
@@ -97,19 +102,19 @@ If[FileNames[filenameacc,dir,Infinity]=={},If[ChoiceDialog["Choose to use BSW me
 If[FileNames[filename,dir,Infinity]=={},
 {
 {ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],Nx];
-Set@@{\[CapitalPhi]B[x_],Boole[0<=x<=1]\[Phi]xB};
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
 Export[dir<>filename,{ValsB,\[Phi]xB}]
 },
 {
 {ValsB,\[Phi]xB}=Import[dir<>filename];
-Set@@{\[CapitalPhi]B[x_],Boole[0<=x<=1]\[Phi]xB};
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
 }
 ];
 (*Set@@{\[CapitalPhi]B[x_?NumberQ],If[0<x<1,\[CapitalPhi]Bi[x],Table[0,{n,Length@\[Phi]xB}]]};*)
 Print["Wavefunction build complete."];
-Parallelize[Print[$KernelID]];
-(*Print[OptionValue[SRange]];*)
-(*Print[\[CapitalPhi]B[x][[1]]];*)
+(*ParallelEvaluate[Print[$KernelID]];*)
+Print[OptionValue[SRange]];
+(*Print[\[CapitalPhi]B[y][[1]]];*)
 (*Print[\[Phi]n[#][\[CapitalPhi]B][x]&[1]];*)
 {M1,\[Phi]1}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n1];
 {M2,\[Phi]2}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n2];
@@ -117,8 +122,12 @@ Parallelize[Print[$KernelID]];
 {M4,\[Phi]4}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
 Mseq=Sequence[M1,M2,M3,M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
-{{M1,M2,M3,M4},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
-{Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]}]}
+DistributeDefinitions["OneFlavour`Private`"];
+{{M1,M2,M3,M4},ParallelTable[
+(*Print[{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]}];*)
+Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]}
+]}
 ]
 
 
@@ -129,3 +138,7 @@ EndPackage[]
 
 
  
+
+
+(* ::Code:: *)
+(*Msum[1,{0,0,0,0}]*)
