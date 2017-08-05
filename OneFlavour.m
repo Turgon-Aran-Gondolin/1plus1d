@@ -94,7 +94,7 @@ Print["Wavefunction build complete."];
 {M4,\[Phi]4}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
 Mseq=Sequence[M1,M2,M3,M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
-DistributeDefinitions["OneFlavour`Private"];
+DistributeDefinitions["OneFlavour`Private`"];
 {{M1,M2,M3,M4},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
 {Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]}]}
 ]
