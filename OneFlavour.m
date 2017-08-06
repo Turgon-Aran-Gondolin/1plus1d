@@ -4,8 +4,10 @@ BeginPackage["OneFlavour`"];
 
 
 Msum::usage=
-"The total sum Msum[mQ,{n1,n2,n3,n4},Options] of amplitudes.
- Options: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. "
+"The total sum Msum[mQ,{n1,n2,n3,n4},Options] of amplitudes. The result is of the form {{M1,M2,M3,M4},{{Sqrt[S],amp},...}}. 
+ Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. 
+Option: Lambda->\[Lambda], the cutoff of principal value integral. 
+"
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)
@@ -16,6 +18,7 @@ Begin["`Private`"]
 
 (* ::Input::Initialization:: *)
  If[$OperatingSystem=="Windows",{dir="D:/Documents/2-d-data";},{dir="~/Documents/2-d-data";}];
+(*$DistributedContexts="OneFlavour`Private`";*)
 EXPR[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalM]0[1-\[Omega]1+\[Omega]2,\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md]+\[ScriptCapitalM]0[1/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]2[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb],\[ScriptCapitalM]0[\[Omega]2/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalM]0[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]1[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]2[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalM]0[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]1[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]2[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalM]0[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc]+\[ScriptCapitalM]0[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]+\[ScriptCapitalI]1[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]3[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]3[(1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2,\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
 \[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=4 g^2 \[Omega]1 NIntegrate[1/(y \[Omega]1-\[Omega]2-x)^2 \[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)]\[Phi]2[y]\[Phi]3[x]\[Phi]4[(y \[Omega]1)/\[Omega]2],{x,0,1},{y,0,1}];
 \[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 (NIntegrate[(\[Omega]1 \[Omega]2)/((y-1) \[Omega]1+(1-x)\[Omega]2)^2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)]\[Phi]2[y]\[Phi]3[y \[Omega]1]\[Phi]4[x],{x,If[#>0,#,0]&[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ],If[#<1,#,1]&[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ]},{y,0,(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1-\[Lambda]}]+NIntegrate[(\[Omega]1 \[Omega]2)/((y-1) \[Omega]1+(1-x)\[Omega]2)^2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)]\[Phi]2[y]\[Phi]3[y \[Omega]1]\[Phi]4[x],{x,If[#>0,#,0]&[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ],If[#<1,#,1]&[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ]},{y,(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1+\[Lambda],1}]-2/\[Lambda] NIntegrate[\[Omega]2/\[Omega]1 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)]\[Phi]2[(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1]\[Phi]3[((\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1 )\[Omega]1]\[Phi]4[x],{x,If[#>0,#,0]&[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ],If[#<1,#,1]&[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2 ]}]+If[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2>0,NIntegrate[(\[Omega]1 \[Omega]2)/((y-1) \[Omega]1+(1-x)\[Omega]2)^2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)]\[Phi]2[y]\[Phi]3[y \[Omega]1]\[Phi]4[x],{x,0,(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2},{y,0,1}],0]+If[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2<1,NIntegrate[(\[Omega]1 \[Omega]2)/((y-1) \[Omega]1+(1-x)\[Omega]2)^2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)]\[Phi]2[y]\[Phi]3[y \[Omega]1]\[Phi]4[x],{x,(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2,1},{y,0,1}],0]);
@@ -26,7 +29,7 @@ Nx=500;(*the size of the working matrix*)
 \[Beta]=1; (*the mass unit,definition \[Beta]^2=g^2/(2Pi)Nc*)
 (*m1=3.2*\[Beta];(*m1 and m2 are the bare masses of the quark and the anti-quark.*)
 m2=3.2*\[Beta];*)
-g=1;Nc=(\[Beta]^2 \[Pi])/g^2;\[DoubleStruckCapitalC]=0;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)\[Lambda]=10^-6;
+g=1;Nc=(\[Beta]^2 \[Pi])/g^2;\[DoubleStruckCapitalC]=0;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)
 vMatx[n_,m_]:=(vMatx[n-1,m-1] m/(m-1)+(8m)/(n+m-1) ((1+(-1)^(n+m))/2))
 vMatx[1,m_]:=4(1+(-1)^(m+1));
 vMatx[n_,1]:=4/n (1+(-1)^(n+1));
@@ -67,10 +70,10 @@ Clear[func,vecs];
 Mn[n_][vals_]:=vals[[n+1]];
 \[Omega]1S[s_][M1_,M2_,M3_,M4_]:=(-M1^2+M2^2+s-Sqrt[s] Sqrt[(M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
 \[Omega]2S[s_][M1_,M2_,M3_,M4_]:=(-M3^2+M4^2+s-Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
-Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[SRange->{10^-3,2,0.01}]]:=
+Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6}]]:=
 Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi},
 (*SetSharedVariable[m2,m1];*)
-m1=mQ;m2=mQ;
+m1=mQ;m2=mQ;\[Lambda]=OptionValue[Lambda];
 filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 If[FileNames[filenameacc,dir,Infinity]=={},If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"->True,"Brute force integration"->False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];
@@ -94,10 +97,12 @@ Print["Wavefunction build complete."];
 {M4,\[Phi]4}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
 Mseq=Sequence[M1,M2,M3,M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
-DistributeDefinitions["OneFlavour`Private`"];
+(*Print[$Context];*)
+(*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
 {{M1,M2,M3,M4},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
-{Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]}]}
-]
+{Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+];
+(*$DistributedContexts:=$Context;*)
 
 
 End[]
