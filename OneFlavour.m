@@ -4,7 +4,7 @@ BeginPackage["OneFlavour`"];
 
 
 Msum::usage=
-"Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{M1,M2,M3,M4},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper.
+"Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper.
 "
 
 
@@ -27,7 +27,7 @@ Nx=500;(*the size of the working matrix*)
 \[Beta]=1; (*the mass unit,definition \[Beta]^2=g^2/(2Pi)Nc*)
 (*m1=3.2*\[Beta];(*m1 and m2 are the bare masses of the quark and the anti-quark.*)
 m2=3.2*\[Beta];*)
-g=1;Nc=(\[Beta]^2 \[Pi])/g^2;\[DoubleStruckCapitalC]=0;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)
+g=1;Nc=(\[Beta]^2 \[Pi])/g^2;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)
 vMatx[n_,m_]:=(vMatx[n-1,m-1] m/(m-1)+(8m)/(n+m-1) ((1+(-1)^(n+m))/2))
 vMatx[1,m_]:=4(1+(-1)^(m+1));
 vMatx[n_,1]:=4/n (1+(-1)^(n+1));
@@ -35,11 +35,11 @@ Determine\[Phi]x[m1_,m2_,\[Beta]_,Nx_]:=
 Module[{HMatx,VMatx,vals,vecs,g,\[Phi]x,\[Phi]},
 SetSharedVariable[vecs,m1,m2,\[Beta],g];
 SetSharedFunction[g];
-HMatx=ParallelTable[4Min[n,m]((-1)^(n+m) (m1^2-\[Beta]^2)+(m2^2-\[Beta]^2)),{n,1,Nx},{m,1,Nx}];
-VMatx=ParallelTable[vMatx[n,m],{n,1,Nx},{m,1,Nx}];
+HMatx=ParallelTable[4Min[n,m]((-1)^(n+m) (m1^2-\[Beta]^2)+(m2^2-\[Beta]^2)),{n,1,Nx},{m,1,Nx},DistributedContexts->{"OneFlavour`Private`"}];
+VMatx=ParallelTable[vMatx[n,m],{n,1,Nx},{m,1,Nx},DistributedContexts->{"OneFlavour`Private`"}];
 {vals,vecs}=Eigensystem[N[HMatx+VMatx]];
-Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2x-1]],{i,1,Nx}],vecs[[j]]],{j,1,Nx}];
-\[Phi]x=ParallelTable[Quiet[g[Nx-n]/Sqrt[NIntegrate[g[Nx-n]^2,{x,0,1}]]],{n,0,20}];
+Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2x-1]],{i,1,Nx},DistributedContexts->{"OneFlavour`Private`"}],vecs[[j]]],{j,1,Nx}];
+\[Phi]x=ParallelTable[Quiet[g[Nx-n]/Sqrt[NIntegrate[g[Nx-n]^2,{x,0,1}]]],{n,0,20},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
@@ -50,7 +50,7 @@ Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
 psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta])*x^\[Beta],n>=2,Sin[(n-1)*\[Pi]*x]];
 hMT[m_,n_]:=hMT[m,n]=NIntegrate[psi[m,x]((m1^2-1)/(x*(1-x))*psi[n,x]-Kernel1[n][x]-Kernel2[n][x]+(2psi[n,x])/\[Epsilon]),{x,\[Epsilon],1-\[Epsilon]},WorkingPrecision->20];
 sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
-sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb}]//Chop;hMTUp=PadLeft[#,Nb+1]&/@ParallelTable[Quiet[hMT[m,n]],{m,0,Nb},{n,m,Nb}];
+sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb}]//Chop;hMTUp=PadLeft[#,Nb+1]&/@ParallelTable[Quiet[hMT[m,n]],{m,0,Nb},{n,m,Nb},DistributedContexts->{"OneFlavour`Private`"}];
 (*Print[hMTUp];*)
 hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
 (*Print[MatrixForm[hMatrix]];*)
@@ -59,8 +59,8 @@ eg[\[Mu]_]:=Det[hMatrix-\[Mu]^2*sMatrix];
 Print[\[Mu]];
 vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];
 Print[vecs];Print[Dimensions@vecs];
-func=ParallelTable[Table[psi[i,x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]}];
-nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,20}];
+func=ParallelTable[Table[psi[i,x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
+nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,20},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[func,vecs];
 {\[Mu],nfunc}
 ];
@@ -98,7 +98,7 @@ Mseq=Sequence[M1,M2,M3,M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{M1,M2,M3,M4},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{{{n1,n2,n3,n4},{M1,M2,M3,M4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
 {Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,M1+M2+OptionValue[SRange][[1]],M1+M2+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
 (*$DistributedContexts:=$Context;*)
