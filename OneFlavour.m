@@ -4,7 +4,7 @@ BeginPackage["OneFlavour`"];
 
 
 Msum::usage=
-"Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper.
+"Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper. Option: DataDir->\"Data desination\". e.g. \"D:/data\".
 "
 
 
