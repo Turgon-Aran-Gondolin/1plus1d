@@ -16,7 +16,7 @@ Begin["`Private`"]
 
 
 (* ::Input::Initialization:: *)
- If[$OperatingSystem=="Windows",{dirglo="D:/Documents/2-d-data";},{dirglo="~/Documents/2-d-data";}];
+If[$OperatingSystem=="Windows",{dirglo="D:/Documents/2-d-data";},{dirglo="~/Documents/2-d-data";}];
 (*$DistributedContexts="OneFlavour`Private`";*)
 MHG[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_]:=If[\[Omega]2>\[Omega]1,4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}],4 g^2 \[Omega]2(1+\[Omega]2-\[Omega]1) NIntegrate[(\[Phi]1[x] \[Phi]2[(y \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-\[Omega]2+(1-\[Omega]1+\[Omega]2) x] \[Phi]4[y])/(y \[Omega]2-x (1+\[Omega]2-\[Omega]1)-\[Omega]1)^2,{x,0,1},{y,0,1}]];
 Clear[m1,m2,\[Beta],Nx]; (*\[Beta]=1 unit*)
