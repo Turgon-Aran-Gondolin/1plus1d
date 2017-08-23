@@ -3,6 +3,7 @@
 BeginPackage["OneFlavour`"];
 
 
+(* ::Input::Initialization:: *)
 Msum::usage=
 "Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper. Option: DataDir->\"Data desination\". e.g. \"D:/data\".
 "
@@ -38,8 +39,8 @@ SetSharedFunction[g];
 HMatx=ParallelTable[4Min[n,m]((-1)^(n+m) (m1^2-\[Beta]^2)+(m2^2-\[Beta]^2)),{n,1,Nx},{m,1,Nx},DistributedContexts->{"OneFlavour`Private`"}];
 VMatx=ParallelTable[vMatx[n,m],{n,1,Nx},{m,1,Nx},DistributedContexts->{"OneFlavour`Private`"}];
 {vals,vecs}=Eigensystem[N[HMatx+VMatx]];
-Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2x-1]],{i,1,Nx},DistributedContexts->{"OneFlavour`Private`"}],vecs[[j]]],{j,1,Nx}];
-\[Phi]x=ParallelTable[Quiet[g[Nx-n]/Sqrt[NIntegrate[g[Nx-n]^2,{x,0,1}]]],{n,0,20},DistributedContexts->{"OneFlavour`Private`"}];
+Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2Global`x-1]],{i,1,Nx},DistributedContexts->{"OneFlavour`Private`"}],vecs[[j]]],{j,1,Nx}];
+\[Phi]x=ParallelTable[Quiet[g[Nx-n]/Sqrt[NIntegrate[g[Nx-n]^2,{Global`x,0,1}]]],{n,0,20},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
@@ -59,7 +60,7 @@ eg[\[Mu]_]:=Det[hMatrix-\[Mu]^2*sMatrix];
 Print[\[Mu]];
 vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];
 Print[vecs];Print[Dimensions@vecs];
-func=ParallelTable[Table[psi[i,x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
+func=ParallelTable[Table[psi[i,Global`x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
 nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,20},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[func,vecs];
 {\[Mu],nfunc}
