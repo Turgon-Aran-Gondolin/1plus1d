@@ -7,6 +7,14 @@ BeginPackage["OneFlavour`"];
 Msum::usage=
 "Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}.\n Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval.\n Option: Lambda->\[Lambda], the cutoff of principal value integral.\n Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper.\n Option: DataDir->\"Data desination\". e.g. \"D:/data\".
 "
+Msum2::usage=
+"Msum2[{mQ,mq},{n1,n2,n3,n4},Options] is the total sum of two-flavour amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper. Option: DataDir->\"Data desination\". e.g. \"D:/data\".
+"
+Msum3::usage=
+"Msum3[{mQ,mq,md},{n1,n2,n3,n4},Options] is the total sum of three-flavour amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4}},{{Sqrt[S],amp},...}}. Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval. Option: Lambda->\[Lambda], the cutoff of principal value integral. Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper. Option: DataDir->\"Data desination\". e.g. \"D:/data\".
+"
+displayfunction1::usage="displayfunction1[Msumdat,{min,max}], amplitude plot, min/max is the spare space in both ends. ";
+displayfunction2::usage="displayfunction2[Msumdat,{min,max}], amplitude square plot, min/max is the spare space in both ends. ";
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)
@@ -18,6 +26,8 @@ Begin["`Private`"]
 (* ::Input::Initialization:: *)
  If[$OperatingSystem=="Windows",{dirglo="D:/Documents/2-d-data";},{dirglo="~/Documents/2-d-data";}];
 (*$DistributedContexts="OneFlavour`Private`";*)
+MVG[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_]:=If[\[Omega]2>\[Omega]1,4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[x/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[1+((y-1) \[Omega]1)/\[Omega]2])/(1+y \[Omega]1-x+\[Omega]2-\[Omega]1)^2,{x,0,1},{y,0,1}],4 g^2 \[Omega]2(1+\[Omega]2-\[Omega]1) NIntegrate[(\[Phi]1[x] \[Phi]2[1+((y-1) \[Omega]2)/\[Omega]1] \[Phi]3[x (1+\[Omega]2-\[Omega]1)] \[Phi]4[y])/(1+y \[Omega]2+x (\[Omega]1-\[Omega]2-1))^2,{x,0,1},{y,0,1}]];
+MHG[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_]:=If[\[Omega]2>\[Omega]1,4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}],4 g^2 \[Omega]2(1+\[Omega]2-\[Omega]1) NIntegrate[(\[Phi]1[x] \[Phi]2[(y \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-\[Omega]2+(1-\[Omega]1+\[Omega]2) x] \[Phi]4[y])/(y \[Omega]2-x (1+\[Omega]2-\[Omega]1)-\[Omega]1)^2,{x,0,1},{y,0,1}]];
 EXPR[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalM]0[1-\[Omega]1+\[Omega]2,\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md]+\[ScriptCapitalM]0[1/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]2[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb],\[ScriptCapitalM]0[\[Omega]2/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalM]0[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]1[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]2[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalM]0[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]1[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]2[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalM]0[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc]+\[ScriptCapitalM]0[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]+\[ScriptCapitalI]1[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]3[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]3[(1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2,\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
 \[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}];
 \[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 (NIntegrate[((\[Omega]1 \[Omega]2) \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,(If[#1>0,#1,0]&)[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2],(If[#1<1,#1,1]&)[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2]},{y,0,(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1-\[Lambda]}]+NIntegrate[((\[Omega]1 \[Omega]2) \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,(If[#1>0,#1,0]&)[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2],(If[#1<1,#1,1]&)[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2]},{y,(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1+\[Lambda],1}]-(2 NIntegrate[(\[Omega]2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1] \[Phi]3[((\[Omega]1-\[Omega]2+x \[Omega]2) \[Omega]1)/\[Omega]1] \[Phi]4[x])/\[Omega]1,{x,(If[#1>0,#1,0]&)[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2],(If[#1<1,#1,1]&)[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2]}])/\[Lambda]+If[(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2>0,NIntegrate[((\[Omega]1 \[Omega]2) \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,0,(-\[Omega]1+\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2},{y,0,1}],0]+If[(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2<1,NIntegrate[((\[Omega]1 \[Omega]2) \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,(-\[Lambda] \[Omega]1+\[Omega]2)/\[Omega]2,1},{y,0,1}],0]);
@@ -102,7 +112,90 @@ Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 {{{n1,n2,n3,n4},{M1,M2,M3,M4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
 {Ssqur,EXPR[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
+Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo}]]:=
+Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi,dir,Si},
+(*SetSharedVariable[m2,m1];*)
+m1=mQ;m2=mq;\[Lambda]=OptionValue[Lambda];dir=OptionValue[DataDir];
+filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+If[FileNames[filename,dir,Infinity]=={},
+{
+{ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],Nx];
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
+Export[dir<>filename,{ValsB,\[Phi]xB}]
+},
+{
+{ValsB,\[Phi]xB}=Import[dir<>filename];
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
+}
+];
+(*Set@@{\[CapitalPhi]B[x_?NumberQ],If[0<x<1,\[CapitalPhi]Bi[x],Table[0,{n,Length@\[Phi]xB}]]};*)
+Print["Wavefunction build complete."];
+(*Print[\[Phi]n[#][\[CapitalPhi]B][x]&[1]];*)
+{M1,\[Phi]1}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n1];
+{M2,\[Phi]2}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n2];
+{M3,\[Phi]3}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n3];
+{M4,\[Phi]4}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
+Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
+Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
+(*Print[$Context];*)
+(*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
+{{{n1,n2,n3,n4},{M1,M2,M3,M4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{Ssqur,MVG[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+];
+Msum3[{mQ_,mq_,md_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo}]]:=
+Module[{\[Phi]xab,\[CapitalPhi]ab,Valsab,\[Phi]xca,\[CapitalPhi]ca,Valsca,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,m3,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,dir,Si},
+(*SetSharedVariable[m2,m1];*)
+m1=mQ;m2=mq;m3=md;\[Lambda]=OptionValue[Lambda];dir=OptionValue[DataDir];
+filename=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/eigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
+filenameacc=Which[m1==m2,"/acceigenstate_m-"<>ToString[m1],m1>m2,"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/acceigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
+If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+If[FileNames[filename,dir,Infinity]=={},
+{
+{Valsab,\[Phi]xab}=Determine[m1,m2,\[Beta],Nx];
+Set@@{\[CapitalPhi]ab[Global`x_],Boole[0<=Global`x<=1]\[Phi]xab};
+Export[dir<>filename,{Valsab,\[Phi]xab}]
+},
+{
+{Valsab,\[Phi]xab}=Import[dir<>filename];
+Set@@{\[CapitalPhi]ab[Global`x_],Boole[0<=Global`x<=1]\[Phi]xab};
+}
+];
+filename=Which[m1==m3,"/eigenstate_m-"<>ToString[m1],m1>m3,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m3],m1<m3,"/eigenstate_m1-"<>ToString[m3]<>"_m2-"<>ToString[m1]]<>".wdx";
+filenameacc=Which[m1==m3,"/acceigenstate_m-"<>ToString[m1],m1>m3,"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m3],m1<m3,"/acceigenstate_m1-"<>ToString[m3]<>"_m2-"<>ToString[m1]]<>".wdx";
+If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+If[FileNames[filename,dir,Infinity]=={},
+{
+{Valsca,\[Phi]xca}=Determine[m1,m3,\[Beta],Nx];
+Set@@{\[CapitalPhi]ca[Global`x_],Boole[0<=Global`x<=1]\[Phi]xca};
+Export[dir<>filename,{Valsca,\[Phi]xca}]
+},
+{
+{Valsca,\[Phi]xca}=Import[dir<>filename];
+Set@@{\[CapitalPhi]ca[Global`x_],Boole[0<=Global`x<=1]\[Phi]xca};
+}
+];
+(*Set@@{\[CapitalPhi]B[x_?NumberQ],If[0<x<1,\[CapitalPhi]Bi[x],Table[0,{n,Length@\[Phi]xB}]]};*)
+Print["Wavefunction build complete."];
+(*Print[\[Phi]n[#][\[CapitalPhi]B][x]&[1]];*)
+{M1,\[Phi]1}={Mn[#][Valsab],\[Phi]n[#][\[CapitalPhi]ab]}&[n1];
+{M2,\[Phi]2}={Mn[#][Valsca],\[Phi]n[#][\[CapitalPhi]ca]}&[n2];
+{M3,\[Phi]3}={Mn[#][Valsab],\[Phi]n[#][\[CapitalPhi]ab]}&[n3];
+{M4,\[Phi]4}={Mn[#][Valsca],\[Phi]n[#][\[CapitalPhi]ca]}&[n4];
+Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
+Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
+(*Print[$Context];*)
+(*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
+{{{n1,n2,n3,n4},{M1,M2,M3,M4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{Ssqur,MHG[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+];
 (*$DistributedContexts:=$Context;*)
+displayfunction1[Msumdat_,{min_,max_},opt:OptionsPattern[{Joined->True,LegendMargins->3,ImageSize->Medium}]]:=ListPlot[{Select[Re@Msumdat[[2]],#\[Element]Reals&],{{Msumdat[[1,2,1]]+Msumdat[[1,2,2]],Last[Msumdat[[2]]][[2]]},{Msumdat[[1,2,1]]+Msumdat[[1,2,2]],First[Msumdat[[2]]][[2]]}}},PlotRange->{{First[Msumdat[[2]]][[1]]+min,Last[Msumdat[[2]]][[1]]+max},All},FilterRules[{opt},Options[ListPlot]],PlotLabel->"Amp: Threshold: "<>ToString[If[Msumdat[[1,1,1]]+Msumdat[[1,1,2]]>=Msumdat[[1,1,3]]+Msumdat[[1,1,4]],Msumdat[[1,2,1]]+Msumdat[[1,2,2]],Msumdat[[1,2,3]]+Msumdat[[1,2,4]]]]<>" MeV",PlotLegends->Placed[LineLegend[{ToString[Msumdat[[1,1,1]]]<>"+"<>ToString[Msumdat[[1,1,2]]]<>"\[Rule]"<>ToString[Msumdat[[1,1,3]]]<>"+"<>ToString[Msumdat[[1,1,4]]]},LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->OptionValue[LegendMargins],LegendFunction->"Frame"],{Right,Top}],Frame->True,FrameLabel->{"MeV","\[ScriptCapitalM]"},PlotStyle->{{Automatic},{Dotted}}];
+displayfunction2[Msumdat_,{min_,max_},opt:OptionsPattern[{Joined->True,LegendMargins->3,ImageSize->Medium}]]:=ListPlot[{Transpose@{Transpose[Msumdat[[2]]][[1]],(Transpose[Msumdat[[2]]][[2]])^2},{{Msumdat[[1,2,1]]+Msumdat[[1,2,2]],Last[Msumdat[[2]]][[2]]^2},{Msumdat[[1,2,1]]+Msumdat[[1,2,2]],First[Msumdat[[2]]][[2]]^2}}},PlotRange->{{First[Msumdat[[2]]][[1]]+min,Last[Msumdat[[2]]][[1]]+max},All},FilterRules[{opt},Options[ListPlot]],PlotLabel->"Amp square: Threshold: "<>ToString[If[Msumdat[[1,1,1]]+Msumdat[[1,1,2]]>=Msumdat[[1,1,3]]+Msumdat[[1,1,4]],Msumdat[[1,2,1]]+Msumdat[[1,2,2]],Msumdat[[1,2,3]]+Msumdat[[1,2,4]]]]<>" MeV",ImageSize->Medium,PlotLegends->Placed[LineLegend[{ToString[Msumdat[[1,1,1]]]<>"+"<>ToString[Msumdat[[1,1,2]]]<>"\[Rule]"<>ToString[Msumdat[[1,1,3]]]<>"+"<>ToString[Msumdat[[1,1,4]]]},LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->OptionValue[LegendMargins],LegendFunction->"Frame"],{Right,Top}],Frame->True,FrameLabel->{"MeV","|\[ScriptCapitalM]\!\(\*SuperscriptBox[\(|\), \(2\)]\)"},PlotStyle->{{Automatic},{Dotted}}]
 
 
 End[]
