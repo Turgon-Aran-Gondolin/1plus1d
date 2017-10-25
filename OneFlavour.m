@@ -68,8 +68,9 @@ Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2Global`x-1]],{i,1,Nx},DistributedContext
 Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
-accDetermine\[Phi][m1_,m2_,\[Beta]_,Nb_]:=
-Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],nfunc},
+accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],nfunc,\[Beta]},
+\[Beta]=\[Beta]/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,0.1,1}];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
 psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta])*x^\[Beta],n>=2,Sin[(n-1)*\[Pi]*x]];
