@@ -4,6 +4,8 @@ BeginPackage["OneFlavour`"];
 
 
 (* ::Input::Initialization:: *)
+Solvet::usage="Solvet[m1,m2] is used to solve 't Hooft equation or pull out results.
+Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper."
 Msum::usage=
 "Msum[mQ,{n1,n2,n3,n4},Options] is the total sum of amplitudes. The result is of the form {{{n1,n2,n3,n4},{M1,M2,M3,M4},{mq}},{{Sqrt[S],amp},...}}.\n Option: SRange->{a,b,d}, the real range of centre-of-mass energy square S is {M1+M2+a,M1+M2+b,d} where d is the interval.\n Option: Lambda->\[Lambda], the cutoff of principal value integral.\n Option: Method. Method->\"BSW\": use BSW method; Method->\"'t Hooft\": use the method 't Hooft suggested in his original paper.\n Option: DataDir->\"Data desination\". e.g. \"D:/data\"./n Option: I1Option->Options[NIntegrate],I2Option->Options[NIntegrate],I3Option->Options[NIntegrate].\n Option: gvalue.
 "
@@ -47,10 +49,10 @@ EXPR[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Opti
 
 Clear[m1,m2,\[Beta],Nx]; (*\[Beta]=1 unit*)
 Nx=500;(*the size of the working matrix*)
-\[Beta]=1; (*the mass unit,definition \[Beta]^2=g^2/(2Pi)Nc*)
+\[Beta]=1; (*the mass unit,definition \[Beta]^2=(g^2 Nc)/(2 \[Pi])*)
 (*m1=3.2*\[Beta];(*m1 and m2 are the bare masses of the quark and the anti-quark.*)
 m2=3.2*\[Beta];*)
-gglo=1;Nc=(\[Beta]^2 \[Pi])/g^2;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)
+gglo=1;Nc=(\[Beta]^2 2\[Pi])/g^2;(*\[DoubleStruckCapitalC] denotes the interchange of final states.*)
 vMatx[n_,m_]:=(vMatx[n-1,m-1] m/(m-1)+(8m)/(n+m-1) ((1+(-1)^(n+m))/2))
 vMatx[1,m_]:=4(1+(-1)^(m+1));
 vMatx[n_,1]:=4/n (1+(-1)^(n+1));
@@ -92,6 +94,26 @@ Mn[n_][vals_]:=vals[[n+1]];
 
 \[Omega]1S[s_][M1_,M2_,M3_,M4_]:=(-M1^2+M2^2+s-Sqrt[s] Sqrt[(M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
 \[Omega]2S[s_][M1_,M2_,M3_,M4_]:=(-M3^2+M4^2+s-Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
+
+
+Solvet[m1_,m2_,opt:OptionsPattern[{Method->"BSW",DataDir->dirglo,MatrixSize->500,Force->False}]]:=Module[{filename,filenameacc,ValsB,\[Phi]xB,\[CapitalPhi]B},
+dir=OptionValue[DataDir];Nx=OptionValue[MatrixSize];
+filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+If[FileNames[filename,dir,Infinity]=={}||OptionValue[Force],
+{
+{ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],Nx];
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
+Export[dir<>filename,{ValsB,\[Phi]xB}]
+},
+{
+{ValsB,\[Phi]xB}=Import[dir<>filename];
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
+}
+];
+{ValsB,\[CapitalPhi]B}]
 
 
 Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo,gvalue->gglo,I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
