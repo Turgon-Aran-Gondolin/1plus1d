@@ -5,7 +5,7 @@
 Once[LaunchKernels[32]]
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
-SetDirectory[NotebookDirectory[]];
+(*SetDirectory[NotebookDirectory[]];*)
 (*AppendTo[$Path,NotebookDirectory[]];*)
 (*Print[$Path];*)
 Get["OneFlavour`"];
