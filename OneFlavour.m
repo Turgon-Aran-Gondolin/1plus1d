@@ -69,7 +69,7 @@ Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
 accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=
-Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],nfunc,\[Beta]},
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta]},
 \[Beta]=\[Beta]/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,0.1,1}];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
@@ -80,10 +80,12 @@ sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb}]//Chop;hMTUp=PadLeft[#,N
 (*Print[hMTUp];*)
 hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
 (*Print[MatrixForm[hMatrix]];*)
-eg[\[Mu]_]:=Det[hMatrix-\[Mu]^2*sMatrix];
-\[Mu]=Sort@DeleteDuplicatesBy[Table[\[Mu]/.FindRoot[eg[\[Mu]]==0,{\[Mu],a,a+0.2}],{a,0,Nb^2,0.2}],SetPrecision[#,2]&];
+{\[Mu]s,vecs}=Transpose[SortBy[Transpose[Eigensystem[Inverse[sMatrix].hMatrix]],First]];
+\[Mu]=Sqrt[\[Mu]s];
+(*eg[\[Mu]_]:=Det[hMatrix-\[Mu]^2*sMatrix];
+\[Mu]=Sort@DeleteDuplicatesBy[Table[\[Mu]/.FindRoot[eg[\[Mu]]==0,{\[Mu],a,a+0.2}],{a,0,Nb^2,0.2}],SetPrecision[#,2]&];*)
 Print[\[Mu]];
-vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];
+(*vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];*)
 Print[vecs];Print[Dimensions@vecs];
 func=ParallelTable[Table[psi[i,Global`x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
 nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,20},DistributedContexts->{"OneFlavour`Private`"}];
