@@ -12,4 +12,4 @@ Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 m=4.23;
 {n1,n2,n3,n4}={2,2,2,2};
 Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{10^-3,1,0.01},Lambda->10^-6]
-Export["data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat",Msumdat,"CSV"]
+Msumdat>>("data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat")
