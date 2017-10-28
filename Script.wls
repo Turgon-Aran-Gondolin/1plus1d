@@ -11,9 +11,8 @@ ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
-(*AppendTo[$Path,DirectoryName@$InputFileName];
-SetDirectory[DirectoryName@$InputFileName];*)
-SetDirectory[NotebookDirectory[]];
+(*AppendTo[$Path,DirectoryName@$InputFileName];*)
+If[$InputFileName="", NotebookDirectory[], Directory[]]
 
 
 (* ::Input::Initialization:: *)
