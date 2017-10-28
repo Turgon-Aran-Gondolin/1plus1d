@@ -80,7 +80,7 @@ hMT[m_,n_]:=hMT[m,n]=NIntegrate[psi[m,x]((m1^2-1)/(x*(1-x))*psi[n,x]-Kernel1[n][
 sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
 sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb},DistributedContexts->{"OneFlavour`Private`"}]//Chop;
 (*Print["Half"];*)
-hMTUp=PadLeft[#,Nb+1]&/@(Normal@SparseArray[ParallelMap[#->Quiet[hMT@@#]&,Flatten[Table[{m,n},{m,0,Nb},{n,m,Nb}],1],DistributedContexts->{"OneFlavour`Private`"}]]);
+hMTUp=PadLeft[#,Nb+1]&/@(Normal@SparseArray[ParallelMap[(#+1)->Quiet[hMT@@#]&,Flatten[Table[{m,n},{m,0,Nb},{n,m,Nb}],1],DistributedContexts->{"OneFlavour`Private`"}]]);
 (*Print[hMTUp];*)
 hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
 (*Print[MatrixForm[hMatrix]];*)
