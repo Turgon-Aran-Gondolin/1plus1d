@@ -42,7 +42,7 @@ Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Code:: *)
-(*Clear[\[CapitalPhi]A,\[CapitalPhi]B];*)
+(*Clear[\[CapitalPhi]A,\[CapitalPhi]B,\[CapitalPhi]C];*)
 (*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
 (*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
 (*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
