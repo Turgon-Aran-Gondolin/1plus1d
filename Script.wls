@@ -8,7 +8,7 @@
 (* ::Input::Initialization:: *)
 Once[LaunchKernels[32]]
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
-ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
+ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->15];
 SetOptions[$Output, FormatType->OutputForm];
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
