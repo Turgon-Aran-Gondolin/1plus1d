@@ -11,10 +11,10 @@ SetDirectory[NotebookDirectory[]];
 Msumdat>>"data\\Msumdat_m-4.23-n-(2-2-2-2).dat"
 
 
-Msumdat=<<"data\\Msumdat_m-4.23-n-(2-2-2-2).dat";
+Msumdat=<<"data\\Msumdat_m-u-n-(0-0-0-0).dat";
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Old*)
 
 
