@@ -15,7 +15,13 @@ SetDirectory[NotebookDirectory[]];
 Msumdat>>"data\\Msumdat_m-4.23-n-(2-2-2-2).dat"
 
 
-Msumdat=<<"data\\Msumdat_m-c-n-(0-0-0-0).dat";
+Msumdat=<<"data\\Msumdat_m-s-n-(0-0-0-0).dat";
+
+
+FileNames["*","data"]
+
+
+Msumdat=<<"data\\Msumdat_m-4.23-n-(1-1-0-0).dat";
 
 
 (* ::Subsubsection::Closed:: *)
@@ -45,7 +51,7 @@ Msumdat=<<"data\\Msumdat_m-c-n-(0-0-0-0).dat";
 (* ::Input::Initialization:: *)
 Row[{displayfunction1[Msumdat,{-0.1,0.1},Joined->\!\(\*
 TagBox[
-DynamicModuleBox[{$CellContext`x$$ = True}, 
+DynamicModuleBox[{$CellContext`x$$ = False}, 
 InterpretationBox[
 StyleBox[GridBox[{
 {
@@ -67,7 +73,7 @@ DynamicModuleValues:>{}],
 InputField[Setting[#], FieldSize -> 1]& ],
 Setting]\),ImageSize->Medium],displayfunction2[Msumdat,{-0.2,0.1},Joined->\!\(\*
 TagBox[
-DynamicModuleBox[{$CellContext`x$$ = True}, 
+DynamicModuleBox[{$CellContext`x$$ = False}, 
 InterpretationBox[
 StyleBox[GridBox[{
 {
