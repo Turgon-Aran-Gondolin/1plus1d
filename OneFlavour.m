@@ -156,7 +156,7 @@ Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-Which[mQ==u,mQ=0.045,mQ==c,mQ=4.23,mQ==s,mQ=0.749];
+Which[MatchQ[mQ,u], mQ = 0.045,MatchQ[mQ,c], mQ = 4.23,MatchQ[mQ,s], mQ = 0.749];
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
 {Ssqur,EXPR[\[Omega]1,\[Omega]2,I1Option->OptionValue[FilterRules[{opt},I1Option]],I2Option->OptionValue[FilterRules[{opt},I2Option]],I3Option->OptionValue[FilterRules[{opt},I3Option]](*,Evaluate@FilterRules[{opt},Options[NIntegrate]]*)][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][mQ,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
