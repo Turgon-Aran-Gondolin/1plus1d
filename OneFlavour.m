@@ -151,6 +151,7 @@ Print["Wavefunction build complete."];
 {M2,\[Phi]2}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n2];
 {M3,\[Phi]3}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n3];
 {M4,\[Phi]4}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
+Print[\[Phi]1[x]];
 Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 (*Print[$Context];*)
