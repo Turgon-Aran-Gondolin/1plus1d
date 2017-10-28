@@ -24,7 +24,11 @@ Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Code:: *)
-(*{ValsB,\[Phi]xB}=Import["D:/Documents/2-d-data/acceigenstate_m-u.wdx"];*)
+(*{ValsB,\[Phi]xB}=Import["D:/Documents/2-d-data/acceigenstate_m-0.749.wdx"];*)
+
+
+(* ::Input:: *)
+(*Plot[Evaluate@Take[\[Phi]xB,3],{x,0,1},PlotStyle->Automatic]*)
 
 
 (* ::Code:: *)
