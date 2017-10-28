@@ -91,7 +91,7 @@ Print[\[Mu]];
 (*vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];*)
 Print[vecs];Print[Dimensions@vecs];
 func=ParallelTable[Table[psi[i,Global`x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
-nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,20},DistributedContexts->{"OneFlavour`Private`"}];
+nfunc=ParallelTable[Quiet[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[func,vecs];
 {\[Mu],nfunc}
 ];
