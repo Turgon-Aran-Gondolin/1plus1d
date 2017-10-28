@@ -118,7 +118,7 @@ Export[dir<>filename,{ValsB,\[Phi]xB}]
 {
 {ValsB,\[Phi]xB}=Import[dir<>filename];
 (*Print[{ValsB,\[Phi]xB}];*)
-Set@@{\[CapitalPhi]B[Global`x_],(*Boole[0<=Global`x<=1]*)\[Phi]xB}
+Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB}
 (*Set@@{\[CapitalPhi]B[x_],Boole[0<=x<=1]\[Phi]xB};*)
 }
 ];
