@@ -106,8 +106,9 @@ Solvet[m1_,m2_,opt:OptionsPattern[{Method->"BSW",DataDir->dirglo,MatrixSize->500
 dir=OptionValue[DataDir];Nx=OptionValue[MatrixSize];
 filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
-If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
-Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+(*If[FileNames[filenameacc,dir,Infinity]=={},*)(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi];filename=filenameacc];
+(*Print[dir<>filename];Print[filenameacc];Print[OptionValue[Method]=="'t Hooft"];*)
 If[FileNames[filename,dir,Infinity]=={}||OptionValue[Force],
 {
 {ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],Nx];
@@ -116,10 +117,12 @@ Export[dir<>filename,{ValsB,\[Phi]xB}]
 },
 {
 {ValsB,\[Phi]xB}=Import[dir<>filename];
-Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};
+(*Print[{ValsB,\[Phi]xB}];*)
+Set@@{\[CapitalPhi]B[Global`x_],(*Boole[0<=Global`x<=1]*)\[Phi]xB}
+(*Set@@{\[CapitalPhi]B[x_],Boole[0<=x<=1]\[Phi]xB};*)
 }
 ];
-{ValsB,\[CapitalPhi]B}]
+{ValsB,\[CapitalPhi]B[x]}]
 
 
 Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo,gvalue->gglo,I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
@@ -128,8 +131,8 @@ Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],
 m1=mQ;m2=mQ;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
 filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
-If[FileNames[filenameacc,dir,Infinity]=={},(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
-Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]]];
+(*If[FileNames[filenameacc,dir,Infinity]=={},*)(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
+Which[OptionValue[Method]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[Method]=="'t Hooft",Determine=accDetermine\[Phi]];
 If[FileNames[filename,dir,Infinity]=={},
 {
 {ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],Nx];
