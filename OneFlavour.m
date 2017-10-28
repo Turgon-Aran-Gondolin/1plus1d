@@ -69,7 +69,7 @@ Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
 accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=
-Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1},
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm},
 \[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start-0.1}];
 While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];
 Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];
@@ -92,7 +92,8 @@ Print[\[Mu]];
 (*vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];*)
 Print[vecs];Print[Dimensions@vecs];
 func=ParallelTable[Table[psi[i,Global`x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
-nfunc=ParallelTable[func[[n]]/Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
+norm=ParallelTable[Sqrt[NIntegrate[func[[n]]^2,{x,0,1}]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
+nfunc=ParallelTable[func[[n]]/norm[[n]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
 Clear[func,vecs];
 {\[Mu],nfunc}
 ];
