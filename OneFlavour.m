@@ -79,7 +79,7 @@ psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta
 hMT[m_,n_]:=hMT[m,n]=NIntegrate[psi[m,x]((m1^2-1)/(x*(1-x))*psi[n,x]-Kernel1[n][x]-Kernel2[n][x]+(2psi[n,x])/\[Epsilon]),{x,\[Epsilon],1-\[Epsilon]},WorkingPrecision->20];
 sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
 sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb},DistributedContexts->{"OneFlavour`Private`"}]//Chop;
-hMTUp=PadLeft[#,Nb+1]&/@ParallelTable[Quiet[hMT[m,n]],{m,0,Nb},{n,m,Nb},DistributedContexts->{"OneFlavour`Private`"}];
+hMTUp=PadLeft[#,Nb+1]&/@ParallelMap[Quiet[hMT@@#&],Table[{m,n},{m,0,Nb},{n,m,Nb}],DistributedContexts->{"OneFlavour`Private`"}];
 (*Print[hMTUp];*)
 hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
 (*Print[MatrixForm[hMatrix]];*)
@@ -125,10 +125,10 @@ Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB}
 {ValsB,\[CapitalPhi]B[x]}]
 
 
-Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo,gvalue->gglo,I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
+Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
 Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi,Si,dir},
 (*SetSharedVariable[m2,m1];*)
-m1=mQ;m2=mQ;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
+m1=mQ;m2=mQ;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];Nx=OptionValue[MatrixSize];
 filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 (*If[FileNames[filenameacc,dir,Infinity]=={},*)(*If[ChoiceDialog["Choose to use BSW method or to use the original solution suggested by 't Hooft, ",{"BSW method"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
