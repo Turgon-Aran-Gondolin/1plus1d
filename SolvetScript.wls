@@ -6,19 +6,21 @@
 
 
 (* ::Input::Initialization:: *)
-Once[LaunchKernels[4]];
+Once[LaunchKernels[32]];
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
-SetDirectory[NotebookDirectory[]];
+(*SetDirectory[NotebookDirectory[]];*)
 (*AppendTo[$Path,NotebookDirectory[]];*)
 (*Print[$Path];*)
+SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
+
 
 
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 m=0.749;
-Solvet[m,m,Method->"'t Hooft",MatrixSize->2,Force->True]
+Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Code:: *)
