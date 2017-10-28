@@ -21,7 +21,10 @@ Msumdat=<<"data\\Msumdat_m-s-n-(0-0-0-0).dat";
 FileNames["*","data"]
 
 
-Msumdat=<<"data\\Msumdat_m-4.23-n-(1-1-0-0).dat";
+Msumdat>>"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
+
+
+Msumdat=<<"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
 
 
 Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
@@ -49,6 +52,9 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 (* ::Subsubsection:: *)
 (*Display*)
+
+
+Msumdat[[2]]
 
 
 (* ::Input::Initialization:: *)
