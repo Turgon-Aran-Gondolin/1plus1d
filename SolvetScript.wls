@@ -17,8 +17,8 @@ SetDirectory[NotebookDirectory[]];
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
-m=u;
-Solvet[m,m,Method->"'t Hooft",MatrixSize->9]
+m=0.749;
+Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Code:: *)
