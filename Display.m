@@ -30,6 +30,9 @@ Msumdat=<<"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
 Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
+Msumdat
+
+
 (* ::Subsubsection::Closed:: *)
 (*Old*)
 
@@ -55,6 +58,9 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
 Msumdat[[2]]
+
+
+Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(Abs[#[[2]]]^2>100000&)]
 
 
 (* ::Input::Initialization:: *)
