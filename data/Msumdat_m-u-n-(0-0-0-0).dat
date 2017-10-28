@@ -1,0 +1,1315 @@
+{{{0, 0, 0, 0}, {0.41, 0.41, 0.41, 0.41}, {u}}, 
+ {{0.821, -675125.7114166506 + 3.623829851480429*
+     NIntegrate[(OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][
+         (0.9059574628701073 - 0.9059574628701073 + OneFlavour`Private`x)/
+          (0.9059574628701073 - 0.9059574628701073 + 1)]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         OneFlavour`Private`y]*OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         (OneFlavour`Private`y*0.9059574628701073)/0.9059574628701073])/
+       (OneFlavour`Private`y*0.9059574628701073 - 0.9059574628701073 - 
+         OneFlavour`Private`x)^2, {OneFlavour`Private`x, 0, 1}, 
+      {OneFlavour`Private`y, 0, 1}] + 4.415218334123382*
+     NIntegrate[(OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][
+         (1.1038045835308454 - 1.1038045835308454 + OneFlavour`Private`x)/
+          (1.1038045835308454 - 1.1038045835308454 + 1)]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         OneFlavour`Private`y]*OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         (OneFlavour`Private`y*1.1038045835308454)/1.1038045835308454])/
+       (OneFlavour`Private`y*1.1038045835308454 - 1.1038045835308454 - 
+         OneFlavour`Private`x)^2, {OneFlavour`Private`x, 0, 1}, 
+      {OneFlavour`Private`y, 0, 1}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/1.1038045835308452 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 1.1038045835308452) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 1.1038045835308452)/
+         (1 + 1.1038045835308452 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 1.1038045835308452)/1.1038045835308452], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/1.1038045835308454 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.1038045835308454) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          1.1038045835308454 + 1.1038045835308454) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1.1038045835308454 + 1.1038045835308454)/
+         (1 + 1.1038045835308454 - 1.1038045835308454)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/1.1038045835308454]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1.1038045835308454 + 1.1038045835308454)/
+         1.1038045835308454], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {0.851, 3.61524801859535*^6 + 2.3118955482596295*
+     NIntegrate[(OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][
+         (0.5779738870649074 - 0.5779738870649074 + OneFlavour`Private`x)/
+          (0.5779738870649074 - 0.5779738870649074 + 1)]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         OneFlavour`Private`y]*OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         (OneFlavour`Private`y*0.5779738870649074)/0.5779738870649074])/
+       (OneFlavour`Private`y*0.5779738870649074 - 0.5779738870649074 - 
+         OneFlavour`Private`x)^2, {OneFlavour`Private`x, 0, 1}, 
+      {OneFlavour`Private`y, 0, 1}] + 6.9207278901698785*
+     NIntegrate[(OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][
+         (1.7301819725424696 - 1.7301819725424696 + OneFlavour`Private`x)/
+          (1.7301819725424696 - 1.7301819725424696 + 1)]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         OneFlavour`Private`y]*OneFlavour`Private`\[Phi]n[0][
+          OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x]*
+        OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+         (OneFlavour`Private`y*1.7301819725424696)/1.7301819725424696])/
+       (OneFlavour`Private`y*1.7301819725424696 - 1.7301819725424696 - 
+         OneFlavour`Private`x)^2, {OneFlavour`Private`x, 0, 1}, 
+      {OneFlavour`Private`y, 0, 1}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/1.7301819725424696 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 1.7301819725424696) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 1.7301819725424696)/
+         (1 + 1.7301819725424696 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 1.7301819725424696)/1.7301819725424696], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/1.7301819725424696 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.7301819725424696) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          1.7301819725424696 + 1.7301819725424696) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1.7301819725424696 + 1.7301819725424696)/
+         (1 + 1.7301819725424696 - 1.7301819725424696)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/1.7301819725424696]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1.7301819725424696 + 1.7301819725424696)/
+         1.7301819725424696], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {0.881, 3.6553392119582496*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.1527314616504816 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 2.1527314616504816) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.1527314616504816)/
+         (1 + 2.1527314616504816 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.1527314616504816)/2.1527314616504816], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.1527314616504816 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 2.1527314616504816) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          2.1527314616504816 + 2.1527314616504816) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.1527314616504816 + 2.1527314616504816)/
+         (1 + 2.1527314616504816 - 2.1527314616504816)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/2.1527314616504816]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.1527314616504816 + 2.1527314616504816)/
+         2.1527314616504816], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {0.911, 3.580768645441507*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.543982803831194 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 2.543982803831194) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.543982803831194)/
+         (1 + 2.543982803831194 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.543982803831194)/2.543982803831194], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.543982803831194 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 2.543982803831194) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          2.543982803831194 + 2.543982803831194) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.543982803831194 + 2.543982803831194)/
+         (1 + 2.543982803831194 - 2.543982803831194)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/2.543982803831194]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.543982803831194 + 2.543982803831194)/
+         2.543982803831194], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {0.941, -3.3752605202610604*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.925797632714194 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 2.925797632714194) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.925797632714194)/
+         (1 + 2.925797632714194 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 2.925797632714194)/2.925797632714194], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/2.925797632714194 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 2.925797632714194) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          2.925797632714194 + 2.925797632714194) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.925797632714194 + 2.925797632714194)/
+         (1 + 2.925797632714194 - 2.925797632714194)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/2.925797632714194]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 2.925797632714194 + 2.925797632714194)/
+         2.925797632714194], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {0.971, 1.020583242362848*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/3.3063631123043935 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 3.3063631123043935) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 3.3063631123043935)/
+         (1 + 3.3063631123043935 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 3.3063631123043935)/3.3063631123043935], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/3.3063631123043935 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 3.3063631123043935) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          3.3063631123043935 + 3.3063631123043935) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 3.3063631123043935 + 3.3063631123043935)/
+         (1 + 3.3063631123043935 - 3.3063631123043935)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/3.3063631123043935]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 3.3063631123043935 + 3.3063631123043935)/
+         3.3063631123043935], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.001, -2.197696023917943*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/3.689720355641263 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 3.689720355641263) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          3.689720355641263 + 3.689720355641263) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 3.689720355641263 + 3.689720355641263)/
+         (1 + 3.689720355641263 - 3.689720355641263)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/3.689720355641263]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 3.689720355641263 + 3.689720355641263)/
+         3.689720355641263], {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/3.689720355641264 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 3.689720355641264) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 3.689720355641264)/
+         (1 + 3.689720355641264 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 3.689720355641264)/3.689720355641264], 
+      {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.031, -1.3430045978149734*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.078177307072159 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 4.078177307072159) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.078177307072159)/
+         (1 + 4.078177307072159 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.078177307072159)/4.078177307072159], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.078177307072159 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 4.078177307072159) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          4.078177307072159 + 4.078177307072159) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.078177307072159 + 4.078177307072159)/
+         (1 + 4.078177307072159 - 4.078177307072159)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/4.078177307072159]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.078177307072159 + 4.078177307072159)/
+         4.078177307072159], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.061, -1.599423919358152*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.473179451770355 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 4.473179451770355) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.473179451770355)/
+         (1 + 4.473179451770355 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.473179451770355)/4.473179451770355], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.473179451770355 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 4.473179451770355) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          4.473179451770355 + 4.473179451770355) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.473179451770355 + 4.473179451770355)/
+         (1 + 4.473179451770355 - 4.473179451770355)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/4.473179451770355]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.473179451770355 + 4.473179451770355)/
+         4.473179451770355], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.091, -1.6176178252226654*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.875692108714896 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 4.875692108714896) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.875692108714896)/
+         (1 + 4.875692108714896 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 4.875692108714896)/4.875692108714896], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/4.875692108714896 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 4.875692108714896) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          4.875692108714896 + 4.875692108714896) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.875692108714896 + 4.875692108714896)/
+         (1 + 4.875692108714896 - 4.875692108714896)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/4.875692108714896]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 4.875692108714896 + 4.875692108714896)/
+         4.875692108714896], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.121, -5.134089982088819*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/5.286391254691148 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 0.9999999999999999) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          0.9999999999999999 + 5.286391254691148) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 5.286391254691148)/
+         (1 + 5.286391254691148 - 0.9999999999999999)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/0.9999999999999999]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 5.286391254691148)/
+         5.286391254691148], {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/5.286391254691149 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 5.286391254691149) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          5.286391254691149 + 5.286391254691149) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 5.286391254691149 + 5.286391254691149)/
+         (1 + 5.286391254691149 - 5.286391254691149)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/5.286391254691149]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 5.286391254691149 + 5.286391254691149)/
+         5.286391254691149], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.1509999999999998, -3.650957478293744*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/5.705767901891412 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 0.9999999999999999) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          0.9999999999999999 + 5.705767901891412) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 5.705767901891412)/
+         (1 + 5.705767901891412 - 0.9999999999999999)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/0.9999999999999999]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 5.705767901891412)/
+         5.705767901891412], {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/5.705767901891413 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 5.705767901891413) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          5.705767901891413 + 5.705767901891413) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 5.705767901891413 + 5.705767901891413)/
+         (1 + 5.705767901891413 - 5.705767901891413)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/5.705767901891413]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 5.705767901891413 + 5.705767901891413)/
+         5.705767901891413], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.181, -2.431418731838531*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/6.134189266024607 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 6.134189266024607) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 6.134189266024607)/
+         (1 + 6.134189266024607 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 6.134189266024607)/6.134189266024607], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/6.134189266024607 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 6.134189266024607) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          6.134189266024607 + 6.134189266024607) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 6.134189266024607 + 6.134189266024607)/
+         (1 + 6.134189266024607 - 6.134189266024607)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/6.134189266024607]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 6.134189266024607 + 6.134189266024607)/
+         6.134189266024607], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.2109999999999999, -2.980744616738951*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/6.571936601184876 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 6.571936601184876) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 6.571936601184876)/
+         (1 + 6.571936601184876 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 6.571936601184876)/6.571936601184876], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/6.571936601184876 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 6.571936601184876) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          6.571936601184876 + 6.571936601184876) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 6.571936601184876 + 6.571936601184876)/
+         (1 + 6.571936601184876 - 6.571936601184876)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/6.571936601184876]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 6.571936601184876 + 6.571936601184876)/
+         6.571936601184876], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.2409999999999999, -2.4741595762809482*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.019229643112304 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 7.019229643112304) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.019229643112304)/
+         (1 + 7.019229643112304 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.019229643112304)/7.019229643112304], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.019229643112305 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 7.019229643112305) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          7.019229643112305 + 7.019229643112305) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.019229643112305 + 7.019229643112305)/
+         (1 + 7.019229643112305 - 7.019229643112305)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/7.019229643112305]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.019229643112305 + 7.019229643112305)/
+         7.019229643112305], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.271, -9.332255849492282*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.476242977521373 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 7.476242977521373) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.476242977521373)/
+         (1 + 7.476242977521373 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.476242977521373)/7.476242977521373], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.476242977521374 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 7.476242977521374) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          7.476242977521374 + 7.476242977521374) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.476242977521374 + 7.476242977521374)/
+         (1 + 7.476242977521374 - 7.476242977521374)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/7.476242977521374]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.476242977521374 + 7.476242977521374)/
+         7.476242977521374], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.301, -6.899153099450169*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.94311733607951 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 7.94311733607951) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.94311733607951)/
+         (1 + 7.94311733607951 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 7.94311733607951)/7.94311733607951], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/7.94311733607951 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 7.94311733607951) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          7.94311733607951 + 7.94311733607951) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.94311733607951 + 7.94311733607951)/
+         (1 + 7.94311733607951 - 7.94311733607951)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/7.94311733607951]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 7.94311733607951 + 7.94311733607951)/
+         7.94311733607951], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.331, -3.5929788000870705*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/8.419967594393665 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 8.419967594393665) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 8.419967594393665)/
+         (1 + 8.419967594393665 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 8.419967594393665)/8.419967594393665], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/8.419967594393665 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 8.419967594393665) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          8.419967594393665 + 8.419967594393665) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 8.419967594393665 + 8.419967594393665)/
+         (1 + 8.419967594393665 - 8.419967594393665)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/8.419967594393665]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 8.419967594393665 + 8.419967594393665)/
+         8.419967594393665], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.361, -8.101785127315481*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/8.906888561549168 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 0.9999999999999999) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          0.9999999999999999 + 8.906888561549168) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 8.906888561549168)/
+         (1 + 8.906888561549168 - 0.9999999999999999)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/0.9999999999999999]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 8.906888561549168)/
+         8.906888561549168], {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/8.90688856154917 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 8.90688856154917) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          8.90688856154917 + 8.90688856154917) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 8.90688856154917 + 8.90688856154917)/
+         (1 + 8.90688856154917 - 8.90688856154917)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/8.90688856154917]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 8.90688856154917 + 8.90688856154917)/
+         8.90688856154917], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.391, -5.64248804651474*^8 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/9.403959252610933 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 9.403959252610933) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 9.403959252610933)/
+         (1 + 9.403959252610933 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 9.403959252610933)/9.403959252610933], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/9.403959252610933 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 9.403959252610933) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          9.403959252610933 + 9.403959252610933) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 9.403959252610933 + 9.403959252610933)/
+         (1 + 9.403959252610933 - 9.403959252610933)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/9.403959252610933]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 9.403959252610933 + 9.403959252610933)/
+         9.403959252610933], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.4209999999999998, -1.5525449741503581*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/9.911246095551611 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 9.911246095551611) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 9.911246095551611)/
+         (1 + 9.911246095551611 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 9.911246095551611)/9.911246095551611], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/9.911246095551611 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 9.911246095551611) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          9.911246095551611 + 9.911246095551611) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 9.911246095551611 + 9.911246095551611)/
+         (1 + 9.911246095551611 - 9.911246095551611)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/9.911246095551611]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 9.911246095551611 + 9.911246095551611)/
+         9.911246095551611], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.451, -3.3213845587920576*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/10.428805374863423 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 10.428805374863423) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 10.428805374863423)/
+         (1 + 10.428805374863423 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 10.428805374863423)/10.428805374863423], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/10.428805374863423 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 10.428805374863423) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          10.428805374863423 + 10.428805374863423) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 10.428805374863423 + 10.428805374863423)/
+         (1 + 10.428805374863423 - 10.428805374863423)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/10.428805374863423]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 10.428805374863423 + 10.428805374863423)/
+         10.428805374863423], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.4809999999999999, -1.7235551692584068*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/10.956685118740248 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 10.956685118740248) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 10.956685118740248)/
+         (1 + 10.956685118740248 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 10.956685118740248)/10.956685118740248], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/10.956685118740248 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 10.956685118740248) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          10.956685118740248 + 10.956685118740248) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 10.956685118740248 + 10.956685118740248)/
+         (1 + 10.956685118740248 - 10.956685118740248)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/10.956685118740248]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 10.956685118740248 + 10.956685118740248)/
+         10.956685118740248], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.511, -1.223176761140331*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/11.494926574253991 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 11.494926574253991) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 11.494926574253991)/
+         (1 + 11.494926574253991 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 11.494926574253991)/11.494926574253991], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/11.494926574253991 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 11.494926574253991) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          11.494926574253991 + 11.494926574253991) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 11.494926574253991 + 11.494926574253991)/
+         (1 + 11.494926574253991 - 11.494926574253991)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/11.494926574253991]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 11.494926574253991 + 11.494926574253991)/
+         11.494926574253991], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.541, -8.711616070382964*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/12.043565373140906 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 12.043565373140906) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 12.043565373140906)/
+         (1 + 12.043565373140906 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 12.043565373140906)/12.043565373140906], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/12.043565373140906 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 12.043565373140906) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          12.043565373140906 + 12.043565373140906) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 12.043565373140906 + 12.043565373140906)/
+         (1 + 12.043565373140906 - 12.043565373140906)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/12.043565373140906]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 12.043565373140906 + 12.043565373140906)/
+         12.043565373140906], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.571, 1.8728106637425504*^6 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/12.602632462278512 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 12.602632462278512) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 12.602632462278512)/
+         (1 + 12.602632462278512 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 12.602632462278512)/12.602632462278512], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/12.602632462278512 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 12.602632462278512) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          12.602632462278512 + 12.602632462278512) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 12.602632462278512 + 12.602632462278512)/
+         (1 + 12.602632462278512 - 12.602632462278512)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/12.602632462278512]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 12.602632462278512 + 12.602632462278512)/
+         12.602632462278512], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.601, -4.2350565734305024*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/13.17215485310975 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 13.17215485310975) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 13.17215485310975)/
+         (1 + 13.17215485310975 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 13.17215485310975)/13.17215485310975], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/13.17215485310975 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 13.17215485310975) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          13.17215485310975 + 13.17215485310975) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 13.17215485310975 + 13.17215485310975)/
+         (1 + 13.17215485310975 - 13.17215485310975)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/13.17215485310975]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 13.17215485310975 + 13.17215485310975)/
+         13.17215485310975], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.6309999999999998, -1.9841405994680602*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/13.752156230279434 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 0.9999999999999999) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          0.9999999999999999 + 13.752156230279434) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 13.752156230279434)/
+         (1 + 13.752156230279434 - 0.9999999999999999)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/0.9999999999999999]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 0.9999999999999999 + 13.752156230279434)/
+         13.752156230279434], {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/13.752156230279436 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 13.752156230279436) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          13.752156230279436 + 13.752156230279436) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 13.752156230279436 + 13.752156230279436)/
+         (1 + 13.752156230279436 - 13.752156230279436)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/13.752156230279436]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 13.752156230279436 + 13.752156230279436)/
+         13.752156230279436], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.661, -7.709823128694487*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/14.342657449724035 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 14.342657449724035) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 14.342657449724035)/
+         (1 + 14.342657449724035 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 14.342657449724035)/14.342657449724035], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/14.342657449724035 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 14.342657449724035) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          14.342657449724035 + 14.342657449724035) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 14.342657449724035 + 14.342657449724035)/
+         (1 + 14.342657449724035 - 14.342657449724035)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/14.342657449724035]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 14.342657449724035 + 14.342657449724035)/
+         14.342657449724035], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.6909999999999998, -6.517334854054744*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/14.943676949181397 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 14.943676949181397) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 14.943676949181397)/
+         (1 + 14.943676949181397 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 14.943676949181397)/14.943676949181397], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/14.943676949181397 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 14.943676949181397) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          14.943676949181397 + 14.943676949181397) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 14.943676949181397 + 14.943676949181397)/
+         (1 + 14.943676949181397 - 14.943676949181397)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/14.943676949181397]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 14.943676949181397 + 14.943676949181397)/
+         14.943676949181397], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.7209999999999999, -1.6474029758833684*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/15.555231088739447 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 15.555231088739447) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 15.555231088739447)/
+         (1 + 15.555231088739447 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 15.555231088739447)/15.555231088739447], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/15.555231088739447 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 15.555231088739447) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          15.555231088739447 + 15.555231088739447) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 15.555231088739447 + 15.555231088739447)/
+         (1 + 15.555231088739447 - 15.555231088739447)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/15.555231088739447]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 15.555231088739447 + 15.555231088739447)/
+         15.555231088739447], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.751, -3.574826273515236*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/16.177334435068925 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 16.177334435068925) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 16.177334435068925)/
+         (1 + 16.177334435068925 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 16.177334435068925)/16.177334435068925], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/16.177334435068925 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 16.177334435068925) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          16.177334435068925 + 16.177334435068925) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 16.177334435068925 + 16.177334435068925)/
+         (1 + 16.177334435068925 - 16.177334435068925)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/16.177334435068925]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 16.177334435068925 + 16.177334435068925)/
+         16.177334435068925], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.781, -3.2269313137767892*^7 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/16.810000000000027 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 16.810000000000027) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 16.810000000000027)/
+         (1 + 16.810000000000027 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 16.810000000000027)/16.810000000000027], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/16.810000000000027 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 16.810000000000027) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          16.810000000000027 + 16.810000000000027) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 16.810000000000027 + 16.810000000000027)/
+         (1 + 16.810000000000027 - 16.810000000000027)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/16.810000000000027]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 16.810000000000027 + 16.810000000000027)/
+         16.810000000000027], {OneFlavour`Private`x, 0, 1}, {}]}, 
+  {1.811, -6.11380709271481*^8 - 
+    2*NIntegrate[(0.41^2 + 0.41^2/17.453239441839127 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1.) + (If[ListQ[u], u[[2]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 1) - 
+        (If[ListQ[u], u[[3]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1. + 17.453239441839127) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 17.453239441839127)/
+         (1 + 17.453239441839127 - 1.)]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][OneFlavour`Private`x/1.]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 1. + 17.453239441839127)/17.453239441839127], 
+      {OneFlavour`Private`x, 0, 1}, {}] - 
+    2*NIntegrate[(0.41^2 + 0.41^2/17.453239441839127 + 
+        (If[ListQ[u], u[[1]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 17.453239441839127) + 
+        (If[ListQ[u], u[[2]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         (OneFlavour`Private`x - 1) - (If[ListQ[u], u[[3]], u]^2 - 
+          OneFlavour`Private`\[Beta]^2)/(OneFlavour`Private`x - 
+          17.453239441839127 + 17.453239441839127) - 
+        (If[ListQ[u], u[[4]], u]^2 - OneFlavour`Private`\[Beta]^2)/
+         OneFlavour`Private`x)*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 17.453239441839127 + 17.453239441839127)/
+         (1 + 17.453239441839127 - 17.453239441839127)]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x/17.453239441839127]*
+       OneFlavour`Private`\[Phi]n[0][OneFlavour`Private`\[CapitalPhi]B$2045][
+        OneFlavour`Private`x]*OneFlavour`Private`\[Phi]n[0][
+         OneFlavour`Private`\[CapitalPhi]B$2045][
+        (OneFlavour`Private`x - 17.453239441839127 + 17.453239441839127)/
+         17.453239441839127], {OneFlavour`Private`x, 0, 1}, {}]}}}
