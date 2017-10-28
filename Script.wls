@@ -12,7 +12,7 @@ ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
 (*AppendTo[$Path,DirectoryName@$InputFileName];*)
-If[$InputFileName="", NotebookDirectory[], Directory[]]
+If[$InputFileName=="", NotebookDirectory[], Directory[]]
 
 
 (* ::Input::Initialization:: *)
