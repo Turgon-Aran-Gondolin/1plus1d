@@ -29,6 +29,8 @@ m=0.749;
 Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 Print["End"];
 
+
+
 (* ::Input:: *)
 (*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-0.749.wdx"];*)
 
@@ -88,11 +90,11 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*\[Phi]xA[[1]]//Expand//N*)
+(*\[Phi]xA[[1]]//N*)
 
 
 (* ::Input:: *)
-(*\[Phi]xB[[1]]//Expand//N*)
+(*\[Phi]xB[[1]]//N*)
 
 
 (* ::Code:: *)
