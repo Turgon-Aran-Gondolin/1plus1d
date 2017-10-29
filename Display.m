@@ -25,6 +25,10 @@ Msumdat>>"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
 
 
 Msumdat=<<"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
+Msumdat=<<"data\\Msumdat_m-c-n-(0-0-0-0).dat";
+
+
+Msumdat=<<"data\\Msumdat_m-4.23-n-(0-0-0-0).dat";
 
 
 Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";

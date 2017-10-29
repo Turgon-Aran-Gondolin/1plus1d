@@ -6,7 +6,7 @@
 
 
 (* ::Input::Initialization:: *)
-Once[LaunchKernels[48]];
+Once[LaunchKernels[8]];
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
@@ -26,7 +26,7 @@ m=0.749;
 
 
 (* ::Input::Initialization:: *)
-Solvet[m,m,Method->"'t Hooft",MatrixSize->15,Force->True]
+Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Input:: *)
@@ -93,3 +93,7 @@ Solvet[m,m,Method->"'t Hooft",MatrixSize->15,Force->True]
 
 (* ::Code:: *)
 (*Import["D:/Documents/2-d-data/eigenstate_m-u.wdx"]*)
+
+
+(* ::Input:: *)
+(*-1/3561061996595798 (-((49159279 (1-x)^(32187/20000) x^(7813/20000))/73274507)+(32482433 (1-x)^(146983/100000) x^(53017/100000))/192501132+(19570064 (1-x)^(53017/100000) x^(146983/100000))/116515385-(105469081 (1-x)^(7813/20000) x^(32187/20000))/157288971)//N*)
