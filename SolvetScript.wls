@@ -6,7 +6,7 @@
 
 
 (* ::Input::Initialization:: *)
-Once[LaunchKernels[8]];
+Once[LaunchKernels[32]];
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
@@ -27,7 +27,7 @@ m=0.749;
 
 (* ::Input::Initialization:: *)
 Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
-
+Print["End"];
 
 (* ::Input:: *)
 (*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-0.749.wdx"];*)
