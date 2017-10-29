@@ -34,6 +34,14 @@ Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Input:: *)
+(*{ValsA,\[Phi]xA}=Import["E:/Downloads/acceigenstate_m-0.749.wdx"];*)
+
+
+(* ::Input:: *)
+(*{ValsA,\[Phi]xA}=Import["E:/Downloads/acceigenstate_m-0.749(1).wdx"];*)
+
+
+(* ::Input:: *)
 (*{ValsB,\[Phi]xB}=Import["D:/Documents/2-d-data/acceigenstate_m-s.wdx"];*)
 
 
@@ -88,7 +96,7 @@ Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
 
 
 (* ::Code:: *)
-(*\[CapitalPhi]B[y]*)
+(*\[CapitalPhi]B[y][[1]]*)
 
 
 (* ::Code:: *)
