@@ -36,6 +36,10 @@ Print["End"];
 
 
 (* ::Input:: *)
+(*Table[\[Phi]xA[[i]]=-(-1)^i \[Phi]xA[[i]],{i,1,Length@\[Phi]xA}];*)
+
+
+(* ::Input:: *)
 (*{ValsA,\[Phi]xA}=Import["E:/Downloads/acceigenstate_m-0.749.wdx"];*)
 
 
@@ -51,22 +55,23 @@ Print["End"];
 (*{ValsC,\[Phi]xC}=Import["D:/Documents/2-d-data/eigenstate_m-0.749.wdx"];*)
 
 
-(* ::Code:: *)
+(* ::Input:: *)
 (*Clear[\[CapitalPhi]A,\[CapitalPhi]B,\[CapitalPhi]C];*)
 (*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
 (*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
 (*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
 
 
-\[Lambda]=10^-6;
+(* ::Input:: *)
+(*\[Lambda]=10^-6;*)
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsA[[1]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xA[[1]]+NIntegrate[\[CapitalPhi]A[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]A[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]A[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}]]*)
+(*ListPlot[{ParallelTable[(ValsA[[1]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xA[[1]]+NIntegrate[\[CapitalPhi]A[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]A[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]A[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}],ParallelTable[(ValsA[[2]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xA[[2]]+NIntegrate[\[CapitalPhi]A[y][[2]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]A[y][[2]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]A[x][[2]],{x,\[Lambda],1-\[Lambda],0.02}]},Filling->Axis]*)
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsB[[1]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xB[[1]]+NIntegrate[\[CapitalPhi]B[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]B[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]B[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}]]*)
+(*ListPlot[{ParallelTable[(ValsB[[1]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xB[[1]]+NIntegrate[\[CapitalPhi]B[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]B[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]B[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}],ParallelTable[(ValsB[[2]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xB[[2]]+NIntegrate[\[CapitalPhi]B[y][[2]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]B[y][[2]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]B[x][[2]],{x,\[Lambda],1-\[Lambda],0.02}]},Filling->Axis]*)
 
 
 (* ::Input:: *)
@@ -107,3 +112,7 @@ Print["End"];
 
 (* ::Input:: *)
 (*-1/3561061996595798 (-((49159279 (1-x)^(32187/20000) x^(7813/20000))/73274507)+(32482433 (1-x)^(146983/100000) x^(53017/100000))/192501132+(19570064 (1-x)^(53017/100000) x^(146983/100000))/116515385-(105469081 (1-x)^(7813/20000) x^(32187/20000))/157288971)//N*)
+
+
+(* ::Input:: *)
+(*Manipulate[Plot[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2),{x,0,2}],{m1,0.1,10}]*)
