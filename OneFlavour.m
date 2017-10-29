@@ -124,7 +124,7 @@ Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB}
 (*Set@@{\[CapitalPhi]B[x_],Boole[0<=x<=1]\[Phi]xB};*)
 }
 ];
-{ValsB,\[CapitalPhi]B[x]}]
+{ValsB,\[CapitalPhi]B[Global`x]}]
 
 
 Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
