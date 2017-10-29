@@ -6,9 +6,9 @@
 
 
 (* ::Input::Initialization:: *)
-Once[LaunchKernels[8]];
+Once[LaunchKernels[48]];
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
-ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
+ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
 (*AppendTo[$Path,NotebookDirectory[]];*)
 (*Print[$Path];*)
@@ -22,11 +22,11 @@ m=0.749;
 
 
 (* ::Input::Initialization:: *)
-Solvet[m,m,Method->"BSW",MatrixSize->500,Force->True]
+(*Solvet[m,m,Method->"BSW",MatrixSize->500,Force->True]*)
 
 
 (* ::Input::Initialization:: *)
-Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
+Solvet[m,m,Method->"'t Hooft",MatrixSize->15,Force->True]
 
 
 (* ::Input:: *)
