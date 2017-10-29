@@ -105,7 +105,7 @@ Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,
 (*\[Beta]=If[m1\[GreaterEqual]Sqrt[2],First@#,#]&[x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2]];*)
 \[Beta]=x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<2,x,Reals,2]};
 (*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
-Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];
+Print["\[Beta]=",\[Beta],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(m1^2-1))&/@\[Beta][[1]],(#*\[Pi]*Cot[\[Pi]*#]-(m2^2-1))&/@\[Beta][[2]]];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
 (*psi[n_,x_]:=psi[n,x]=If[m1\[GreaterEqual]Sqrt[2],Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta])*x^\[Beta],n>=2,Sin[(n-1)*\[Pi]*x]],Which[n==0,x^(2-\[Beta][[1]])*(1-x)^\[Beta][[1]],n==1,(1-x)^(2-\[Beta][[1]])*x^\[Beta][[1]],n\[Equal]2,x^(2-\[Beta][[2]])*(1-x)^\[Beta][[2]],n\[Equal]3,(1-x)^(2-\[Beta][[2]])*x^\[Beta][[2]],n\[GreaterEqual]4,Sin[(n-3)*\[Pi]*x]]];*)
