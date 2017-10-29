@@ -27,6 +27,7 @@ m=0.749;
 
 (* ::Input::Initialization:: *)
 Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
+Print["End"];
 
 
 (* ::Input:: *)
