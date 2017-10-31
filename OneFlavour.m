@@ -68,12 +68,13 @@ Do[g[j]=Dot[ParallelTable[Sin[i ArcCos[2Global`x-1]],{i,1,Nx},DistributedContext
 Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
-accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=
+accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=If[MatchQ[m1,m2],accDetermine\[Phi]1[m1,m2,beta,Nb],accDetermine\[Phi]2[m1,m2,beta,Nb]];
+accDetermine\[Phi]1[m1_,m2_,beta_,Nb_]:=
 Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm},
 (*\[Beta]=If[m1\[GreaterEqual]Sqrt[2],First@#,#]&[x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2]];*)
 \[Beta]=x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2];
 (*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
-Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];
+Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(1-m1^2)];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
 (*psi[n_,x_]:=psi[n,x]=If[m1\[GreaterEqual]Sqrt[2],Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta])*x^\[Beta],n>=2,Sin[(n-1)*\[Pi]*x]],Which[n==0,x^(2-\[Beta][[1]])*(1-x)^\[Beta][[1]],n==1,(1-x)^(2-\[Beta][[1]])*x^\[Beta][[1]],n\[Equal]2,x^(2-\[Beta][[2]])*(1-x)^\[Beta][[2]],n\[Equal]3,(1-x)^(2-\[Beta][[2]])*x^\[Beta][[2]],n\[GreaterEqual]4,Sin[(n-3)*\[Pi]*x]]];*)
@@ -83,6 +84,37 @@ sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
 sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb},DistributedContexts->{"OneFlavour`Private`"}]//Chop;
 (*Print["Half"];*)
 hMTUp=PadLeft[#,Nb+1]&/@(Normal@SparseArray[ParallelMap[(#+1)->Quiet[hMT@@#]&,Flatten[Table[{m,n},{m,0,Nb},{n,m,Nb}],1],DistributedContexts->{"OneFlavour`Private`"}]]);
+(*Print[hMTUp];*)
+hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
+(*Print[MatrixForm[hMatrix]];*)
+{\[Mu]s,vecs}=Transpose[SortBy[Transpose[Eigensystem[Inverse[sMatrix].hMatrix]],First]];
+\[Mu]=Sqrt[\[Mu]s];
+(*eg[\[Mu]_]:=Det[hMatrix-\[Mu]^2*sMatrix];
+\[Mu]=Sort@DeleteDuplicatesBy[Table[\[Mu]/.FindRoot[eg[\[Mu]]==0,{\[Mu],a,a+0.2}],{a,0,Nb^2,0.2}],SetPrecision[#,2]&];*)
+Print[\[Mu]];
+(*vecs=(Flatten@NullSpace[hMatrix-#^2 sMatrix,Tolerance->0.001])&/@\[Mu];*)
+Print[vecs];Print[Dimensions@vecs];
+func=ParallelTable[Table[psi[i,Global`x],{i,0,Nb}].vecs[[j]],{j,1,Length[vecs]},DistributedContexts->{"OneFlavour`Private`"}];
+norm=ParallelTable[Sqrt[NIntegrate[func[[n]]^2,{Global`x,0,1}]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
+nfunc=ParallelTable[func[[n]]/norm[[n]],{n,1,Length[func]},DistributedContexts->{"OneFlavour`Private`"}];
+Clear[func,vecs];
+{\[Mu],nfunc}
+];
+accDetermine\[Phi]2[m1_,m2_,beta_,Nb_]:=
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm},
+(*\[Beta]=If[m1\[GreaterEqual]Sqrt[2],First@#,#]&[x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2]];*)
+\[Beta]=x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<2,x,Reals,2]};
+(*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
+Print["\[Beta]=",\[Beta],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m1^2))&/@\[Beta][[1]],(#*\[Pi]*Cot[\[Pi]*#]-(1-m2^2))&/@\[Beta][[2]]];
+Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
+Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
+(*psi[n_,x_]:=psi[n,x]=If[m1\[GreaterEqual]Sqrt[2],Which[n==0,x^(2-\[Beta])*(1-x)^\[Beta],n==1,(1-x)^(2-\[Beta])*x^\[Beta],n>=2,Sin[(n-1)*\[Pi]*x]],Which[n==0,x^(2-\[Beta][[1]])*(1-x)^\[Beta][[1]],n==1,(1-x)^(2-\[Beta][[1]])*x^\[Beta][[1]],n\[Equal]2,x^(2-\[Beta][[2]])*(1-x)^\[Beta][[2]],n\[Equal]3,(1-x)^(2-\[Beta][[2]])*x^\[Beta][[2]],n\[GreaterEqual]4,Sin[(n-3)*\[Pi]*x]]];*)
+psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta][[1,1]])*(1-x)^\[Beta][[1,1]],n==1,(1-x)^(2-\[Beta][[1,1]])*x^\[Beta][[1,1]],n==2,x^(2-\[Beta][[1,2]])*(1-x)^\[Beta][[1,2]],n==3,(1-x)^(2-\[Beta][[1,2]])*x^\[Beta][[1,2]],n==4,x^(2-\[Beta][[2,1]])*(1-x)^\[Beta][[2,1]],n==5,(1-x)^(2-\[Beta][[2,1]])*x^\[Beta][[2,1]],n==6,x^(2-\[Beta][[2,2]])*(1-x)^\[Beta][[2,2]],n==7,(1-x)^(2-\[Beta][[2,2]])*x^\[Beta][[2,2]],n>=8,Sin[(n-7)*\[Pi]*x]];
+hMT[m_,n_]:=hMT[m,n]=NIntegrate[psi[m,x]((m1^2-1)/(x*(1-x))*psi[n,x]-Kernel1[n][x]-Kernel2[n][x]+(2psi[n,x])/\[Epsilon]),{x,\[Epsilon],1-\[Epsilon]},WorkingPrecision->20];
+sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
+sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb},DistributedContexts->{"OneFlavour`Private`"}]//Chop;
+(*Print["Half"];*)
+hMTUp=Normal@SparseArray[ParallelMap[(#+1)->Quiet[hMT@@#]&,Flatten[Table[{m,n},{m,0,Nb},{n,0,Nb}],1],DistributedContexts->{"OneFlavour`Private`"}]];
 (*Print[hMTUp];*)
 hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
 (*Print[MatrixForm[hMatrix]];*)
