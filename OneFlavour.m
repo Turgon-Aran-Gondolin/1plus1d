@@ -190,12 +190,13 @@ Print["Wavefunction build complete."];
 (*Print[\[Phi]1[x]];*)
 Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
+(*Print[OptionValue[I1Option]];*)
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
 Which[MatchQ[m1,Global`u], m1 =(*Global`u= *)0.045,MatchQ[m1,Global`c], m1=(*Global`c =*) 4.23,MatchQ[m1,Global`s], m1 =(*Global`s=*)0.749];
 Print["m1=",m1];
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];(*Print[\[ScriptCapitalI]3[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]];*)
-{Ssqur,EXPR[\[Omega]1,\[Omega]2,I1Option->OptionValue[FilterRules[{opt},I1Option]],I2Option->OptionValue[FilterRules[{opt},I2Option]],I3Option->OptionValue[FilterRules[{opt},I3Option]](*,Evaluate@FilterRules[{opt},Options[NIntegrate]]*)][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+{Ssqur,(*EXPR*)\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,I1Option->OptionValue[I1Option],I2Option->OptionValue[I2Option],I3Option->OptionValue[I3Option],Evaluate@FilterRules[{opt},Options[EXPR]]](*\[ScriptCapitalM]0[\[Omega]1,\[Omega]2]*)[\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
 
 Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,Method->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{b,a}}->{{a,b},{b,a}}),AssignQuark->{a->m1,b->m2},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
