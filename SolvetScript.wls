@@ -26,7 +26,7 @@ m=0.749;m1=4.23;m2=0.749;
 
 
 (* ::Input::Initialization:: *)
-Solvet[m,m,Method->"'t Hooft",MatrixSize->11,Force->True]
+Solvet[m1,m2,Method->"'t Hooft",MatrixSize->11,Force->True]
 Print["End"];
 
 
