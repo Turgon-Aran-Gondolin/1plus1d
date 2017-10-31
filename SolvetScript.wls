@@ -18,7 +18,7 @@ SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
-m=0.749;
+m=0.749;m1=4.23;m2=0.749;
 
 
 (* ::Input::Initialization:: *)
@@ -26,7 +26,7 @@ m=0.749;
 
 
 (* ::Input::Initialization:: *)
-Solvet[m,m,Method->"'t Hooft",MatrixSize->9,Force->True]
+Solvet[m,m,Method->"'t Hooft",MatrixSize->11,Force->True]
 Print["End"];
 
 
@@ -63,7 +63,25 @@ Print["End"];
 
 
 (* ::Input:: *)
+(*{ValsD,\[Phi]xD}=Import["https://github.com/Turgon-Aran-Gondolin/2-d-data/raw/master/acceigenstate_m1-4.23_m2-0.749.wdx"];*)
+(*Clear@\[CapitalPhi]D;*)
+(*Set@@{\[CapitalPhi]D[Global`x_],Boole[0<=Global`x<=1]\[Phi]xD};*)
+
+
+(* ::Input:: *)
+(*ValsD*)
+
+
+(* ::Input:: *)
+(*\[Phi]xD[[9]]*)
+
+
+(* ::Input:: *)
 (*\[Lambda]=10^-6;*)
+
+
+(* ::PageBreak:: *)
+(**)
 
 
 (* ::Input:: *)
@@ -76,6 +94,14 @@ Print["End"];
 
 (* ::Input:: *)
 (*ListPlot[ParallelTable[(ValsC[[1]]^2-(m^2-1)/x-(m^2-1)/(1-x))\[Phi]xC[[1]]+NIntegrate[\[CapitalPhi]C[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}]]*)
+
+
+(* ::Input:: *)
+(*ListPlot[ParallelTable[(ValsD[[9]]^2-(m1^2-1)/x-(m2^2-1)/(1-x))\[Phi]xD[[9]]+NIntegrate[\[CapitalPhi]D[y][[9]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]D[y][[9]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]D[x][[9]],{x,\[Lambda],1-\[Lambda],0.02}]]*)
+
+
+(* ::PageBreak:: *)
+(**)
 
 
 (* ::Input:: *)
