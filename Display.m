@@ -25,6 +25,8 @@ Msumdat>>"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
 
 
 Msumdat=<<"data\\Msumdat_m-4.23-n-(2-2-1-1).dat";
+
+
 Msumdat=<<"data\\Msumdat_m-c-n-(0-0-0-0).dat";
 
 
@@ -74,6 +76,34 @@ Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(#[[2]]<0&)];
 
 
 Nest
+
+
+Msumdat[[2]]=Delete[Msumdat[[2]],Drop[Position[PeakDetect[Msumdat[[2,All,2]]],1],1]];
+
+
+Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]]
+
+
+SS[s_]=Evaluate[FindFormula[Msumdat[[2]],s]]
+
+
+GeneralizedLinearModelFit[Msumdat[[2]],{x,x^2,x^3,x^4,x^5,x^6},x,LinkFunction->Identity]
+
+
+(* ::Input:: *)
+(*glmresids=%104[{"FitResiduals","AnscombeResiduals"(*,"PearsonResiduals","StandardizedPearsonResiduals"*)}];*)
+(*labels={"fit","Anscombe"(*,"Pearson","standardized Pearson"*)};*)
+(*plots=MapThread[ListPlot[#1,Frame->True,PlotLabel->#2,Filling->0]&,{glmresids,labels}];*)
+
+
+(* ::Input:: *)
+(*GraphicsGrid[Partition[plots,2],ImageSize->400,PlotLabel->"Types of Residuals"]*)
+
+
+Plot[%104[s],{s,21,25}]
+
+
+ListPlot[Table[%104[Msumdat[[2,i,1]]]-Msumdat[[2,i,2]],{i,1,Length[Msumdat[[2]]]}]]
 
 
 (* ::Input::Initialization:: *)
