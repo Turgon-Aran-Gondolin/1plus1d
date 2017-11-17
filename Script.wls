@@ -21,6 +21,9 @@ Get["OneFlavour`"]
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 m=0.749;
 {n1,n2,n3,n4}={0,0,0,0};
-Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{10^-3,1.9,0.06},Lambda->10^-6,Method->"'t Hooft",MatrixSize->9];
+Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{10^-3,1.9,0.3},Lambda->10^-6,Method->"'t Hooft",MatrixSize->9];
 Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"]
 Print["End"];
+
+
+
