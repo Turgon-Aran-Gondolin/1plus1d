@@ -6,7 +6,7 @@
 
 
 (* ::Input::Initialization:: *)
-Once[LaunchKernels[32]]
+Once[LaunchKernels[8]]
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->15(*,WorkingPrecision->30*)];
 SetOptions[$Output, FormatType->OutputForm];
@@ -24,6 +24,9 @@ m=0.749;
 Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{10^-3,1.9,0.3},Lambda->10^-6,Method->"'t Hooft",MatrixSize->9];
 Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"]
 Print["End"];
+
+
+
 
 
 
