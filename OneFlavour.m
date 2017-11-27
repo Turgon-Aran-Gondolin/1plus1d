@@ -28,7 +28,7 @@ Begin["`Private`"]
 
 
 
-(* ::DisplayFormula:: *)
+(* ::DisplayFormulaNumbered:: *)
 (*Prescription for PV integral:*)
 (*P \!\( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\( *)

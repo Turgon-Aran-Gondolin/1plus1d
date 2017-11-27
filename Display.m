@@ -36,7 +36,22 @@ Msumdat=<<"data\\Msumdat_m-4.23-n-(0-0-0-0).dat";
 Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
+(*c*)
+
+
+Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
+
+
+Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/d7faab507a34a1cb0a9cb2b6ea2c90207212c7c6/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
+
+
+(*s*)
+
+
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
+
+
+Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/fc8da22f28f9743604026b5eccc8cbc955c83c6e/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
 Msumdat
