@@ -32,35 +32,35 @@
   {19.438746575056893, -30.23976995382877}, {19.46874657505689, 
    -30.98197892984318}, {19.49874657505689, -46.492929806616196 - 
     4*NIntegrate[(0.9999999999999999*(OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$41421][
+           OneFlavour`Private`\[CapitalPhi]B$78466][
           (OneFlavour`Private`x + 2.114391150354522 - 0.9999999999999999)/
            (1 + 2.114391150354522 - 0.9999999999999999)]*
          OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x]*
+           OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x]*
          (OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`y]*
+             OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`y]*
            OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][
+             OneFlavour`Private`\[CapitalPhi]B$78466][
             ((OneFlavour`Private`y - 1)*0.9999999999999999 + 
               2.114391150354522)/2.114391150354522] - 
           OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x/
+             OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x/
              0.9999999999999999]*OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][
+             OneFlavour`Private`\[CapitalPhi]B$78466][
             (OneFlavour`Private`x - 0.9999999999999999 + 2.114391150354522)/
              2.114391150354522] - (OneFlavour`Private`y - 
             OneFlavour`Private`x/0.9999999999999999)*
            (OneFlavour`Private`\[Phi]n[0][
-               OneFlavour`Private`\[CapitalPhi]B$41421][
+               OneFlavour`Private`\[CapitalPhi]B$78466][
               ((-1 + OneFlavour`Private`x/0.9999999999999999)*
                  0.9999999999999999 + 2.114391150354522)/2.114391150354522]*
              Derivative[1][OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$41421]][
+                OneFlavour`Private`\[CapitalPhi]B$78466]][
               OneFlavour`Private`x/0.9999999999999999] + 
             (0.9999999999999999*OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x/
+                OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x/
                 0.9999999999999999]*Derivative[1][OneFlavour`Private`\[Phi]n[
-                  0][OneFlavour`Private`\[CapitalPhi]B$41421]][
+                  0][OneFlavour`Private`\[CapitalPhi]B$78466]][
                ((-1 + OneFlavour`Private`x/0.9999999999999999)*
                   0.9999999999999999 + 2.114391150354522)/2.114391150354522])/
              2.114391150354522))))/(OneFlavour`Private`y*0.9999999999999999 - 
@@ -69,35 +69,35 @@
    -32.060568629857514}, {19.558746575056894, -32.499184574027815}, 
   {19.58874657505689, -46.12713520104133 - 
     4*NIntegrate[(0.9999999999999999*(OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$41421][
+           OneFlavour`Private`\[CapitalPhi]B$78466][
           (OneFlavour`Private`x + 2.1686745249928063 - 0.9999999999999999)/
            (1 + 2.1686745249928063 - 0.9999999999999999)]*
          OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x]*
+           OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x]*
          (OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`y]*
+             OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`y]*
            OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][
+             OneFlavour`Private`\[CapitalPhi]B$78466][
             ((OneFlavour`Private`y - 1)*0.9999999999999999 + 
               2.1686745249928063)/2.1686745249928063] - 
           OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x/
+             OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x/
              0.9999999999999999]*OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$41421][
+             OneFlavour`Private`\[CapitalPhi]B$78466][
             (OneFlavour`Private`x - 0.9999999999999999 + 2.1686745249928063)/
              2.1686745249928063] - (OneFlavour`Private`y - 
             OneFlavour`Private`x/0.9999999999999999)*
            (OneFlavour`Private`\[Phi]n[0][
-               OneFlavour`Private`\[CapitalPhi]B$41421][
+               OneFlavour`Private`\[CapitalPhi]B$78466][
               ((-1 + OneFlavour`Private`x/0.9999999999999999)*
                  0.9999999999999999 + 2.1686745249928063)/2.1686745249928063]*
              Derivative[1][OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$41421]][
+                OneFlavour`Private`\[CapitalPhi]B$78466]][
               OneFlavour`Private`x/0.9999999999999999] + 
             (0.9999999999999999*OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$41421][OneFlavour`Private`x/
+                OneFlavour`Private`\[CapitalPhi]B$78466][OneFlavour`Private`x/
                 0.9999999999999999]*Derivative[1][OneFlavour`Private`\[Phi]n[
-                  0][OneFlavour`Private`\[CapitalPhi]B$41421]][
+                  0][OneFlavour`Private`\[CapitalPhi]B$78466]][
                ((-1 + OneFlavour`Private`x/0.9999999999999999)*
                   0.9999999999999999 + 2.1686745249928063)/
                 2.1686745249928063])/2.1686745249928063))))/

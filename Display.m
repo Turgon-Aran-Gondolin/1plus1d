@@ -39,6 +39,9 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 (*c*)
 
 
+Msumdat=<<"data/Msumdat_m-c-n-(0-0-0-0).dat";
+
+
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
 
 
