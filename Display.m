@@ -42,6 +42,9 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 Msumdat=<<"data/Msumdat_m-c-n-(0-0-0-0).dat";
 
 
+Msumdat=<<"data/Msumdat_m-4.23-n-(0-0-0-0).dat";
+
+
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
 
 
@@ -49,6 +52,9 @@ Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/d7faab507a34a1cb0
 
 
 (*s*)
+
+
+Msumdat=<<"data/Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
@@ -91,6 +97,9 @@ Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(Abs[#[[2]]]^2>100000&)];
 
 
 Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(#[[2]]<0&)];
+
+
+Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(!NumberQ[#[[2]]]&)];
 
 
 Nest
