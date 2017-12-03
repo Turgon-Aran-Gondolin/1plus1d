@@ -1,105 +1,673 @@
 {{{0, 0, 0, 0}, {9.03, 9.03, 9.03, 9.03}, {4.23}}, 
- {{18.061, 299.3938431665685}, {18.091, 272.8670730384234}, 
-  {18.121, 248.39118205375866}, {18.151, 225.86191843572317}, 
-  {18.181, 205.06641557927986}, {18.211000000000002, 185.89675800405806}, 
-  {18.241, 168.22836179241722}, {18.271, 151.9449787805928}, 
-  {18.301, 136.93866260080154}, {18.331, 123.10960233471663}, 
-  {18.360999999999997, 110.36496516052455}, 
-  {18.391, 98.62144316988508 + 0.*I}, {18.421, 87.79890653122419 + 0.*I}, 
-  {18.451, 77.82574573185292 + 0.*I}, {18.480999999999998, 
-   68.63553386103328 + 0.*I}, {18.511, 60.167123479069176 + 0.*I}, 
-  {18.541, 52.36425926973479 + 0.*I}, {18.571, 45.175179867257214}, 
-  {18.601, -7.456396430265848 - 
-    4*NIntegrate[(0.9999999999999999*(OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$68039][
-          (OneFlavour`Private`x + 1.6295799199420533 - 0.9999999999999999)/
-           (1 + 1.6295799199420533 - 0.9999999999999999)]*
-         OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x]*
-         (OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`y]*
-           OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][
-            ((OneFlavour`Private`y - 1)*0.9999999999999999 + 
-              1.6295799199420533)/1.6295799199420533] - 
-          OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x/
-             0.9999999999999999]*OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][
-            (OneFlavour`Private`x - 0.9999999999999999 + 1.6295799199420533)/
-             1.6295799199420533] - (OneFlavour`Private`y - 
-            OneFlavour`Private`x/0.9999999999999999)*
-           (OneFlavour`Private`\[Phi]n[0][
-               OneFlavour`Private`\[CapitalPhi]B$68039][
-              ((-1 + OneFlavour`Private`x/0.9999999999999999)*
-                 0.9999999999999999 + 1.6295799199420533)/1.6295799199420533]*
-             Derivative[1][OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$68039]][
-              OneFlavour`Private`x/0.9999999999999999] + 
-            (0.9999999999999999*OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x/
-                0.9999999999999999]*Derivative[1][OneFlavour`Private`\[Phi]n[
-                  0][OneFlavour`Private`\[CapitalPhi]B$68039]][
-               ((-1 + OneFlavour`Private`x/0.9999999999999999)*
-                  0.9999999999999999 + 1.6295799199420533)/
-                1.6295799199420533])/1.6295799199420533))))/
-       (OneFlavour`Private`y*0.9999999999999999 - OneFlavour`Private`x)^2, 
-      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, {}]}, 
-  {18.631, 32.45170472009}, {18.661, 26.833174869353897}, 
-  {18.691000000000003, 21.659569904387816}, {18.721, 16.896723438049477}, 
-  {18.751, 12.51319811057094}, {18.781, 8.480026497656134}, 
-  {18.811, 4.7705260178949445}, {18.840999999999998, 1.3601522852470218}, 
-  {18.871, -1.7737870894621466}, {18.901, -4.652147147244541}, 
-  {18.931, -7.2941896602115435}, {18.961, -9.717685913871676}, 
-  {18.991, -11.93900383756177}, {19.021, -13.973276637940206}, 
-  {19.051000000000002, -15.834468055406152}, {19.081, -17.535458846586728}, 
-  {19.111, -19.088176625061372}, {19.141, -20.503678017022963}, 
-  {19.171, -21.79196433269407}, {19.200999999999997, -23.144014376347364}, 
-  {19.230999999999998, -24.024287005740327}, {19.261, -24.98502169236424}, 
-  {19.291, -26.02455337921976}, {19.320999999999998, -26.632904773104663}, 
-  {19.351, -27.33336980159648}, {19.381, -27.95952300129771}, 
-  {19.411, -28.5168794037436}, {19.441, -42.34384838467835 - 
-    4*NIntegrate[(0.9999999999999999*(OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$68039][
-          (OneFlavour`Private`x + 2.1754533600812054 - 0.9999999999999999)/
-           (1 + 2.1754533600812054 - 0.9999999999999999)]*
-         OneFlavour`Private`\[Phi]n[0][
-           OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x]*
-         (OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`y]*
-           OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][
-            ((OneFlavour`Private`y - 1)*0.9999999999999999 + 
-              2.1754533600812054)/2.1754533600812054] - 
-          OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x/
-             0.9999999999999999]*OneFlavour`Private`\[Phi]n[0][
-             OneFlavour`Private`\[CapitalPhi]B$68039][
-            (OneFlavour`Private`x - 0.9999999999999999 + 2.1754533600812054)/
-             2.1754533600812054] - (OneFlavour`Private`y - 
-            OneFlavour`Private`x/0.9999999999999999)*
-           (OneFlavour`Private`\[Phi]n[0][
-               OneFlavour`Private`\[CapitalPhi]B$68039][
-              ((-1 + OneFlavour`Private`x/0.9999999999999999)*
-                 0.9999999999999999 + 2.1754533600812054)/2.1754533600812054]*
-             Derivative[1][OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$68039]][
-              OneFlavour`Private`x/0.9999999999999999] + 
-            (0.9999999999999999*OneFlavour`Private`\[Phi]n[0][
-                OneFlavour`Private`\[CapitalPhi]B$68039][OneFlavour`Private`x/
-                0.9999999999999999]*Derivative[1][OneFlavour`Private`\[Phi]n[
-                  0][OneFlavour`Private`\[CapitalPhi]B$68039]][
-               ((-1 + OneFlavour`Private`x/0.9999999999999999)*
-                  0.9999999999999999 + 2.1754533600812054)/
-                2.1754533600812054])/2.1754533600812054))))/
-       (OneFlavour`Private`y*0.9999999999999999 - OneFlavour`Private`x)^2, 
-      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, {}]}, 
-  {19.471, -29.445123992650668}, {19.501, -29.82508681347034}, 
-  {19.531000000000002, -30.154472588667765}, {19.561, -30.436986125850456}, 
-  {19.591, -30.67616998310346}, {19.621, -30.759396138022325}, 
-  {19.651, -31.037188836805726}, {19.680999999999997, -31.22125687631156}, 
-  {19.711, -31.260707768627228}, {19.741, -31.36599022903231}, 
-  {19.771, -31.366828623009134}, {19.801, -31.33121137118188}, 
-  {19.831, -31.372787732815915}, {19.861, -31.342954744452598}, 
-  {19.891000000000002, -31.293361693917863}, {19.921, -31.226069948747064}, 
-  {19.951, -31.14198468902234}}}
+ {{18.061, -215.74523492705538 - 
+    4*NIntegrate[(0.979173231085359*0.979173231085359*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.979173231085359)/(1 + 0.979173231085359 - 0.979173231085359)]*
+         OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]3$4451[OneFlavour`Private`y*
+             0.979173231085359] - OneFlavour`Private`\[Phi]2$4451[
+            (0.979173231085359 - (1 - OneFlavour`Private`x)*
+               0.979173231085359)/0.979173231085359]*
+           OneFlavour`Private`\[Phi]3$4451[0.979173231085359 - 
+             (1 - OneFlavour`Private`x)*0.979173231085359] - 
+          (OneFlavour`Private`y - (0.979173231085359 - 
+              (1 - OneFlavour`Private`x)*0.979173231085359)/
+             0.979173231085359)*(OneFlavour`Private`\[Phi]3$4451[
+              0.979173231085359 - (1 - OneFlavour`Private`x)*
+                0.979173231085359]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][(0.979173231085359 - 
+                (1 - OneFlavour`Private`x)*0.979173231085359)/
+               0.979173231085359] + 0.979173231085359*
+             OneFlavour`Private`\[Phi]2$4451[(0.979173231085359 - 
+                (1 - OneFlavour`Private`x)*0.979173231085359)/
+               0.979173231085359]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.979173231085359 - 
+               (1 - OneFlavour`Private`x)*0.979173231085359]))))/
+       ((OneFlavour`Private`y - 1)*0.979173231085359 + 
+         (1 - OneFlavour`Private`x)*0.979173231085359)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*1.0212697490632539*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*1.0212697490632539)/(1 + 1.0212697490632539 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               1.0212697490632539)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*1.0212697490632539] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               1.0212697490632539)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*1.0212697490632539]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*1.0212697490632539)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*1.0212697490632539)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*1.0212697490632539]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          1.0212697490632539)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.979173231085359*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.979173231085359 - 0.979173231085359)/
+           (1 + 0.979173231085359 - 0.979173231085359)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.979173231085359 + 0.979173231085359)/0.979173231085359] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.979173231085359]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.979173231085359 + 0.979173231085359)/
+             0.979173231085359] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.979173231085359)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.979173231085359)*0.979173231085359 + 0.979173231085359)/
+               0.979173231085359]*Derivative[1][
+               OneFlavour`Private`\[Phi]4$4451][OneFlavour`Private`x/
+               0.979173231085359] + (0.979173231085359*
+              OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+                0.979173231085359]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.979173231085359)*0.979173231085359 + 0.979173231085359)/
+                0.979173231085359])/0.979173231085359))))/
+       (OneFlavour`Private`y*0.979173231085359 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 1.0212697490632539 - 1.)/
+           (1 + 1.0212697490632539 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 1.0212697490632539)/
+             1.0212697490632539] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 1.0212697490632539)/
+             1.0212697490632539] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 1.0212697490632539)/
+               1.0212697490632539]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 1.0212697490632539)/
+                1.0212697490632539])/1.0212697490632539))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {18.361, -87.96116972752105 - 
+    4*NIntegrate[(0.6944444444444442*0.6944444444444442*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.6944444444444442)/(1 + 0.6944444444444442 - 
+            0.6944444444444442)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            OneFlavour`Private`y*0.6944444444444442] - 
+          OneFlavour`Private`\[Phi]2$4451[(0.6944444444444442 - 
+              (1 - OneFlavour`Private`x)*0.6944444444444442)/
+             0.6944444444444442]*OneFlavour`Private`\[Phi]3$4451[
+            0.6944444444444442 - (1 - OneFlavour`Private`x)*
+              0.6944444444444442] - (OneFlavour`Private`y - 
+            (0.6944444444444442 - (1 - OneFlavour`Private`x)*
+               0.6944444444444442)/0.6944444444444442)*
+           (OneFlavour`Private`\[Phi]3$4451[0.6944444444444442 - 
+               (1 - OneFlavour`Private`x)*0.6944444444444442]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              (0.6944444444444442 - (1 - OneFlavour`Private`x)*
+                 0.6944444444444442)/0.6944444444444442] + 0.6944444444444442*
+             OneFlavour`Private`\[Phi]2$4451[(0.6944444444444442 - 
+                (1 - OneFlavour`Private`x)*0.6944444444444442)/
+               0.6944444444444442]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.6944444444444442 - 
+               (1 - OneFlavour`Private`x)*0.6944444444444442]))))/
+       ((OneFlavour`Private`y - 1)*0.6944444444444442 + 
+         (1 - OneFlavour`Private`x)*0.6944444444444442)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*1.4400000000000004*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*1.4400000000000004)/(1 + 1.4400000000000004 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               1.4400000000000004)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*1.4400000000000004] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               1.4400000000000004)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*1.4400000000000004]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*1.4400000000000004)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*1.4400000000000004)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*1.4400000000000004]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          1.4400000000000004)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.6944444444444442*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.6944444444444442 - 0.6944444444444442)/
+           (1 + 0.6944444444444442 - 0.6944444444444442)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.6944444444444442 + 0.6944444444444442)/0.6944444444444442] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.6944444444444442]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.6944444444444442 + 0.6944444444444442)/
+             0.6944444444444442] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.6944444444444442)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.6944444444444442)*0.6944444444444442 + 
+                0.6944444444444442)/0.6944444444444442]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              OneFlavour`Private`x/0.6944444444444442] + 
+            (0.6944444444444442*OneFlavour`Private`\[Phi]4$4451[
+               OneFlavour`Private`x/0.6944444444444442]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.6944444444444442)*0.6944444444444442 + 
+                 0.6944444444444442)/0.6944444444444442])/
+             0.6944444444444442))))/
+       (OneFlavour`Private`y*0.6944444444444442 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 1.4400000000000006 - 1.)/
+           (1 + 1.4400000000000006 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 1.4400000000000006)/
+             1.4400000000000006] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 1.4400000000000006)/
+             1.4400000000000006] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 1.4400000000000006)/
+               1.4400000000000006]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 1.4400000000000006)/
+                1.4400000000000006])/1.4400000000000006))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {18.661, -34.90327859050492 - 
+    4*NIntegrate[(0.5977704613683881*0.5977704613683881*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.5977704613683881)/(1 + 0.5977704613683881 - 
+            0.5977704613683881)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            OneFlavour`Private`y*0.5977704613683881] - 
+          OneFlavour`Private`\[Phi]2$4451[(0.5977704613683881 - 
+              (1 - OneFlavour`Private`x)*0.5977704613683881)/
+             0.5977704613683881]*OneFlavour`Private`\[Phi]3$4451[
+            0.5977704613683881 - (1 - OneFlavour`Private`x)*
+              0.5977704613683881] - (OneFlavour`Private`y - 
+            (0.5977704613683881 - (1 - OneFlavour`Private`x)*
+               0.5977704613683881)/0.5977704613683881)*
+           (OneFlavour`Private`\[Phi]3$4451[0.5977704613683881 - 
+               (1 - OneFlavour`Private`x)*0.5977704613683881]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              (0.5977704613683881 - (1 - OneFlavour`Private`x)*
+                 0.5977704613683881)/0.5977704613683881] + 0.5977704613683881*
+             OneFlavour`Private`\[Phi]2$4451[(0.5977704613683881 - 
+                (1 - OneFlavour`Private`x)*0.5977704613683881)/
+               0.5977704613683881]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.5977704613683881 - 
+               (1 - OneFlavour`Private`x)*0.5977704613683881]))))/
+       ((OneFlavour`Private`y - 1)*0.5977704613683881 + 
+         (1 - OneFlavour`Private`x)*0.5977704613683881)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*1.6728829285255196*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*1.6728829285255196)/(1 + 1.6728829285255196 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               1.6728829285255196)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*1.6728829285255196] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               1.6728829285255196)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*1.6728829285255196]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*1.6728829285255196)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*1.6728829285255196)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*1.6728829285255196]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          1.6728829285255196)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.5977704613683881*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.5977704613683881 - 0.5977704613683881)/
+           (1 + 0.5977704613683881 - 0.5977704613683881)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.5977704613683881 + 0.5977704613683881)/0.5977704613683881] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.5977704613683881]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.5977704613683881 + 0.5977704613683881)/
+             0.5977704613683881] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.5977704613683881)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.5977704613683881)*0.5977704613683881 + 
+                0.5977704613683881)/0.5977704613683881]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              OneFlavour`Private`x/0.5977704613683881] + 
+            (0.5977704613683881*OneFlavour`Private`\[Phi]4$4451[
+               OneFlavour`Private`x/0.5977704613683881]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.5977704613683881)*0.5977704613683881 + 
+                 0.5977704613683881)/0.5977704613683881])/
+             0.5977704613683881))))/
+       (OneFlavour`Private`y*0.5977704613683881 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 1.6728829285255196 - 1.)/
+           (1 + 1.6728829285255196 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 1.6728829285255196)/
+             1.6728829285255196] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 1.6728829285255196)/
+             1.6728829285255196] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 1.6728829285255196)/
+               1.6728829285255196]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 1.6728829285255196)/
+                1.6728829285255196])/1.6728829285255196))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {18.961, -11.644359920260328 - 
+    4*NIntegrate[(0.5330407942093512*0.5330407942093512*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.5330407942093512)/(1 + 0.5330407942093512 - 
+            0.5330407942093512)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            OneFlavour`Private`y*0.5330407942093512] - 
+          OneFlavour`Private`\[Phi]2$4451[(0.5330407942093512 - 
+              (1 - OneFlavour`Private`x)*0.5330407942093512)/
+             0.5330407942093512]*OneFlavour`Private`\[Phi]3$4451[
+            0.5330407942093512 - (1 - OneFlavour`Private`x)*
+              0.5330407942093512] - (OneFlavour`Private`y - 
+            (0.5330407942093512 - (1 - OneFlavour`Private`x)*
+               0.5330407942093512)/0.5330407942093512)*
+           (OneFlavour`Private`\[Phi]3$4451[0.5330407942093512 - 
+               (1 - OneFlavour`Private`x)*0.5330407942093512]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              (0.5330407942093512 - (1 - OneFlavour`Private`x)*
+                 0.5330407942093512)/0.5330407942093512] + 0.5330407942093512*
+             OneFlavour`Private`\[Phi]2$4451[(0.5330407942093512 - 
+                (1 - OneFlavour`Private`x)*0.5330407942093512)/
+               0.5330407942093512]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.5330407942093512 - 
+               (1 - OneFlavour`Private`x)*0.5330407942093512]))))/
+       ((OneFlavour`Private`y - 1)*0.5330407942093512 + 
+         (1 - OneFlavour`Private`x)*0.5330407942093512)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*1.8760290222876468*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*1.8760290222876468)/(1 + 1.8760290222876468 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               1.8760290222876468)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*1.8760290222876468] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               1.8760290222876468)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*1.8760290222876468]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*1.8760290222876468)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*1.8760290222876468)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*1.8760290222876468]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          1.8760290222876468)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.5330407942093512*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.5330407942093512 - 0.5330407942093512)/
+           (1 + 0.5330407942093512 - 0.5330407942093512)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.5330407942093512 + 0.5330407942093512)/0.5330407942093512] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.5330407942093512]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.5330407942093512 + 0.5330407942093512)/
+             0.5330407942093512] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.5330407942093512)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.5330407942093512)*0.5330407942093512 + 
+                0.5330407942093512)/0.5330407942093512]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              OneFlavour`Private`x/0.5330407942093512] + 
+            (0.5330407942093512*OneFlavour`Private`\[Phi]4$4451[
+               OneFlavour`Private`x/0.5330407942093512]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.5330407942093512)*0.5330407942093512 + 
+                 0.5330407942093512)/0.5330407942093512])/
+             0.5330407942093512))))/
+       (OneFlavour`Private`y*0.5330407942093512 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 1.8760290222876468 - 1.)/
+           (1 + 1.8760290222876468 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 1.8760290222876468)/
+             1.8760290222876468] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 1.8760290222876468)/
+             1.8760290222876468] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 1.8760290222876468)/
+               1.8760290222876468]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 1.8760290222876468)/
+                1.8760290222876468])/1.8760290222876468))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {19.261, -1.0293188566041511 - 
+    4*NIntegrate[(0.484129136339269*0.484129136339269*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.484129136339269)/(1 + 0.484129136339269 - 0.484129136339269)]*
+         OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]3$4451[OneFlavour`Private`y*
+             0.484129136339269] - OneFlavour`Private`\[Phi]2$4451[
+            (0.484129136339269 - (1 - OneFlavour`Private`x)*
+               0.484129136339269)/0.484129136339269]*
+           OneFlavour`Private`\[Phi]3$4451[0.484129136339269 - 
+             (1 - OneFlavour`Private`x)*0.484129136339269] - 
+          (OneFlavour`Private`y - (0.484129136339269 - 
+              (1 - OneFlavour`Private`x)*0.484129136339269)/
+             0.484129136339269)*(OneFlavour`Private`\[Phi]3$4451[
+              0.484129136339269 - (1 - OneFlavour`Private`x)*
+                0.484129136339269]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][(0.484129136339269 - 
+                (1 - OneFlavour`Private`x)*0.484129136339269)/
+               0.484129136339269] + 0.484129136339269*
+             OneFlavour`Private`\[Phi]2$4451[(0.484129136339269 - 
+                (1 - OneFlavour`Private`x)*0.484129136339269)/
+               0.484129136339269]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.484129136339269 - 
+               (1 - OneFlavour`Private`x)*0.484129136339269]))))/
+       ((OneFlavour`Private`y - 1)*0.484129136339269 + 
+         (1 - OneFlavour`Private`x)*0.484129136339269)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*2.0655645879144484*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*2.0655645879144484)/(1 + 2.0655645879144484 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               2.0655645879144484)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*2.0655645879144484] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               2.0655645879144484)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*2.0655645879144484]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*2.0655645879144484)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*2.0655645879144484)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*2.0655645879144484]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          2.0655645879144484)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.484129136339269*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.484129136339269 - 0.484129136339269)/
+           (1 + 0.484129136339269 - 0.484129136339269)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.484129136339269 + 0.484129136339269)/0.484129136339269] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.484129136339269]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.484129136339269 + 0.484129136339269)/
+             0.484129136339269] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.484129136339269)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.484129136339269)*0.484129136339269 + 0.484129136339269)/
+               0.484129136339269]*Derivative[1][
+               OneFlavour`Private`\[Phi]4$4451][OneFlavour`Private`x/
+               0.484129136339269] + (0.484129136339269*
+              OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+                0.484129136339269]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.484129136339269)*0.484129136339269 + 0.484129136339269)/
+                0.484129136339269])/0.484129136339269))))/
+       (OneFlavour`Private`y*0.484129136339269 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 2.0655645879144484 - 1.)/
+           (1 + 2.0655645879144484 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 2.0655645879144484)/
+             2.0655645879144484] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 2.0655645879144484)/
+             2.0655645879144484] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 2.0655645879144484)/
+               2.0655645879144484]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 2.0655645879144484)/
+                2.0655645879144484])/2.0655645879144484))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {19.561, 3.9185897011545134 - 
+    4*NIntegrate[(0.44491752206151575*0.44491752206151575*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.44491752206151575)/(1 + 0.44491752206151575 - 
+            0.44491752206151575)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            OneFlavour`Private`y*0.44491752206151575] - 
+          OneFlavour`Private`\[Phi]2$4451[(0.44491752206151575 - 
+              (1 - OneFlavour`Private`x)*0.44491752206151575)/
+             0.44491752206151575]*OneFlavour`Private`\[Phi]3$4451[
+            0.44491752206151575 - (1 - OneFlavour`Private`x)*
+              0.44491752206151575] - (OneFlavour`Private`y - 
+            (0.44491752206151575 - (1 - OneFlavour`Private`x)*
+               0.44491752206151575)/0.44491752206151575)*
+           (OneFlavour`Private`\[Phi]3$4451[0.44491752206151575 - 
+               (1 - OneFlavour`Private`x)*0.44491752206151575]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              (0.44491752206151575 - (1 - OneFlavour`Private`x)*
+                 0.44491752206151575)/0.44491752206151575] + 
+            0.44491752206151575*OneFlavour`Private`\[Phi]2$4451[
+              (0.44491752206151575 - (1 - OneFlavour`Private`x)*
+                 0.44491752206151575)/0.44491752206151575]*
+             Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+              0.44491752206151575 - (1 - OneFlavour`Private`x)*
+                0.44491752206151575]))))/
+       ((OneFlavour`Private`y - 1)*0.44491752206151575 + 
+         (1 - OneFlavour`Private`x)*0.44491752206151575)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*2.247607591102552*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*2.247607591102552)/(1 + 2.247607591102552 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               2.247607591102552)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*2.247607591102552] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               2.247607591102552)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*2.247607591102552]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*2.247607591102552)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*2.247607591102552)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*2.247607591102552]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          2.247607591102552)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.44491752206151575*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.44491752206151575 - 0.44491752206151575)/
+           (1 + 0.44491752206151575 - 0.44491752206151575)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.44491752206151575 + 0.44491752206151575)/
+             0.44491752206151575] - OneFlavour`Private`\[Phi]4$4451[
+            OneFlavour`Private`x/0.44491752206151575]*
+           OneFlavour`Private`\[Phi]2$4451[(OneFlavour`Private`x - 
+              0.44491752206151575 + 0.44491752206151575)/
+             0.44491752206151575] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.44491752206151575)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.44491752206151575)*0.44491752206151575 + 
+                0.44491752206151575)/0.44491752206151575]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              OneFlavour`Private`x/0.44491752206151575] + 
+            (0.44491752206151575*OneFlavour`Private`\[Phi]4$4451[
+               OneFlavour`Private`x/0.44491752206151575]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.44491752206151575)*0.44491752206151575 + 
+                 0.44491752206151575)/0.44491752206151575])/
+             0.44491752206151575))))/
+       (OneFlavour`Private`y*0.44491752206151575 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 2.247607591102552 - 1.)/
+           (1 + 2.247607591102552 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 2.247607591102552)/
+             2.247607591102552] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 2.247607591102552)/
+             2.247607591102552] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 2.247607591102552)/
+               2.247607591102552]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 2.247607591102552)/
+                2.247607591102552])/2.247607591102552))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}, 
+  {19.861, 6.208926187443996 - 
+    4*NIntegrate[(0.4123316253622859*0.4123316253622859*
+        (OneFlavour`Private`\[Phi]1$4451[(OneFlavour`Private`x*
+            0.4123316253622859)/(1 + 0.4123316253622859 - 
+            0.4123316253622859)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            OneFlavour`Private`y*0.4123316253622859] - 
+          OneFlavour`Private`\[Phi]2$4451[(0.4123316253622859 - 
+              (1 - OneFlavour`Private`x)*0.4123316253622859)/
+             0.4123316253622859]*OneFlavour`Private`\[Phi]3$4451[
+            0.4123316253622859 - (1 - OneFlavour`Private`x)*
+              0.4123316253622859] - (OneFlavour`Private`y - 
+            (0.4123316253622859 - (1 - OneFlavour`Private`x)*
+               0.4123316253622859)/0.4123316253622859)*
+           (OneFlavour`Private`\[Phi]3$4451[0.4123316253622859 - 
+               (1 - OneFlavour`Private`x)*0.4123316253622859]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              (0.4123316253622859 - (1 - OneFlavour`Private`x)*
+                 0.4123316253622859)/0.4123316253622859] + 0.4123316253622859*
+             OneFlavour`Private`\[Phi]2$4451[(0.4123316253622859 - 
+                (1 - OneFlavour`Private`x)*0.4123316253622859)/
+               0.4123316253622859]*Derivative[1][
+               OneFlavour`Private`\[Phi]3$4451][0.4123316253622859 - 
+               (1 - OneFlavour`Private`x)*0.4123316253622859]))))/
+       ((OneFlavour`Private`y - 1)*0.4123316253622859 + 
+         (1 - OneFlavour`Private`x)*0.4123316253622859)^2, 
+      {OneFlavour`Private`x, 0, 1 - 10^(-10)}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*2.4252323578657653*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x*2.4252323578657653)/(1 + 2.4252323578657653 - 
+            1.)]*OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`y*1.] - 
+          OneFlavour`Private`\[Phi]4$4451[(1. - (1 - OneFlavour`Private`x)*
+               2.4252323578657653)/1.]*OneFlavour`Private`\[Phi]2$4451[
+            1. - (1 - OneFlavour`Private`x)*2.4252323578657653] - 
+          (OneFlavour`Private`y - (1. - (1 - OneFlavour`Private`x)*
+               2.4252323578657653)/1.)*(OneFlavour`Private`\[Phi]2$4451[
+              1. - (1 - OneFlavour`Private`x)*2.4252323578657653]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              (1. - (1 - OneFlavour`Private`x)*2.4252323578657653)/1.] + 
+            1.*OneFlavour`Private`\[Phi]4$4451[(1. - 
+                (1 - OneFlavour`Private`x)*2.4252323578657653)/1.]*
+             Derivative[1][OneFlavour`Private`\[Phi]2$4451][
+              1. - (1 - OneFlavour`Private`x)*2.4252323578657653]))))/
+       ((OneFlavour`Private`y - 1)*1. + (1 - OneFlavour`Private`x)*
+          2.4252323578657653)^2, {OneFlavour`Private`x, 0, 1 - 10^(-10)}, 
+      {OneFlavour`Private`y, 0, 1}, {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(0.4123316253622859*(OneFlavour`Private`\[Phi]3$4451[
+          (OneFlavour`Private`x + 0.4123316253622859 - 0.4123316253622859)/
+           (1 + 0.4123316253622859 - 0.4123316253622859)]*
+         OneFlavour`Private`\[Phi]1$4451[OneFlavour`Private`x]*
+         (OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`y]*
+           OneFlavour`Private`\[Phi]2$4451[((OneFlavour`Private`y - 1)*
+               0.4123316253622859 + 0.4123316253622859)/0.4123316253622859] - 
+          OneFlavour`Private`\[Phi]4$4451[OneFlavour`Private`x/
+             0.4123316253622859]*OneFlavour`Private`\[Phi]2$4451[
+            (OneFlavour`Private`x - 0.4123316253622859 + 0.4123316253622859)/
+             0.4123316253622859] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/0.4123316253622859)*
+           (OneFlavour`Private`\[Phi]2$4451[((-1 + OneFlavour`Private`x/
+                   0.4123316253622859)*0.4123316253622859 + 
+                0.4123316253622859)/0.4123316253622859]*
+             Derivative[1][OneFlavour`Private`\[Phi]4$4451][
+              OneFlavour`Private`x/0.4123316253622859] + 
+            (0.4123316253622859*OneFlavour`Private`\[Phi]4$4451[
+               OneFlavour`Private`x/0.4123316253622859]*Derivative[1][
+                OneFlavour`Private`\[Phi]2$4451][((-1 + OneFlavour`Private`x/
+                    0.4123316253622859)*0.4123316253622859 + 
+                 0.4123316253622859)/0.4123316253622859])/
+             0.4123316253622859))))/
+       (OneFlavour`Private`y*0.4123316253622859 - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}] - 
+    4*NIntegrate[(1.*(OneFlavour`Private`\[Phi]1$4451[
+          (OneFlavour`Private`x + 2.4252323578657653 - 1.)/
+           (1 + 2.4252323578657653 - 1.)]*OneFlavour`Private`\[Phi]4$4451[
+          OneFlavour`Private`x]*(OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`y]*OneFlavour`Private`\[Phi]3$4451[
+            ((OneFlavour`Private`y - 1)*1. + 2.4252323578657653)/
+             2.4252323578657653] - OneFlavour`Private`\[Phi]2$4451[
+            OneFlavour`Private`x/1.]*OneFlavour`Private`\[Phi]3$4451[
+            (OneFlavour`Private`x - 1. + 2.4252323578657653)/
+             2.4252323578657653] - (OneFlavour`Private`y - 
+            OneFlavour`Private`x/1.)*(OneFlavour`Private`\[Phi]3$4451[
+              ((-1 + OneFlavour`Private`x/1.)*1. + 2.4252323578657653)/
+               2.4252323578657653]*Derivative[1][
+               OneFlavour`Private`\[Phi]2$4451][OneFlavour`Private`x/1.] + 
+            (1.*OneFlavour`Private`\[Phi]2$4451[OneFlavour`Private`x/1.]*
+              Derivative[1][OneFlavour`Private`\[Phi]3$4451][
+               ((-1 + OneFlavour`Private`x/1.)*1. + 2.4252323578657653)/
+                2.4252323578657653])/2.4252323578657653))))/
+       (OneFlavour`Private`y*1. - OneFlavour`Private`x)^2, 
+      {OneFlavour`Private`x, 0, 1}, {OneFlavour`Private`y, 0, 1}, 
+      {OneFlavour`Private`z, 0, 1}, {}]}}}

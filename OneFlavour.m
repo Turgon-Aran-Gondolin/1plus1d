@@ -240,10 +240,10 @@ Print["Wavefunction build complete."];
 {M2,\[Phi]2a}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n2];
 {M3,\[Phi]3a}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n3];
 {M4,\[Phi]4a}={Mn[#][ValsB],\[Phi]n[#][\[CapitalPhi]B]}&[n4];
-SetDelayed[\[Phi]1[x_?NumberQ],Piecewise[{{\[Phi]1a[x],0<=x<=1},{\[Phi]1a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M1^2),x>1||x<0}}]];
-SetDelayed[\[Phi]2[x_?NumberQ],Piecewise[{{\[Phi]2a[x],0<=x<=1},{\[Phi]2a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M2^2),x>1||x<0}}]];
-SetDelayed[\[Phi]3[x_?NumberQ],Piecewise[{{\[Phi]3a[x],0<=x<=1},{\[Phi]3a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M3^2),x>1||x<0}}]];
-SetDelayed[\[Phi]4[x_?NumberQ],Piecewise[{{\[Phi]4a[x],0<=x<=1},{\[Phi]4a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M4^2),x>1||x<0}}]];
+SetDelayed[\[Phi]1[x_?NumberQ],Piecewise[{{\[Phi]1a[x],0<x<1},{\[Phi]1a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M1^2),x>1||x<0}},0]];
+SetDelayed[\[Phi]2[x_?NumberQ],Piecewise[{{\[Phi]2a[x],0<x<1},{\[Phi]2a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M2^2),x>1||x<0}},0]];
+SetDelayed[\[Phi]3[x_?NumberQ],Piecewise[{{\[Phi]3a[x],0<x<1},{\[Phi]3a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M3^2),x>1||x<0}},0]];
+SetDelayed[\[Phi]4[x_?NumberQ],Piecewise[{{\[Phi]4a[x],0<x<1},{\[Phi]4a[z]/(x-z)^2/((m1^2-1)/x+(m2^2-1)/(1-x)-M4^2),x>1||x<0}},0]];
 (*Print[\[Phi]1[x]];*)
 Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
