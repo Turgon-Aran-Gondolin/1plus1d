@@ -158,7 +158,7 @@ Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,
 (*\[Beta]=x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<2,x,Reals,2]};*)
 \[Beta]=Flatten[x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<1,x,Reals,1],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<1,x,Reals,1]}];
 (*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
-Print["\[Beta]=",\[Beta],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m1^2))&/@\[Beta][[1]],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m2^2))&/@\[Beta][[2]]];
+Print["\[Beta]=",\[Beta],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m1^2))&@\[Beta][[1]],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m2^2))&@\[Beta][[2]]];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
 psi[n_,x_]:=psi[n,x]=Which[n==0,(1-x)^(2-\[Beta][[1]])*x^\[Beta][[1]],n==1,x^(2-\[Beta][[2]])*(1-x)^\[Beta][[2]],n>=2,Sin[(n-1)*\[Pi]*x]];
@@ -169,7 +169,7 @@ sMatrix=ParallelTable[Quiet[sMT[m,n]],{m,0,Nb},{n,0,Nb},DistributedContexts->{"O
 (*Print["Half"];*)
 hMTUp=Normal@SparseArray[ParallelMap[(#+1)->Quiet[hMT@@#]&,Flatten[Table[{m,n},{m,0,Nb},{n,0,Nb}],1],DistributedContexts->{"OneFlavour`Private`"}]];
 (*Print[hMTUp];*)
-hMatrix=Transpose[hMTUp]+hMTUp-DiagonalMatrix[Diagonal[hMTUp]];
+hMatrix=(*Transpose[hMTUp]+*)hMTUp(*-DiagonalMatrix[Diagonal[hMTUp]]*);
 (*Print[MatrixForm[hMatrix]];*)
 {\[Mu]s,vecs}=Transpose[SortBy[Transpose[Eigensystem[Inverse[sMatrix].hMatrix]],First]];
 \[Mu]=Sqrt[\[Mu]s];
