@@ -161,7 +161,7 @@ Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,
 Print["\[Beta]=",\[Beta],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m1^2))&/@\[Beta][[1]],"   ",(#*\[Pi]*Cot[\[Pi]*#]-(1-m2^2))&/@\[Beta][[2]]];
 Kernel1[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,0,x-\[Epsilon]}];
 Kernel2[n_][x_?NumberQ]:=NIntegrate[psi[n,y]/(x-y)^2,{y,x+\[Epsilon],1}];
-psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta][[1,1]])*(1-x)^\[Beta][[1,1]],n==1,(1-x)^(2-\[Beta][[1,1]])*x^\[Beta][[1,1]],n==2,x^(2-\[Beta][[1,2]])*(1-x)^\[Beta][[1,2]],n==3,(1-x)^(2-\[Beta][[1,2]])*x^\[Beta][[1,2]],n==4,x^(2-\[Beta][[2,1]])*(1-x)^\[Beta][[2,1]],n==5,(1-x)^(2-\[Beta][[2,1]])*x^\[Beta][[2,1]],n==6,x^(2-\[Beta][[2,2]])*(1-x)^\[Beta][[2,2]],n==7,(1-x)^(2-\[Beta][[2,2]])*x^\[Beta][[2,2]],n>=8,Sin[(n-7)*\[Pi]*x]];
+psi[n_,x_]:=psi[n,x]=Which[n==0,(1-x)^(2-\[Beta][[1]])*x^\[Beta][[1]],n==1,x^(2-\[Beta][[2]])*(1-x)^\[Beta][[2]],n>=2,Sin[(n-1)*\[Pi]*x]];
 (*psi[n_,x_]:=psi[n,x]=Which[n==0,x^(2-\[Beta][[1,1]])*(1-x)^\[Beta][[1,1]],n==1,(1-x)^(2-\[Beta][[1,1]])*x^\[Beta][[1,1]],n==2,x^(2-\[Beta][[1,2]])*(1-x)^\[Beta][[1,2]],n==3,(1-x)^(2-\[Beta][[1,2]])*x^\[Beta][[1,2]],n==4,x^(2-\[Beta][[2,1]])*(1-x)^\[Beta][[2,1]],n==5,(1-x)^(2-\[Beta][[2,1]])*x^\[Beta][[2,1]],n==6,x^(2-\[Beta][[2,2]])*(1-x)^\[Beta][[2,2]],n==7,(1-x)^(2-\[Beta][[2,2]])*x^\[Beta][[2,2]],n>=8,Sin[(n-7)*\[Pi]*x]];*)
 hMT[m_,n_]:=hMT[m,n]=NIntegrate[psi[m,x](((m1^2-1)/x+(m2^2-1)/(1-x))*psi[n,x]-Kernel1[n][x]-Kernel2[n][x]+(2psi[n,x])/\[Epsilon]),{x,\[Epsilon],1-\[Epsilon]},WorkingPrecision->20];
 sMT[m_,n_]:=sMT[m,n]=NIntegrate[psi[m,x]psi[n,x],{x,0,1}];
