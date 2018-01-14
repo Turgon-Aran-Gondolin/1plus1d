@@ -248,7 +248,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@4*)
+(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@1*)
 
 
 (* ::Input:: *)
