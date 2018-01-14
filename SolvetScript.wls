@@ -168,7 +168,7 @@ Print["End"];
 (*Setting]\)<>"_m1-"<>\!\(\**)
 (*TagBox[*)
 (*TagBox[*)
-(*DynamicModuleBox[{BoxForm`var$$ = "4.23"}, *)
+(*DynamicModuleBox[{BoxForm`var$$ = "4.233"}, *)
 (*InterpretationBox[*)
 (*InterpretationBox[*)
 (*StyleBox[GridBox[{*)
@@ -248,7 +248,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsC[[1]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[1]]+NIntegrate[\[CapitalPhi]C[y][[1]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[1]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[1]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]*)
+(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@4*)
 
 
 (* ::Input:: *)
