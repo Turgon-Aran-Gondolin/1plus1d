@@ -63,6 +63,12 @@ Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumd
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/fc8da22f28f9743604026b5eccc8cbc955c83c6e/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
+(*csbar*)
+
+
+Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(0-0-0-0).dat";
+
+
 Msumdat
 
 

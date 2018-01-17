@@ -28,7 +28,7 @@ MC[m_]:=Which[ToString[m]=="c",4.233,ToString[m]=="s",0.749,ToString[m]=="u",0.0
 
 
 (* ::Input::Initialization:: *)
-Solvet[m1,m2,Method->"'t Hooft",MatrixSize->11,Force->True]
+Solvet[m1,m2,Method->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
 
