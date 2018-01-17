@@ -69,6 +69,9 @@ Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/fc8da22f28f974360
 Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(0-0-0-0).dat";
 
 
+Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(1-0-1-0).dat";
+
+
 Msumdat
 
 
@@ -92,8 +95,8 @@ Msumdat
 (*Msumdat*)
 
 
-(* ::Subsubsection:: *)
-(*Display*)
+(* ::Subsubsection::Closed:: *)
+(*Edit*)
 
 
 Msumdat[[2]]=Msumdat[[2]]//Chop;
@@ -115,6 +118,10 @@ Msumdat[[2]]=Delete[Msumdat[[2]],Drop[Position[PeakDetect[Msumdat[[2,All,2]]],1]
 
 
 Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]]
+
+
+(* ::Subsubsection:: *)
+(*Display*)
 
 
 SS[s_]=Evaluate[FindFormula[Msumdat[[2]],s]]

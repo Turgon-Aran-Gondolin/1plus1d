@@ -6,8 +6,7 @@
 
 
 (* ::Input::Initialization:: *)
-num=ToExpression[$ScriptCommandLine[[2]]];
-Once[LaunchKernels[num]];
+If[$InputFileName == "",Once[LaunchKernels[16]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
