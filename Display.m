@@ -72,6 +72,9 @@ Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(0-0-0-0).dat";
 Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(1-0-1-0).dat";
 
 
+Msumdat=<<"data/Msumdat_m1-4.233-m2-0.749-n-(1-1-1-1).dat";
+
+
 Msumdat
 
 
