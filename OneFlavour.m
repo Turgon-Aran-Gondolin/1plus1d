@@ -19,6 +19,13 @@ Msum4::usage=""
 displayfunction1::usage="displayfunction1[Msumdat,{min,max}], amplitude plot, min/max is the spare space in both ends. ";
 displayfunction2::usage="displayfunction2[Msumdat,{min,max}], amplitude square plot, min/max is the spare space in both ends. ";
 displayfunctionboth::usage="displayfunctionboth[Msumdat,{min,max}], amplitude square plot, min/max is the spare space in both ends. ";
+SRange::usage=
+"Option for Msum family. Indicate the energy region as {start,end,interval}";
+SolveMethod::usage=
+"\"'t Hooft\" and \"BSW\"";
+Lambda::usage=
+"Cutoff of Cauchy principle value integral";
+
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)

@@ -42,7 +42,16 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 Msumdat=<<"data/Msumdat_m-c-n-(0-0-0-0).dat";
 
 
-Msumdat=<<"data/Msumdat_m-4.23-n-(0-0-0-0).dat";
+Msumdat[1]=<<"data/Msumdat_m-4.233-n-(0-0-0-0).dat";
+
+
+Msumdat[2]=<<"data/Msumdat_m-4.233-n-(1-1-1-1).dat";
+
+
+Msumdat[3]=<<"data/Msumdat_m-4.233-n-(0-0-1-1).dat";
+
+
+Msumdat[4]=<<"data/Msumdat_m-4.23-n-(1-0-0-0).dat";
 
 
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
@@ -124,7 +133,19 @@ Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]
 
 
 (* ::Subsubsection:: *)
-(*Display*)
+(*Display *)
+
+
+ColorList=ColorData[97,"ColorList"];
+
+
+(* ::Input::Initialization:: *)
+(Print[("Amp: Threshold: "<>ToString[If[#[[1,1,1]]+#[[1,1,2]]>=#[[1,1,3]]+#[[1,1,4]],#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]]<>" \nQuark mass: "<>ReplaceAll[ToString[#]<>" "&/@#[[1,3]],List->StringJoin]<>"\nMeson mass: "<>ReplaceAll[ToString[#]<>" "&/@#[[1,2]],List->StringJoin]<>"")&@#[[1]]];ListPlot[Select[Re@#[[2]],#\[Element]Reals&]&/@#,PlotRange->{{Min[#1]-1,Max[#2]-5}&@(Sequence@@(Transpose[{First[#[[2]]][[1]]-0.1,Last[#[[2]]][[1]]}&/@#])),All},Joined->True,ImageSize->400,PlotLegends->Placed[LineLegend[(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]])&/@#,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->OptionValue[LegendMargins],LegendFunction->"Frame"],{Right,Top}],Frame->True,FrameLabel->{"","\[ScriptCapitalM]"},PlotStyle->Take[ColorList,Length@#],
+Epilog->MapThread[{Dashed,#2,Line[{{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]])&@{Msumdat[1],Msumdat[2],Msumdat[3],Msumdat[4]}
+
+
+(* ::Subsubsection::Closed:: *)
+(*Display-1*)
 
 
 SS[s_]=Evaluate[FindFormula[Msumdat[[2]],s]]
