@@ -23,7 +23,12 @@ MC[m_]:=Which[ToString[m]=="c",4.233,ToString[m]=="s",0.749,ToString[m]=="u",0.0
 
 
 (* ::Input::Initialization:: *)
-(*Solvet[m,m,Method->"BSW",MatrixSize->500,Force->True]*)
+(*Bottomonium and b quark mass*)
+
+(*m=13.5565;
+Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]500,Force->True]
+Print["End"];*)
+
 
 
 (* ::Input::Initialization:: *)

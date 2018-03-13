@@ -25,6 +25,10 @@ SolveMethod::usage=
 "\"'t Hooft\" and \"BSW\"";
 Lambda::usage=
 "Cutoff of Cauchy principle value integral";
+MatrixSize::usage=
+    "Matrix size for \"'t Hooft\" and \"BSW\" methods. "
+Force::usage=
+    "Option for Solvet, force solving even if solution exists. "
 
 
 
