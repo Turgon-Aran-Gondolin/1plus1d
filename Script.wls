@@ -31,7 +31,7 @@ Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{7,8.6,0.1},Lambda->10^-6,SolveMethod->"'t 
 Msumdat[[2]]=Sort[(<<"data/Msumdat_m-4.233-n-(2-2-2-2).dat")[[2]]~Join~Msumdat[[2]]];
 Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],2,
 Msumdat=Msum2[{m1,m2},{n1,n2,n3,n4},SRange->{10^-3,19.9,0.03},Lambda->10^-6,SolveMethod->"'t Hooft"(*,MatrixSize->9*)];
-Put[Msumdat,"data/Msumdat_m1-"<>ToString[m1]<>"-m2-"<>ToString[m2]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],3,,4,]
+Put[Msumdat,"data/Msumdat_m1-"<>ToString[m1]<>"-m2-"<>ToString[m2]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],3,Null,4,Null]
 Print["End"];
 
 
