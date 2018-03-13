@@ -31,6 +31,13 @@ Print["End"];*)
 
 
 
+(*Charmonium and c quark mass*)
+
+(*m=4.19022;
+Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]100,Force->True]
+Print["End"];*)
+
+
 (* ::Input::Initialization:: *)
 Solvet[m1,m2,Method->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
