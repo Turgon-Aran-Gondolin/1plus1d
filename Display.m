@@ -149,6 +149,10 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 (*Export["~/Desktop/draf/NumFig/cs.eps",fig,ImageResolution->300]*)
 
 
+(* ::Input:: *)
+(*(#[[2,-1,1]]-Total[#[[1,2,1;;2]]])&@Msumdat[2] (*Range of data in unit of \[beta]*)*)
+
+
 (* ::Subsubsection::Closed:: *)
 (*Display-1*)
 
