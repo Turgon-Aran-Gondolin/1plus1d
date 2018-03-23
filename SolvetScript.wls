@@ -57,7 +57,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-0.749.wdx"];*)
+(*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-4.233.wdx"];*)
 
 
 (* ::Input:: *)
@@ -219,6 +219,9 @@ Print["End"];
 (*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
 (*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
 (*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
+
+
+ValsA
 
 
 (* ::Input:: *)
