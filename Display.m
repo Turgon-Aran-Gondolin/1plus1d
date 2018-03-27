@@ -42,12 +42,12 @@ Msumdat=<<"data\\Msumdat_m-0.749-n-(0-0-0-0).dat";
 Msumdat=<<"data/Msumdat_m-c-n-(0-0-0-0).dat";
 
 
-Msumdat[1]=<<"data/Msumdat_m-4.233-n-(0-0-0-0).dat";
-Msumdat[2]=<<"data/Msumdat_m-4.233-n-(1-1-1-1).dat";
-Msumdat[3]=<<"data/Msumdat_m-4.233-n-(0-0-1-1).dat";
-Msumdat[4]=<<"data/Msumdat_m-4.233-n-(2-2-0-0).dat";
-Msumdat[5]=<<"data/Msumdat_m-4.233-n-(2-2-1-1).dat";
-Msumdat[6]=<<"data/Msumdat_m-4.233-n-(2-2-2-2).dat";
+Msumdat[1]=<<"data/Msumdat_m-4.19022-n-(0-0-0-0).dat";
+Msumdat[2]=<<"data/Msumdat_m-4.19022-n-(1-1-1-1).dat";
+Msumdat[3]=<<"data/Msumdat_m-4.19022-n-(0-0-1-1).dat";
+Msumdat[4]=<<"data/Msumdat_m-4.19022-n-(2-2-0-0).dat";
+Msumdat[5]=<<"data/Msumdat_m-4.19022-n-(2-2-1-1).dat";
+Msumdat[6]=<<"data/Msumdat_m-4.19022-n-(2-2-2-2).dat";
 
 
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-4.23-n-(0-0-0-0).dat";
