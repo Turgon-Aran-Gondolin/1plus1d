@@ -76,7 +76,10 @@ Msumdat[2]=<<"data/Msumdat_m1-4.233-m2-0.749-n-(1-0-1-0).dat";
 Msumdat[3]=<<"data/Msumdat_m1-4.233-m2-0.749-n-(1-1-1-1).dat";
 
 
-Msumdat[1]
+Msumdat[4]
+
+
+Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 
 
 (* ::Subsubsection::Closed:: *)
@@ -142,7 +145,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 ,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","GeV"},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Msumdat[#]&/@(*Reverse@*)Range[1,3]))
+)&@(DimensionConvertion/@(Msumdat[#]&/@(*Reverse@*)Range[4,6]))
 
 
 (* ::Input:: *)
