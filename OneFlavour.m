@@ -29,7 +29,10 @@ MatrixSize::usage=
     "Matrix size for \"'t Hooft\" and \"BSW\" methods. "
 Force::usage=
     "Option for Solvet, force solving even if solution exists. "
-
+ProcessType::usage=
+"({{a,b},{c,a}}->{{a,b},{c,a}})";
+AssignQuark::usage=
+"{a->m1,b->m2}";
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)
@@ -339,11 +342,13 @@ filenameacc[m1_,m2_]:=Which[m1==m2,"/acceigenstate_m-"<>ToString[m1],m1>m2,"/acc
 Which[OptionValue[SolveMethod]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[SolveMethod]=="'t Hooft",Determine=accDetermine\[Phi]];
 {ParA,ParB}=Keys[OptionValue[ProcessType]];{ParC,ParD}=Values[OptionValue[ProcessType]];
 If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]],Print["Convention checked out"],Abort[]];
-Which[
+Which[(*check classification*)
 MatchQ[{ParA,ParB},{{a_,c_},{b_,b_}}]&&MatchQ[{ParC,ParD},{{b_,c_},{a_,b_}}],
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[1]],ParB[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
 MatchQ[{ParA,ParB},{{a_,c_},{c_,b_}}]&&MatchQ[{ParC,ParD},{{c_,c_},{a_,b_}}],
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParB[[1]],ParB[[1]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+MatchQ[{ParA,ParB},{{a_,c_},{a_,b_}}]&&MatchQ[{ParC,ParD},{{a_,c_},{a_,b_}}],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParA[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
 True,
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]
 ];
