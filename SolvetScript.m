@@ -4,10 +4,14 @@
 (*Quit[]*)
 
 
+(*Launch Parallel Kernels, if executed not in IHEP, comment out RemoteSSH and RemoteKernel lines*)
 <<MMARemoteSSH`
 LaunchRemoteKernels[];
 LaunchKernels[4];
 Kernels[]
+
+
+(*Execute next two cells to initialize. *)
 
 
 (* ::Input::Initialization:: *)
@@ -29,9 +33,9 @@ MC[m_]:=Which[ToString[m]=="c",4.233,ToString[m]=="s",0.749,ToString[m]=="u",0.0
 (* ::Input::Initialization:: *)
 (*Bottomonium and b quark mass*)
 
-(*m=13.5565;
-Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]500,Force->True]
-Print["End"];*)
+m=13.5565;
+Solvet[m,m,SolveMethod->"BSW",MatrixSize->100,Force->True]
+Print["End"];
 
 
 
