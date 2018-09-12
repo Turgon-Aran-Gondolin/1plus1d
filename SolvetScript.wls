@@ -5,8 +5,6 @@
 (*Quit[]*)
 
 
-
-
 (* ::Input::Initialization:: *)
 <<MMARemoteSSH`
 LaunchRemoteKernels[];
@@ -90,7 +88,14 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-4.23_m2-0.749.wdx"];*)
+(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-4.19022_m2-0.749.wdx"];*)
+
+
+(* ::Code:: *)
+(*Clear[\[CapitalPhi]A,\[CapitalPhi]B,\[CapitalPhi]C];*)
+(*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
+(*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
+(*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
 
 
 (* ::Input:: *)
@@ -122,13 +127,14 @@ Print["End"];
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`ma = ToExpression[Setting[#]]; Setting[#])& ]\)<>".wdx"];*)
@@ -192,20 +198,21 @@ Print["End"];
 (*Setting]\)<>"_m1-"<>\!\(\**)
 (*TagBox[*)
 (*TagBox[*)
-(*DynamicModuleBox[{BoxForm`var$$ = "4.233"}, *)
+(*DynamicModuleBox[{BoxForm`var$$ = "4.19022"}, *)
 (*InterpretationBox[*)
 (*InterpretationBox[*)
 (*StyleBox[GridBox[{*)
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`mc1 = ToExpression[Setting[#]]; Setting[#])& ]\)<>"_m2-"<>\!\(\**)
@@ -218,13 +225,14 @@ Print["End"];
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`mc2 = ToExpression[Setting[#]]; Setting[#])& ]\)<>".wdx"];*)
@@ -259,7 +267,7 @@ ValsA
 
 
 (* ::Input:: *)
-(*\[Lambda]=10^-6;*)
+(*\[Lambda]=10^-6;mc1=4.19022;mc2=0.749;*)
 
 
 (* ::PageBreak:: *)
@@ -275,7 +283,11 @@ ValsA
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@1*)
+(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@3*)
+
+
+(* ::Input:: *)
+(*ListPlot[ParallelTable[(1/(ValsC[[#]]^2\[Phi]xC[[#]]))((ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]]),{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@3*)
 
 
 (* ::Input:: *)

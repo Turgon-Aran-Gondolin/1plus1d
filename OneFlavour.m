@@ -33,6 +33,8 @@ ProcessType::usage=
 "({{a,b},{c,a}}->{{a,b},{c,a}})";
 AssignQuark::usage=
 "{a->m1,b->m2}";
+\[Omega]1S;
+\[Omega]2S;
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)
@@ -201,8 +203,10 @@ Clear[func,vecs];
 \[Phi]n[n_][\[Phi]_][x_]:=\[Phi][x][[n+1]];
 Mn[n_][vals_]:=vals[[n+1]];
 
-\[Omega]1S[s_][M1_,M2_,M3_,M4_]:=(-M1^2+M2^2+s-Sqrt[s] Sqrt[(M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
-\[Omega]2S[s_][M1_,M2_,M3_,M4_]:=(-M3^2+M4^2+s-Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s])/(M3^2-M4^2+s+Sqrt[s] Sqrt[(M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s))/s]);
+\[Omega]1S[s_][M1_,M2_,M3_,M4_]:=(-M1^2+M2^2+s-Sqrt[M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s)])/(M3^2-M4^2+s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)]);
+\[Omega]2S[s_][M1_,M2_,M3_,M4_]:=(-M3^2+M4^2+s-Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)])/(M3^2-M4^2+s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)]);
+\[Omega]1So[s_][M1_,M2_,M3_,M4_]:=-((M2^2 M3^2+M2^2 M4^2-M2^2 s+M3^2 s+M4^2 s-s^2-M2^2 Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)]-s Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)]+M1^2 (-M3^2-M4^2+s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)])+Sqrt[2] \[Sqrt]((M1^4+(M2^2-s)^2-2 M1^2 (M2^2+s)) (M3^4-(M4^2-s) (-M4^2+s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)])-M3^2 (2 s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)]))))/(2 M3^2 (-M3^2+M4^2+s+Sqrt[M3^4+(M4^2-s)^2-2 M3^2 (M4^2+s)])));
+\[Omega]2So[s_][M1_,M2_,M3_,M4_]:=(-M3^2-M4^2+s+Sqrt[-4 M3^2 M4^2+(-M3^2-M4^2+s)^2])/(2 M3^2);
 
 
 Solvet[m1_,m2_,opt:OptionsPattern[{SolveMethod->"BSW",DataDir->dirglo,MatrixSize->500,Force->False}]]:=Module[{filename,filenameacc,ValsB,\[Phi]xB,\[CapitalPhi]B},
@@ -271,7 +275,7 @@ Print["m1=",m1];
 ];
 
 Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{b,a}}->{{a,b},{b,a}}),AssignQuark->{a->m1,b->m2},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
-Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list},
+Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list,\[Omega]1o,\[Omega]2o},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
 filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/eigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
@@ -329,8 +333,8 @@ Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
-{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];\[Omega]1o=\[Omega]1So[Sen][M1,M2,M3,M4];\[Omega]2o=\[Omega]2So[Sen][M1,M2,M3,M4];
+{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalM][\[Omega]1o,\[Omega]2o,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
 
 Msum3[{mQ_,mq_,md_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{c,a}}->{{a,b},{c,a}}),AssignQuark->{a->m1,b->m2,c->m3},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
