@@ -33,8 +33,10 @@ ProcessType::usage=
 "({{a,b},{c,a}}->{{a,b},{c,a}})";
 AssignQuark::usage=
 "{a->m1,b->m2}";
-\[Omega]1S;
+(*\[Omega]1S;
 \[Omega]2S;
+\[Omega]1So;
+\[Omega]2So;*)
 
 
 (*ParallelEvaluate[Print[$KernelID]];*)
@@ -112,7 +114,7 @@ EXPR[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Opti
 \[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}];
 \[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[ScriptCapitalI]1[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalI]2[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
 \[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 (NIntegrate[(\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] (\[Phi]2[y] \[Phi]3[y \[Omega]1]-\[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]-(y-(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1) (\[Phi]3[\[Omega]1-(1-x) \[Omega]2] Derivative[1][\[Phi]2][(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1]+\[Omega]1 \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] Derivative[1][\[Phi]3][\[Omega]1-(1-x) \[Omega]2]))))/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,0,1-10^-10},{y,0,1},{z,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]](*+((\[Omega]2 NIntegrate[(\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2])/(((\[Omega]1-(1-x) \[Omega]2) ((\[Omega]1-(1-x) \[Omega]2)/\[Omega]1-1))/\[Omega]1),{x,0,1}])/\[Omega]1)*));
-\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 (NIntegrate[(\[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2))))/(y \[Omega]1-x)^2,{x,0,1},{y,10^-10,1},{z,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]](*+(NIntegrate[(\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/((x (x/\[Omega]1-1))/\[Omega]1),{x,0,1}]/\[Omega]1)*));
+\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 (NIntegrate[(\[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2))))/(y \[Omega]1-x)^2,{x,0,1},{y,10^-10,1},{z,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]](*+(NIntegrate[(\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/((x (x/\[Omega]1-1))/\[Omega]1),{x,0,1}]/\[Omega]1)*));
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=-(((4 \[Pi]) NIntegrate[(Mc^2+Md^2/\[Omega]2+(If[ListQ[m],m[[1]],m]^2-\[Beta]^2)/(x-\[Omega]1)+(If[ListQ[m],m[[2]],m]^2-\[Beta]^2)/(x-1)-(If[ListQ[m],m[[3]],m]^2-\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(If[ListQ[m],m[[4]],m]^2-\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]])/Nc);
 
 
@@ -274,8 +276,8 @@ Print["m1=",m1];
 ,{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
 
-Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{b,a}}->{{a,b},{b,a}}),AssignQuark->{a->m1,b->m2},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
-Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list,\[Omega]1o,\[Omega]2o},
+Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{b,a}}->{{a,b},{b,a}}),AssignQuark->{a->m1,b->m2},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[],AnotherKinematics->False}]]:=
+Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list,\[Omega]1o,\[Omega]2o,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
 filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/eigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
@@ -322,10 +324,14 @@ Set@@{Evaluate[\[CapitalPhi]list[[i]]][Global`x_],Boole[0<=Global`x<=1]Eigenlist
 (*Set@@{\[CapitalPhi]B[x_?NumberQ],If[0<x<1,\[CapitalPhi]Bi[x],Table[0,{n,Length@\[Phi]xB}]]};*)
 Print["Wavefunction build complete."];
 (*Print[\[Phi]n[#][\[CapitalPhi]B][x]&[1]];*)
-{M1,\[Phi]1}={Mn[#][Vals1],\[Phi]n[#][\[CapitalPhi]1]}&[n1];
-{M2,\[Phi]2}={Mn[#][Vals2],\[Phi]n[#][\[CapitalPhi]2]}&[n2];
-{M3,\[Phi]3}={Mn[#][Vals3],\[Phi]n[#][\[CapitalPhi]3]}&[n3];
-{M4,\[Phi]4}={Mn[#][Vals4],\[Phi]n[#][\[CapitalPhi]4]}&[n4];
+{M1,\[Phi]1t}={Mn[#][Vals1],\[Phi]n[#][\[CapitalPhi]1]}&[n1];
+{M2,\[Phi]2t}={Mn[#][Vals2],\[Phi]n[#][\[CapitalPhi]2]}&[n2];
+{M3,\[Phi]3t}={Mn[#][Vals3],\[Phi]n[#][\[CapitalPhi]3]}&[n3];
+{M4,\[Phi]4t}={Mn[#][Vals4],\[Phi]n[#][\[CapitalPhi]4]}&[n4];
+Set@@{\[Phi]1[x_],\[Phi]1t[x/.x/;(!OrderedQ[ParA])->1-x]};
+Set@@{\[Phi]2[x_],\[Phi]2t[x/.x/;(!OrderedQ[ParB])->1-x]};
+Set@@{\[Phi]3[x_],\[Phi]3t[x/.x/;(!OrderedQ[ParC])->1-x]};
+Set@@{\[Phi]4[x_],\[Phi]4t[x/.x/;(!OrderedQ[ParD])->1-x]};
 (*Print[\[Phi]1[y]];*)
 Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
@@ -333,12 +339,12 @@ Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];\[Omega]1o=\[Omega]1So[Sen][M1,M2,M3,M4];\[Omega]2o=\[Omega]2So[Sen][M1,M2,M3,M4];
-{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalM][\[Omega]1o,\[Omega]2o,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
+{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];(*Print[$KernelID];*)(*Print[{Ssqur,\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]}];*)
+{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`"}]}
 ];
 
 Msum3[{mQ_,mq_,md_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{c,a}}->{{a,b},{c,a}}),AssignQuark->{a->m1,b->m2,c->m3},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
-Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,m3,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,dir,Si,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,ParA,ParB,ParC,ParD,\[CapitalPhi]list},
+Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,\[Omega]now,m1,m2,m3,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,dir,Si,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,ParA,ParB,ParC,ParD,\[CapitalPhi]list,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;m3=md;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
 filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/eigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
@@ -375,10 +381,14 @@ Set@@{Evaluate[\[CapitalPhi]list[[i]]][Global`x_],Boole[0<=Global`x<=1]Eigenlist
 (*Set@@{\[CapitalPhi]B[x_?NumberQ],If[0<x<1,\[CapitalPhi]Bi[x],Table[0,{n,Length@\[Phi]xB}]]};*)
 Print["Wavefunction build complete."];
 (*Print[\[Phi]n[#][\[CapitalPhi]B][x]&[1]];*)
-{M1,\[Phi]1}={Mn[#][Vals1],\[Phi]n[#][\[CapitalPhi]1]}&[n1];
-{M2,\[Phi]2}={Mn[#][Vals2],\[Phi]n[#][\[CapitalPhi]2]}&[n2];
-{M3,\[Phi]3}={Mn[#][Vals3],\[Phi]n[#][\[CapitalPhi]3]}&[n3];
-{M4,\[Phi]4}={Mn[#][Vals4],\[Phi]n[#][\[CapitalPhi]4]}&[n4];
+{M1,\[Phi]1t}={Mn[#][Vals1],\[Phi]n[#][\[CapitalPhi]1]}&[n1];
+{M2,\[Phi]2t}={Mn[#][Vals2],\[Phi]n[#][\[CapitalPhi]2]}&[n2];
+{M3,\[Phi]3t}={Mn[#][Vals3],\[Phi]n[#][\[CapitalPhi]3]}&[n3];
+{M4,\[Phi]4t}={Mn[#][Vals4],\[Phi]n[#][\[CapitalPhi]4]}&[n4];
+Set@@{\[Phi]1[x_],\[Phi]1t[x/.x/;(!OrderedQ[ParA])->1-x]};
+Set@@{\[Phi]2[x_],\[Phi]2t[x/.x/;(!OrderedQ[ParB])->1-x]};
+Set@@{\[Phi]3[x_],\[Phi]3t[x/.x/;(!OrderedQ[ParC])->1-x]};
+Set@@{\[Phi]4[x_],\[Phi]4t[x/.x/;(!OrderedQ[ParD])->1-x]};
 Mseq=Sequence[M1,M2,M3,M4];Si=If[n1+n2>=n3+n4,M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
 \[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=MHG[\[Omega]1,\[Omega]2,Evaluate@FilterRules[{opts},Options[NIntegrate]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4];
