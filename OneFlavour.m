@@ -36,6 +36,7 @@ AssignQuark::usage=
 PVInt;
 PVInt::met="None of Subtraction or Differential method is employed.";
 PVMethod;
+$PVM;
 
 \[Phi]n;
 Mn;
@@ -62,7 +63,7 @@ Begin["`Private`"]
 (*PV Definition*)
 
 
-(* ::Text:: *)
+(* ::DisplayFormula:: *)
 (*Prescription for PV integral:P \!\( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\( *)
 (*\*FractionBox[\(F[k]\), *)
@@ -81,57 +82,56 @@ Begin["`Private`"]
 (*\*FractionBox[\(F[k] - F[p] - \((k - p)\) \(F'\)[p]\), *)
 (*SuperscriptBox[\((k - p)\), \(2\)]] \[DifferentialD]k \((hep - ph/0111225)\)\)\)+F[p]/(p(p-1))(differed from Li's by a constant)*)
 (*If it's a 2-d integral,\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]pP \( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]xP \( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\[DifferentialD]k *)
 (*\*FractionBox[\(F[k]\), *)
-(*SuperscriptBox[\((k - p)\), \(2\)]]\)\)\)=\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]p \( *)
+(*SuperscriptBox[\((k - p[x])\), \(2\)]]\)\)\)=\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]x \( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(p - \[Lambda]\)]*)
 (*\*FractionBox[\(F[k]\), *)
-(*SuperscriptBox[\((k - p)\), \(2\)]] \[DifferentialD]k\)\)\)+\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]p \( *)
+(*SuperscriptBox[\((k - p[x])\), \(2\)]] \[DifferentialD]k\)\)\)+\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]x \( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(p + \[Lambda]\), \(1\)]*)
 (*\*FractionBox[\(F[k]\), *)
-(*SuperscriptBox[\((k - p)\), \(2\)]] \[DifferentialD]k\)\)\)-2/\[Lambda]\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1 - \[Lambda]\)]\(\[DifferentialD]pF[p]\)\)-1/\[Lambda] \!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(\[Lambda]\)]\(\[DifferentialD]pF[p]\)\)-1/\[Lambda] \!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(1 - \[Lambda]\), \(1\)]\(\[DifferentialD]pF[p] \((Li' s)\)\)\)*)
+(*SuperscriptBox[\((k - p[x])\), \(2\)]] \[DifferentialD]k\)\)\)-2/\[Lambda]\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1 - \[Lambda]\)]\(\[DifferentialD]xF[p[x]]\)\)-1/\[Lambda] \!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(\[Lambda]\)]\(\[DifferentialD]xF[p[x]]\)\)-1/\[Lambda] \!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(1 - \[Lambda]\), \(1\)]\(\[DifferentialD]xF[p[x]] \((Li' s)\)\)\)*)
 (*\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]pP \( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]xP \( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\[DifferentialD]k *)
 (*\*FractionBox[\(F[k]\), *)
-(*SuperscriptBox[\((k - p)\), \(2\)]]\)\)\)=\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]p \( *)
+(*SuperscriptBox[\((k - p[x])\), \(2\)]]\)\)\)=\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]x \( *)
 (*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\[DifferentialD]k *)
 (*\*FractionBox[\(F[k] - F[p] - \((k - p)\) \(F'\)[p]\), *)
-(*SuperscriptBox[\((k - p)\), \(2\)]]\)\)\)-\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1 - \[Lambda]\)]\(\[DifferentialD]p *)
-(*\*FractionBox[\(f[p]\), \(p - 1\)]\)\)-\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1\)]\(\[DifferentialD]p *)
-(*\*FractionBox[\(f[p]\), \(p\)]\)\)-f[1]Log[\[Lambda]]-f[0]Log[\[Lambda]]-\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1 - \[Lambda]\)]\(\[DifferentialD]\(pf'\)[p] Log[x/\((1 - x)\)]\)\)-\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(\[Lambda]\)]\(\[DifferentialD]\(pf'\)[p] Log[\[Lambda]/\((1 - x)\)]\)\)-\!\( *)
-(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1\)]\(\[DifferentialD]\(pf'\)[p] Log[x/\[Lambda]]\)\)*)
+(*SuperscriptBox[\((k - p)\), \(2\)]]\)\)\)+\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(1 - \[Lambda]\)]\(\[DifferentialD]x *)
+(*\*FractionBox[\(F[p]\), \(p - 1\)]\)\)-\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1\)]\(\[DifferentialD]x *)
+(*\*FractionBox[\(F[p]\), \(p\)]\)\)-\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(\[Lambda]\), \(1 - \[Lambda]\)]\(\[DifferentialD]\(xF'\)[p] Log[p/\((1 - p)\)]\)\)-\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(0\), \(\[Lambda]\)]\(\[DifferentialD]\(xF'\)[p] Log[1/\((1 - p)\)]\)\)-\!\( *)
+(*\*SubsuperscriptBox[\(\[Integral]\), \(1 - \[Lambda]\), \(1\)]\(\[DifferentialD]\(xF'\)[p] Log[p]\)\)*)
 
 
 (* ::Subsection:: *)
 (*PV Operator*)
 
 
-(*PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod\[Rule]"Differential"}]]:=Module[{F,dF,v,poletmp=pole},(*Print[intg (var-pole)^2/.var\[Rule]v];*)
-	Set@@{F[v_],intg (var-pole)^2/.var\[Rule]v};Set@@{dF[v_],F'[v](*Evaluate[D[intg (var-pole)^2,var]]/.var\[Rule]v*)};
-	(*Print@pole;
-	Print[F[Global`z]//Simplify];*)Print[FreeQ[(\[Phi]3^\[Prime])[(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1 \[Omega]1],x]];
-	Print[dF[pole]//Simplify];
+PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,dF,v},(*Print[intg (var-pole)^2/.var\[Rule]v];*)
+	Set@@{F[v_],Simplify[intg (var-pole)^2/.var->v]};
+	(*Print[F[var]];*)
 	Which[
 		OptionValue[PVMethod]=="Subtraction",
-		intg Boole[0<=var<pole-\[Lambda]||1>=var>pole+\[Lambda]]-2/\[Lambda]F[pole] ,
+		intg Boole[0<var<(pole-\[Lambda])||1>var>(pole+\[Lambda])]-2/\[Lambda] F[pole]Boole[\[Lambda]<pole<(1-\[Lambda])] -1/\[Lambda] F[pole]Boole[0<pole<\[Lambda]]-1/\[Lambda] F[pole]Boole[(1-\[Lambda])<pole<1],
 		OptionValue[PVMethod]=="Differential",
-		intg +F[pole]/(var-pole)^2-dF[pole]/(var-pole)+F[pole]/(pole(pole-1)),
+		intg -F[pole]/(var-pole)^2-F'[pole]/(var-pole)+F[pole]/(pole-1) Boole[0<=pole<1-\[Lambda]]-F[pole]/pole Boole[\[Lambda]<pole<=1]
+		-F'[pole]Log[pole/(1-pole)]Boole[\[Lambda]<pole<1-\[Lambda]]
+		-F'[pole]Log[1/(1-pole)]Boole[0<pole<\[Lambda]]-F'[pole]Log[pole]Boole[1-\[Lambda]<pole<1],
 		True,Message[PVInt::met]
 	]
-];*)
-(*Print[Derivative[1][(\[Omega]2 \[Phi]1[(x \[Omega]2)/(1-\[Omega]1+\[Omega]2)] \[Phi]2[#] \[Phi]3[# \[Omega]1] \[Phi]4[x])/\[Omega]1&][(x \[Omega]2)/(1-\[Omega]1+\[Omega]2)]]*)
+];
 
 
 (* ::Section:: *)
@@ -147,14 +147,58 @@ If[$OperatingSystem=="Windows",{dirglo="D:/Documents/2-d-data";},{dirglo="~/Docu
 MVG[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_]:=If[\[Omega]2>\[Omega]1,4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[x/(1+\[Omega]2-\[Omega]1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[1+((y-1) \[Omega]1)/\[Omega]2])/(1+y \[Omega]1-x+\[Omega]2-\[Omega]1)^2,{x,0,1},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]],4 g^2 \[Omega]2 (1+\[Omega]2-\[Omega]1) NIntegrate[(\[Phi]1[x] \[Phi]2[1+((y-1) \[Omega]2)/\[Omega]1] \[Phi]3[x (1+\[Omega]2-\[Omega]1)] \[Phi]4[y])/(1+y \[Omega]2+x (\[Omega]1-\[Omega]2-1))^2,{x,0,1},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]];
 MHG[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_]:=If[\[Omega]2>\[Omega]1,4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]],4 g^2 \[Omega]2 (1+\[Omega]2-\[Omega]1) NIntegrate[(\[Phi]1[x] \[Phi]2[(y \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-\[Omega]2+(1-\[Omega]1+\[Omega]2) x] \[Phi]4[y])/(y \[Omega]2-x (1+\[Omega]2-\[Omega]1)-\[Omega]1)^2,{x,0,1},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]];
 EXPR[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalM]0[1-\[Omega]1+\[Omega]2,\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md]+\[ScriptCapitalM]0[1/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]2[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb],\[ScriptCapitalM]0[\[Omega]2/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalM]0[\[Omega]1/\[Omega]2,1/\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]1[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]2[\[Omega]1/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalM]0[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]1[\[Omega]1/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]2[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalM]0[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc]+\[ScriptCapitalM]0[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2)][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]+\[ScriptCapitalI]1[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma]+\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma]+\[ScriptCapitalI]3[\[Omega]2/\[Omega]1,((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]3,\[Phi]4,\[Phi]2,\[Phi]1][m,Mc,Md,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]+\[ScriptCapitalI]3[(1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]3,\[Phi]4][m,Mb,Ma,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]1/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]1,\[Phi]2,\[Phi]4,\[Phi]3][m,Ma,Mb,Md,Mc]+\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),\[Omega]1/((1+1/\[Omega]2-\[Omega]1/\[Omega]2) \[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]4,\[Phi]3,\[Phi]1,\[Phi]2][m,Md,Mc,Ma,Mb]+\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
-\[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}];
-(*\[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=0;*)
-\[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[ScriptCapitalI]1[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalI]2[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
-\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[1/((y-1) \[Omega]1+(1-x) \[Omega]2)^2\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] (\[Phi]2[y] \[Phi]3[y \[Omega]1]-\[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]-(y-(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1) (\[Phi]3[\[Omega]1-(1-x) \[Omega]2] Derivative[1][\[Phi]2][(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1]+\[Omega]1 \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] Derivative[1][\[Phi]3][\[Omega]1-(1-x) \[Omega]2])
-))(*Boundary*)+\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x]\[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2])/((\[Omega]1-(1-x) \[Omega]2)/\[Omega]1 ((\[Omega]1-(1-x) \[Omega]2)/\[Omega]1-1)),{x,0,1(*-(1./10^10)*)},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
-\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[1/(y \[Omega]1-x)^2 \[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2)))(*Boundary*)+\[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/(x/\[Omega]1 (x/\[Omega]1-1)),{x,0,1},{y,0(*1./10^10*),1-1./10^7},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
-\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=-(1/Nc)(4 \[Pi]) NIntegrate[(Mc^2+Md^2/\[Omega]2+(If[ListQ[m],m[[1]],m]^2-\[Beta]^2)/(x-\[Omega]1)+(If[ListQ[m],m[[2]],m]^2-\[Beta]^2)/(x-1)-(If[ListQ[m],m[[3]],m]^2-\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(If[ListQ[m],m[[4]],m]^2-\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
 
+
+(* ::Input::Initialization:: *)
+\[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=4 g^2 \[Omega]1 NIntegrate[(\[Phi]1[(\[Omega]2-\[Omega]1+x)/(\[Omega]2-\[Omega]1+1)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[(y \[Omega]1)/\[Omega]2])/(y \[Omega]1-\[Omega]2-x)^2,{x,0,1},{y,0,1}];
+
+
+(* ::Code:: *)
+(*\[ScriptCapitalM]0[\[Omega]1_,\[Omega]2_][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=0;*)
+
+
+(* ::Input::Initialization:: *)
+\[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=If[\[Omega]1>1,\[ScriptCapitalI]1[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[ScriptCapitalI]1[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I1Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md]]+If[\[Omega]2>\[Omega]1,\[ScriptCapitalI]2[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],\[ScriptCapitalI]2[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I2Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]]+Which[0<\[Omega]1<1&&\[Omega]2>=\[Omega]1,\[ScriptCapitalI]3[1/\[Omega]1,(1-\[Omega]1+\[Omega]2)/\[Omega]1,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]4,\[Phi]3,\[Phi]2,\[Phi]1][m,Md,Mc,Mb,Ma],\[Omega]2>=\[Omega]1&&\[Omega]1>=1,\[ScriptCapitalI]3[\[Omega]1,\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,Ma,Mb,Mc,Md],0<\[Omega]1<1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2,(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc],\[Omega]1>=1&&\[Omega]1>\[Omega]2,\[ScriptCapitalI]3[\[Omega]2/(1-\[Omega]1+\[Omega]2),\[Omega]1/(1-\[Omega]1+\[Omega]2),(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]3,\[Phi]4,\[Phi]1,\[Phi]2][m,Mc,Md,Ma,Mb]];
+
+
+(*General PV*)
+
+
+(* ::Code:: *)
+(*$PVM="Subtraction"(*"Differential"*);*)
+
+
+$PVM="Differential";
+
+
+Unevaluated@(\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=
+	-4 g^2 NIntegrate[expr,{x,0,1(*-(1./10^7)*)},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]
+	)/.expr->PVInt[1/((y-1) \[Omega]1+(1-x) \[Omega]2)^2 \[Omega]1 \[Omega]2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x]\[Phi]2[y] \[Phi]3[y \[Omega]1] ,y,(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1,PVMethod->$PVM];
+Unevaluated@(\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=
+	-4 g^2 NIntegrate[expr,{x,0,1(*-(1./10^7)*)},{y,0,1-1./10^7},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]
+	)/.expr->PVInt[1/(y \[Omega]1-x)^2 \[Omega]1 \[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2] ,y,x/\[Omega]1,PVMethod->$PVM];
+(*DO NOT CHANGE THIS LIMIT!!! Related to NIntegrate::errprec error. *)
+
+
+(* ::Input:: *)
+(*(*Differential PV Method: *)*)
+(*\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[(1/(((y-1) \[Omega]1+(1-x) \[Omega]2)^2))\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] (\[Phi]2[y] \[Phi]3[y \[Omega]1]-\[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]-(y-(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1) (\[Phi]3[\[Omega]1-(1-x) \[Omega]2] Derivative[1][\[Phi]2][(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1]+\[Omega]1 \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] Derivative[1][\[Phi]3][\[Omega]1-(1-x) \[Omega]2])))+(\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]))/((\[Omega]1^2 (\[Omega]1-(1-x) \[Omega]2) ((\[Omega]1-(1-x) \[Omega]2)/\[Omega]1-1))/\[Omega]1),{x,0,1(*-(1./10^10)*)},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];*)
+(*\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[(1/((y \[Omega]1-x)^2))\[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2)))+(\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/((\[Omega]1 x (x/\[Omega]1-1))/\[Omega]1),{x,0,1},{y,0(*1./10^10*),1-1./10^7},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];*)
+
+
+(* ::Input:: *)
+(*(*Subtraction PV Method: *)*)
+(*\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 ( *)
+(*NIntegrate[(\[Omega]1 \[Omega]2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[y] \[Phi]3[y \[Omega]1])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,0,1},{y,0,(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1-\[Lambda]},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]+NIntegrate[(\[Omega]1 \[Omega]2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[y] \[Phi]3[y \[Omega]1])/((y-1) \[Omega]1+(1-x) \[Omega]2)^2,{x,0,1},{y,(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1+\[Lambda],1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]-2/\[Lambda] NIntegrate[(\[Omega]1 \[Omega]2)/\[Omega]1^2 \[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1] \[Phi]3[(\[Omega]1-\[Omega]2+x \[Omega]2)/\[Omega]1 \[Omega]1],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]);*)
+(*\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[1/(y \[Omega]1-x)^2 \[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2)))(*Boundary*)+(\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/(\[Omega]1 x/\[Omega]1 (x/\[Omega]1-1)),{x,0,1},{y,0(*1./10^10*),1-1./10^7},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];*)
+
+
+(*Default \[Lambda] value*)
+\[Lambda]=10^-6;
+
+
+(* ::Input::Initialization:: *)
+\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(If[ListQ[m],m[[1]],m]^2-2\[Beta]^2)/(x-\[Omega]1)+(If[ListQ[m],m[[2]],m]^2-2\[Beta]^2)/(x-1)-(If[ListQ[m],m[[3]],m]^2-2\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(If[ListQ[m],m[[4]],m]^2-2\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
 
 
 (* ::Section:: *)
