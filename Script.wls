@@ -33,8 +33,8 @@ Get["OneFlavour`"]
 If[$PVM=="Differential",(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->False}]],(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->True}]]];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 m=4.19022; mQ=4.19022; mq=0.749;md=0.09;
-{n1,n2,n3,n4}={1,0,0,1};
-Switch[Evaluate@ChoiceDialog["Pick one",{"One Flavour"->1,"Two Flavour"->2,"Three Flavour"->3,"Four Flavour"->4}],1,
+{n1,n2,n3,n4}={2,1,2,0};
+Switch[Evaluate@ChoiceDialog["How many flavour is requested? ",{"1"->1,"2"->2,"3"->3,"4"->4}],1,
 Msumdat=Msum[m,{n1,n2,n3,n4},SRange->{2 10^(-3),.5,0.01},Lambda->10^-6,SolveMethod->"'t Hooft"(*,MatrixSize->9*)];
 If[FailureQ[#],Null,If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"No"->True}],Msumdat[[2]]=DeleteDuplicatesBy[Sort[#[[2]]~Join~Msumdat[[2]]],First],Null]]&[Get["data/Msumdat_m-4.19022-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>").dat"]];
 Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],
