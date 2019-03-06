@@ -7,8 +7,9 @@
 
 (* ::Input::Initialization:: *)
 <<MMARemoteSSH`
-LaunchRemoteKernels[];
-LaunchKernels[4];
+Parallel`Settings`$MathLinkTimeout=30;
+(*LaunchRemoteKernels[];*)
+LaunchKernels[];
 Kernels[]
 
 
@@ -17,7 +18,7 @@ Kernels[]
 
 
 (* ::Input::Initialization:: *)
-If[$InputFileName == "",Once[LaunchKernels[16]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];
+(*If[$InputFileName == "",Once[LaunchKernels[16]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
@@ -50,7 +51,7 @@ Print["End"];*)
 
 
 (* ::Input::Initialization:: *)
-Solvet[m1,m2,Method->"'t Hooft",MatrixSize->15,Force->True]
+Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
 
@@ -131,7 +132,7 @@ Print["End"];
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
 (*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
@@ -209,7 +210,7 @@ Print["End"];
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
 (*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
@@ -229,7 +230,7 @@ Print["End"];
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
-(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}}],*)
+(*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
 (*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)

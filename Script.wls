@@ -6,8 +6,9 @@
 
 
 (* ::Input::Initialization:: *)
-<< MMARemoteSSH`
+(*<< MMARemoteSSH`*)
 (*LaunchRemoteKernels[];*)
+Kernels[]
 LaunchKernels[8];
 Kernels[]
 
@@ -31,63 +32,30 @@ Print[$Path];*)
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"]
 If[$PVM=="Differential",(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->False}]],(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->True}]]];
-CheckDup[file_]:=If[FailureQ[file],Null,If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"No"->True,"Abort"->"Abort"}],Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Null,Abort[]]];
+CheckDup[file_]:=Check[file,If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"No"->True,"Abort"->"Abort"}],Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Null,Abort[]],{Get::noopen}];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 
-m=4.19022; mQ=4.19022; mq=0.749;md=0.09;
-{n1,n2,n3,n4}={2,2,2,2};
-range={1 10^(-3),100,0.5};\[Lambda]=10^-6;method="'t Hooft";
+m=4.19022; mQ=0.749; mq=4.19022;md=13.5565;
+{n1,n2,n3,n4}={1,0,0,0};
+range={1 10^(-3),100,0.5};\[Lambda]=10^-6;method="'t Hooft";size=12;type=({{a,b},{c,a}}->{{a,b},{c,a}});
+
+filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
+filenamepart="-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>")-type-"<>StringDelete[StringReplace[ToString[Apply[Plus,Map[StringJoin,Map[ToString,type,{3}],{2}],{1}]],"->"->"-"]," "]<>".dat";
 
 Switch[Evaluate@ChoiceDialog["How many flavour is requested? ",{"1"->1,"2"->2,"3"->3,"4"->4}],1,
-Msumdat=Msum[m,{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method(*,MatrixSize->9*)];
-CheckDup[Get["data/Msumdat_m-4.19022-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>").dat"]];
-Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],
+Msumdat=Msum[m,{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size];
+CheckDup[Get["data/Msumdat_m-"<>ToString[m]<>filenamepartn]];
+Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>filenamepartn],
 2,
-Msumdat=Msum2[{mQ,mq},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method(*,MatrixSize->9*)];
-CheckDup[Get["data/Msumdat_m1-4.19022-m2-0.749-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>").dat"]];
-Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],
+Msumdat=Msum2[{mQ,mq},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size,ProcessType->type];
+CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>filenamepart]];
+Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>filenamepart],
 3,
-Msumdat=Msum3[{mQ,mq,md},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method(*,MatrixSize->9*),ProcessType->({{a,c},{a,b}}->{{a,c},{a,b}}),AssignQuark->{a->mQ,b->md,c->mq}];
-CheckDup[Get["data/Msumdat_m1-13.5565-m2-0.045-m3-0.09"<>"-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>").dat"]];
-Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat"],
+Msumdat=Msum3[{mQ,mq,md},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size,ProcessType->type,AssignQuark->{a->mQ,b->md,c->mq}];
+CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>filenamepart]];
+Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>filenamepart],
 4,Null]
 Print["End"];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
