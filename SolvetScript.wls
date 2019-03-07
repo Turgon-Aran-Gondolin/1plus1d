@@ -30,7 +30,7 @@ SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
-m=4.19022;m1=4.19022;m2=0.749;
+m=4.19022;m1=4.19022;m2=0.09;
 MC[m_]:=Which[ToString[m]=="c",4.233,ToString[m]=="s",0.749,ToString[m]=="u",0.045,ToString[m]=="chiralu",0]
 
 
