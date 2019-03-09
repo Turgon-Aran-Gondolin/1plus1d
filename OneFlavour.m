@@ -489,7 +489,7 @@ filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstat
 filenameacc[m1_,m2_]:=Which[m1==m2,"/acceigenstate_m-"<>ToString[m1],m1>m2,"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/acceigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
 Which[OptionValue[SolveMethod]=="BSW",filenamefun=filename;Determine=Determine\[Phi]x,OptionValue[SolveMethod]=="'t Hooft",filenamefun=filenameacc;Determine=accDetermine\[Phi]];
 {ParA,ParB}=Keys[OptionValue[ProcessType]];{ParC,ParD}=Values[OptionValue[ProcessType]];
-If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]],Print["Convention checked out"],Abort[]];
+If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]]&&Length[OptionValue[AssignQuark]]==2,Print["Convention checked out"],Abort[]];
 Eigenlist={{Vals1,\[Phi]x1},{Vals2,\[Phi]x2},{Vals3,\[Phi]x3},{Vals4,\[Phi]x4}};
 Masslist={ParA,ParB,ParC,ParD}/.OptionValue[AssignQuark];
 \[CapitalPhi]list={\[CapitalPhi]1,\[CapitalPhi]2,\[CapitalPhi]3,\[CapitalPhi]4};
@@ -564,7 +564,7 @@ filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstat
 filenameacc[m1_,m2_]:=Which[m1==m2,"/acceigenstate_m-"<>ToString[m1],m1>m2,"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/acceigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
 Which[OptionValue[SolveMethod]=="BSW",filenamefun=filename;Determine=Determine\[Phi]x,OptionValue[SolveMethod]=="'t Hooft",filenamefun=filenameacc;Determine=accDetermine\[Phi]];
 {ParA,ParB}=Keys[OptionValue[ProcessType]];{ParC,ParD}=Values[OptionValue[ProcessType]];
-If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]],Print["Convention checked out"],Abort[]];
+If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]]&&Length[OptionValue[AssignQuark]]==3,Print["Convention checked out"],Abort[]];
 Which[(*check classification*)
 MatchQ[{ParA,ParB},{{a_,c_},{b_,b_}}]&&MatchQ[{ParC,ParD},{{b_,c_},{a_,b_}}],
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[1]],ParB[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
@@ -632,7 +632,7 @@ filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstat
 filenameacc[m1_,m2_]:=Which[m1==m2,"/acceigenstate_m-"<>ToString[m1],m1>m2,"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/acceigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
 Which[OptionValue[SolveMethod]=="BSW",filenamefun=filename;Determine=Determine\[Phi]x,OptionValue[SolveMethod]=="'t Hooft",filenamefun=filenameacc;Determine=accDetermine\[Phi]];
 {ParA,ParB}=Keys[OptionValue[ProcessType]];{ParC,ParD}=Values[OptionValue[ProcessType]];
-If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]],Print["Convention checked out"],Abort[]];
+If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]]&&Length[OptionValue[AssignQuark]]==4,Print["Convention checked out"],Abort[]];
 If[
 DuplicateFreeQ[ParA,ParB],
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParB[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
