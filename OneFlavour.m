@@ -165,18 +165,20 @@ PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{
 ];
 
 
-NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v},
-	Set@@{F[v_],intg/.var->v};
+NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex},
+	(*Set@@{F[v_],intg/.var->v};*)
+	Set@@{intgp,intg/.var->pole};(*Print[intgp];*)
+	ex=((intg-intgp)/(var-pole)^2 );
 	Which[
 		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
 		OptionValue[PVMethod]=="Differential",
-		NIntegrate[F[pole]/(pole-1.)-F[pole]/pole,{var2,0.,1.}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,0,\[Lambda]},{var,0,pole/2}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,0,\[Lambda]},{var,(3pole)/2,1}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,\[Lambda],1.-\[Lambda]},{var,0.,pole-\[Lambda]}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,\[Lambda],1.-\[Lambda]},{var,pole+\[Lambda],1.}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,1-\[Lambda],1},{var,0,(3pole-1)/2}]+
-		NIntegrate[((intg-F[pole])/(var-pole)^2 ),{var2,1-\[Lambda],1},{var,(1+pole)/2,1}],
+		NIntegrate[intgp/(pole-1.)-intgp/pole,{var2,0.,1.}]+
+		(*NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
+		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+*)
+		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,0,pole-\[Lambda]}]+
+		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,pole+\[Lambda],1}](*+
+		NIntegrate[ex,{var2,1-\[Lambda],e},{var,s,(3pole-1)/2}]+
+		NIntegrate[ex,{var2,1-\[Lambda],e},{var,(1+pole)/2,e}]*),
 		True,Message[PVInt::met]
 	]
 ];
@@ -617,7 +619,7 @@ Message[Msum::cal];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2,m3}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2,m3}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
 {Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 
@@ -677,7 +679,7 @@ Message[Msum::cal];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];
+{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
 {Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 (*$DistributedContexts:=$Context;*)

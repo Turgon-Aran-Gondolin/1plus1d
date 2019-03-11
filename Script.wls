@@ -41,7 +41,7 @@ CheckDup[file_]:=If[MatchQ[file,$Failed],Print["Creating new entry..."],If[Choic
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
 {n1,n2,n3,n4}={0,0,1,1};
-range={2 10^(-2),50,0.5};\[Lambda]=1. 10^-4;method="'t Hooft";size=12;
+range={5 10^(-3),0.5,0.002};\[Lambda]=1. 10^-6;method="'t Hooft";size=12;
 mq=4.19022; mQ=13.5565;
 type=({{a,b},{a,b}}->{{a,b},{a,b}});
 assign={a->mQ,b->mq};
@@ -55,7 +55,7 @@ assign={a->mQ,b->mq,c->md,d\[Rule]mp};*)
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
 filenamepart="-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>")-type-"<>StringDelete[StringReplace[ToString[Apply[Plus,Map[StringJoin,Map[ToString,type,{3}],{2}],{1}]],"->"->"-"]," "]<>".dat";
 
-Switch[Evaluate@ChoiceDialog["How many flavour is requested? ",{"1"->1,"2"->2,"3"->3,"4"->4}],1,
+Switch[Evaluate@ChoiceDialog["How many flavour is requested? ",{"1"->1,"2"->2,"3"->3,"4"->4,"Abort"->5}],1,
 Msumdat=Msum[m,{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size];Message[Msum::done];
 CheckDup[Get["data/Msumdat_m-"<>ToString[m]<>filenamepartn]];
 Put[Msumdat,"data/Msumdat_m-"<>ToString[m]<>filenamepartn],
@@ -69,5 +69,8 @@ CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToS
 Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>filenamepart],
 4,Msumdat=Msum4[{mQ,mq,md,mp},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size,ProcessType->type,AssignQuark->assign(*{a->mQ,b->md,c->mq}*)];Message[Msum::done];
 CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]];
-Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]]
+Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],5,Abort[]]
 Print["End"];
+
+
+

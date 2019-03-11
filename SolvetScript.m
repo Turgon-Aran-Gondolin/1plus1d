@@ -4,17 +4,20 @@
 (*Quit[]*)
 
 
-(*Launch Parallel Kernels, if executed not in IHEP, comment out RemoteSSH and RemoteKernel lines*)
+(* ::Input::Initialization:: *)
 <<MMARemoteSSH`
-LaunchRemoteKernels[];
-LaunchKernels[4];
+Parallel`Settings`$MathLinkTimeout=30;
+(*LaunchRemoteKernels[];*)
+LaunchKernels[];
 Kernels[]
 
 
-(*Execute next two cells to initialize. *)
+
+
 
 
 (* ::Input::Initialization:: *)
+(*If[$InputFileName == "",Once[LaunchKernels[16]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
@@ -26,32 +29,28 @@ SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
 (* ::Input::Initialization:: *)
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
-m=4.19022;m1=13.5565;m2=0.09;
+m=4.19022;m1=4.19022;m2=0.09;
 MC[m_]:=Which[ToString[m]=="c",4.233,ToString[m]=="s",0.749,ToString[m]=="u",0.045,ToString[m]=="chiralu",0]
 
 
 (* ::Input::Initialization:: *)
 (*Bottomonium and b quark mass*)
 
-m=13.5565;
-Solvet[m,m,SolveMethod->"BSW",MatrixSize->100,Force->True]
-Print["End"];
+(*m=13.5565;
+Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]500,Force->True]
+Print["End"];*)
 
 
 
 (*Charmonium and c quark mass*)
 
 (*m=4.19022;
-Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]500,Force->True]
+Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]100,Force->True]
 Print["End"];*)
 
 
-Solvet[m,m,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
-Print["End"];
-
-
 (* ::Input::Initialization:: *)
-Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15(*,Force->True*)]
+Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
 
@@ -69,7 +68,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-0.749.wdx"];*)
+(*{ValsA,\[Phi]xA}=Import["D:/Documents/2-d-data/acceigenstate_m-4.233.wdx"];*)
 
 
 (* ::Input:: *)
@@ -89,7 +88,14 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-4.23_m2-0.749.wdx"];*)
+(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-4.19022_m2-0.749.wdx"];*)
+
+
+(* ::Code:: *)
+(*Clear[\[CapitalPhi]A,\[CapitalPhi]B,\[CapitalPhi]C];*)
+(*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
+(*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
+(*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
 
 
 (* ::Input:: *)
@@ -121,13 +127,14 @@ Print["End"];
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
 (*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`ma = ToExpression[Setting[#]]; Setting[#])& ]\)<>".wdx"];*)
@@ -191,20 +198,21 @@ Print["End"];
 (*Setting]\)<>"_m1-"<>\!\(\**)
 (*TagBox[*)
 (*TagBox[*)
-(*DynamicModuleBox[{BoxForm`var$$ = "4.233"}, *)
+(*DynamicModuleBox[{BoxForm`var$$ = "4.19022"}, *)
 (*InterpretationBox[*)
 (*InterpretationBox[*)
 (*StyleBox[GridBox[{*)
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
 (*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`mc1 = ToExpression[Setting[#]]; Setting[#])& ]\)<>"_m2-"<>\!\(\**)
@@ -217,13 +225,14 @@ Print["End"];
 (*{*)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.233"}, "\"\<4.233\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"4.23"}, "\"\<4.23\>\""], *)
+(*SetterBox[Dynamic[BoxForm`var$$], {"4.19022"}, "\"\<4.19022\>\""], *)
 (*SetterBox[Dynamic[BoxForm`var$$], {"0.749"}, "\"\<0.749\>\""]}*)
 (*},*)
 (*BaselinePosition->{1, 1},*)
 (*GridBoxSpacings->{"Columns" -> {Offset[0.27999999999999997`], {Offset[0.]}, Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {Offset[0.2], {Offset[0.4]}, Offset[0.2]}, "RowsIndexed" -> {}, "Items" -> {}, "ItemsIndexed" -> {}}],*)
 (*Deployed->True],*)
-(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "0.749"}]],*)
-(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "0.749"}]],*)
+(*SetterBar[Dynamic[BoxForm`var$$], {"4.233", "4.23", "4.19022", "0.749"}]],*)
+(*SetterBar[BoxForm`var$$, {"4.233", "4.23", "4.19022", "0.749"}]],*)
 (*DynamicModuleValues:>{}],*)
 (*Setting[#, {0}]& ],*)
 (*($CellContext`mc2 = ToExpression[Setting[#]]; Setting[#])& ]\)<>".wdx"];*)
@@ -231,6 +240,9 @@ Print["End"];
 (*Set@@{\[CapitalPhi]A[Global`x_],Boole[0<=Global`x<=1]\[Phi]xA};*)
 (*Set@@{\[CapitalPhi]B[Global`x_],Boole[0<=Global`x<=1]\[Phi]xB};*)
 (*Set@@{\[CapitalPhi]C[Global`x_],Boole[0<=Global`x<=1]\[Phi]xC};*)
+
+
+ValsA
 
 
 (* ::Input:: *)
@@ -255,7 +267,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*\[Lambda]=10^-6;*)
+(*\[Lambda]=10^-6;mc1=4.19022;mc2=0.749;*)
 
 
 (* ::PageBreak:: *)
@@ -271,7 +283,11 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@1*)
+(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@3*)
+
+
+(* ::Input:: *)
+(*ListPlot[ParallelTable[(1/(ValsC[[#]]^2\[Phi]xC[[#]]))((ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]]),{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@3*)
 
 
 (* ::Input:: *)

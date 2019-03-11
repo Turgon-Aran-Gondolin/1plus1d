@@ -70,7 +70,7 @@ Msumdat[5]
 Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*cs 2ab-2ab*)
 
 
@@ -87,13 +87,14 @@ Msumdat[3]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
 Msumdat[4]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
 
 
+If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,4.19022`},{i,4}],Print["OK"],Abort[]];
 Msumdat[1]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-0-0)-type-2ab-2ab.dat";
 Msumdat[2]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-0-0)-type-2ab-2ab.dat";
 Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*bcsd*)
 
 
@@ -134,7 +135,16 @@ Msumdat[#][[1]]&/@Range[4]
 (*Edit*)
 
 
-Msumdattmp=Re@Chop[Msumdat[2]];
+iii=3;
+Msumdattmp=Re@Chop[Msumdat[iii]];
+Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
+
+
+(* ::Subsubsection:: *)
+(*Delete by abs*)
+
+
+Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(Abs[#[[2]]]>10000&)];
 
 
 (* ::Subsubsection:: *)
@@ -142,7 +152,12 @@ Msumdattmp=Re@Chop[Msumdat[2]];
 
 
 (*Delete points with difference larger than 500/digit (recommand to do this first)*)
-Msumdattmp[[2]]=Delete[#,Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(Abs[Subtract@@#[[2]]]>200&),{1},Heads->False]]&[Msumdattmp[[2]]];
+diff=1000;
+Msumdattmp[[2]]=Delete[#,Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(Abs[Subtract@@#[[2]]]>diff&),{1},Heads->False]]&[Msumdattmp[[2]]];
+
+
+diff=500;
+Msumdattmp[[2]]=Delete[#,Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(Abs[Subtract@@#[[2]]]>diff&),{1},Heads->False]]&[Msumdattmp[[2]]];
 
 
 (* ::Subsubsection:: *)
@@ -178,20 +193,20 @@ Show[ListLinePlot[Msumdattmp[[2]],PlotRange->All],ListPlot[MapIndexed[Callout[#1
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{topOutliers[[2]]},{bottomOutliers[[1]]}];
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{topOutliers[[1]]}];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers[[1;;4]]},{1}]];
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{bottomOutliers[[3]]}];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{bottomOutliers[[3]]},{1}]];
 
 
-ListPlot[Msumdattmp[[2]],PlotRange->{{20,22},All}]
+Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si,Si+0.2},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
+
+
+ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si,Si+0.2},All}]
 
 
 (* ::Subsubsection::Closed:: *)
 (*Others*)
-
-
-Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(Abs[#[[2]]]^2>10000&)];
 
 
 Msumdat[[2]]=DeleteCases[Msumdat[[2]],_?(#[[2]]<0&)];
@@ -214,19 +229,7 @@ Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]
 (*Reload and Save*)
 
 
-Msumdat[2]=Msumdattmp;
-
-
-Msumdat[1]>>"data/Msumdat_m1-4.19022-m2-0.749-n-(0-0-0-0)-type-2ab-2ab.dat";
-
-
-Msumdat[4]>>"data/Msumdat_m-4.19022-n-(2-2-0-0).dat";
-
-
-Msumdat[5]>>"data/Msumdat_m-4.19022-n-(2-2-1-1).dat";
-
-
-Msumdat[6]>>"data/Msumdat_m-4.19022-n-(2-2-2-2).dat";
+Msumdat[iii]=Msumdattmp;
 
 
 (* ::Section:: *)
@@ -244,10 +247,10 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 
 (* ::Input::Initialization:: *)
 (Print[("Amp: Threshold: "<>ToString[If[#[[1,1,1]]+#[[1,1,2]]>=#[[1,1,3]]+#[[1,1,4]],#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@#[[1]]];fig=Labeled[ListPlot[Select[Re@#[[2]],#\[Element]Reals&]&/@#,PlotRange->{{Min[#1]-.5,1.5Min[#1]}&@(Sequence@@(Transpose[{First[#[[2]]][[1]]-0.1,Last[#[[2]]][[1]]}&/@#])),{All,All}(*All*)},Joined->True,ImageSize->300,PlotLegends->Placed[LineLegend[(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]])&/@#,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right,Top}],Frame->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->MapThread[{Black(*#1*),#2}&,{Take[ColorList,Length@#],Take[LineList,Length@#]}],AspectRatio->9/15,TargetUnits->{"GeV",""}
-,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{If[#1[[1,1,1]]+#1[[1,1,2]]>=#1[[1,1,3]]+#1[[1,1,4]],#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
+,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{2}(*Reverse@*)(*Range[1,8]*)))
+)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{1,2,3,4}(*Reverse@*)(*Range[1,8]*)))
 
 
 ListPlot[Msumdat[2]//Last]

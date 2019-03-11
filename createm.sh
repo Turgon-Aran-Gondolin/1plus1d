@@ -19,4 +19,4 @@
 
 set -o nounset                              # Treat unset variables as an error
 sed '1d' Script.wls > Script.m
-
+sed '1d' SolvetScript.wls > SolvetScript.m
