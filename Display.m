@@ -135,7 +135,7 @@ Msumdat[#][[1]]&/@Range[4]
 (*Edit*)
 
 
-iii=3;
+iii=4;
 Msumdattmp=Re@Chop[Msumdat[iii]];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
 
@@ -190,7 +190,7 @@ bottomOutliers=Select[Msumdattmp[[2]],qfuncs[[1]][#[[1]]]>#[[2]]&]
 Show[ListLinePlot[Msumdattmp[[2]],PlotRange->All],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{topOutliers[[2]]},{bottomOutliers[[1]]}];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers},{1}],Flatten[{bottomOutliers},{1}]];
 
 
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers[[1;;4]]},{1}]];
@@ -199,10 +199,10 @@ Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers[[1;;4]]},{1}]];
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{bottomOutliers[[3]]},{1}]];
 
 
-Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si,Si+0.2},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
+Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si+1,Si+10},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
 
 
-ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si,Si+0.2},All}]
+ListPlot[Msumdattmp[[2]],PlotRange->{{Si+4,Si+4.5},All}]
 
 
 (* ::Subsubsection::Closed:: *)
@@ -250,7 +250,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 ,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{1,2,3,4}(*Reverse@*)(*Range[1,8]*)))
+)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{1}(*Reverse@*)(*Range[1,8]*)))
 
 
 ListPlot[Msumdat[2]//Last]

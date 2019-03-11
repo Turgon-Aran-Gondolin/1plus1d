@@ -40,8 +40,8 @@ Get["OneFlavour`"]
 CheckDup[file_]:=If[MatchQ[file,$Failed],Print["Creating new entry..."],If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"No"->True,"Abort"->"Abort"}],Print["Data merge confirmed..."];Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Print["Overwrite confirmed..."],Abort[]]];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
-{n1,n2,n3,n4}={0,0,1,1};
-range={5 10^(-3),0.5,0.002};\[Lambda]=1. 10^-6;method="'t Hooft";size=12;
+{n1,n2,n3,n4}={1,1,1,1};
+range={5 10^(-3)+5,20,0.02};\[Lambda]=1. 10^-6;method="'t Hooft";size=12;
 mq=4.19022; mQ=13.5565;
 type=({{a,b},{a,b}}->{{a,b},{a,b}});
 assign={a->mQ,b->mq};
