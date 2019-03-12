@@ -562,7 +562,7 @@ Message[Msum::cal];
 (*Triple Flavours*)
 
 
-Msum3[{mQ_,mq_,md_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{c,a}}->{{a,b},{c,a}}),AssignQuark->{a->m1,b->m2,c->m3},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
+Msum3[{mQ_,mq_,md_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{c,a}}->{{a,b},{c,a}}),AssignQuark->{a->m1,b->m2,c->m3},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[],AnotherKinematics->False}]]:=
 Module[{ml,\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,filenamefun,\[Omega]now,m1,m2,m3,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,dir,Si,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,ParA,ParB,ParC,ParD,\[CapitalPhi]list,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;m3=md;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
@@ -631,7 +631,7 @@ Message[Msum::cal];
 (*Tetra Flavours*)
 
 
-Msum4[{mQ_,mq_,mP_,mp_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,ProcessType->({{a,d},{c,b}}->{{c,d},{a,b}}),AssignQuark->{a->m1,b->m2,c->m3,d->m4},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[]}]]:=
+Msum4[{mQ_,mq_,mP_,mp_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,ProcessType->({{a,d},{c,b}}->{{c,d},{a,b}}),AssignQuark->{a->m1,b->m2,c->m3,d->m4},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[],AnotherKinematics->False}]]:=
 Module[{ml,\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t,Ares,filename,filenamefun,\[Omega]now,m1,m2,m3,m4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;m3=mP;m4=mp;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
