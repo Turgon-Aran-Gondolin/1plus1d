@@ -288,7 +288,7 @@ $PVM="Differential";
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:=
 Module[{m1,m2,m3,m4,op},op=OptionValue[Op];
 {m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{3,4,1,2},op=="C",{4,3,2,1},op=="P",{2,1,4,3},op=="RQ",{3,4,2,1},op=="RC",{4,3,1,2},op=="RP",{1,2,4,3},op=="R",{2,1,3,4}]]];
-Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]];
+(*Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];*)(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]];
 
 
 Options[\[ScriptCapitalI]1]=Options[NIntegrate];Options[\[ScriptCapitalI]2]=Options[NIntegrate];Options[\[ScriptCapitalI]3]=Options[NIntegrate];
@@ -506,13 +506,13 @@ Which[
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=MVG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4],
 (Thread[MatchQ[#,{{a_,a_},{b_,b_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,a_},{a_,b_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[1]],ParB[[1]],ParA[[1]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,b_},{a_,a_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParA[[1]],ParB[[1]],ParB[[1]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 (Thread[MatchQ[#,{{a_,b_},{a_,b_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{a_,b_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParA[[1]],ParB[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4]+\[ScriptCapitalR]\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalR]\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParA[[1]],ParB[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalR]\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalR]\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalR]\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalR]\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParA[[1]],ParB[[2]],ParA[[1]]}/.OptionValue[AssignQuark],M1,M2,M3,M4]]
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalR]\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalR]\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]
 ];
 Do[
 If[FileNames[filenamefun[Sequence@@Masslist[[i]]],dir,Infinity]=={},
@@ -573,11 +573,11 @@ Which[OptionValue[SolveMethod]=="BSW",filenamefun=filename;Determine=Determine\[
 If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]]&&Length[OptionValue[AssignQuark]]==3,Print["Convention checked out"],Abort[]];
 Which[(*check classification*)
 MatchQ[{ParA,ParB},{{a_,c_},{b_,b_}}]&&MatchQ[{ParC,ParD},{{b_,c_},{a_,b_}}],
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[1]],ParB[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 MatchQ[{ParA,ParB},{{a_,c_},{c_,b_}}]&&MatchQ[{ParC,ParD},{{c_,c_},{a_,b_}}],
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParB[[1]],ParB[[1]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 MatchQ[{ParA,ParB},{{a_,c_},{a_,b_}}]&&MatchQ[{ParC,ParD},{{a_,c_},{a_,b_}}],
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParA[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 True,
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]
 ];
@@ -642,7 +642,7 @@ Which[OptionValue[SolveMethod]=="BSW",filenamefun=filename;Determine=Determine\[
 If[SubsetQ[Flatten@{ParA,ParB,ParC,ParD},Keys[OptionValue[AssignQuark]]]&&Length[OptionValue[AssignQuark]]==4,Print["Convention checked out"],Abort[]];
 If[
 DuplicateFreeQ[ParA,ParB],
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][{ParA[[1]],ParB[[2]],ParB[[1]],ParA[[2]]}/.OptionValue[AssignQuark],M1,M2,M3,M4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]
 ];
 Eigenlist={{Vals1,\[Phi]x1},{Vals2,\[Phi]x2},{Vals3,\[Phi]x3},{Vals4,\[Phi]x4}};
