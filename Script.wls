@@ -40,17 +40,17 @@ Get["OneFlavour`"]
 CheckDup[file_]:=If[MatchQ[file,$Failed],Print["Creating new entry..."],If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"No"->True,"Abort"->"Abort"}],Print["Data merge confirmed..."];Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Print["Overwrite confirmed..."],Abort[]]];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
-{n1,n2,n3,n4}={1,1,1,1};
-range={5 10^(-3),10,0.03};\[Lambda]=1. 10^-6;method="'t Hooft";size=12;
-mq=4.19022; mQ=13.5565;
+{n1,n2,n3,n4}={1,1,0,0};
+range={5 10^(-3),100,0.03};\[Lambda]=1. 10^-6;method="'t Hooft";size=12;
+(*mq=4.19022; mQ=13.5565;
 type=({{a,b},{a,b}}->{{a,b},{a,b}});
-assign={a->mQ,b->mq};
+assign={a->mQ,b->mq};*)
 (*mq=0.749; mQ=4.19022;md=13.5565;
 type=({{a,b},{c,a}}->{{a,b},{c,a}});
 assign={a->mQ,b->md,c->mq};*)
-(*mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
+mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
 type=({{a,d},{c,b}}->{{c,d},{a,b}});
-assign={a->mQ,b->mq,c->md,d\[Rule]mp};*)
+assign={a->mQ,b->mq,c->md,d->mp};
 
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
 filenamepart="-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>")-type-"<>StringDelete[StringReplace[ToString[Apply[Plus,Map[StringJoin,Map[ToString,type,{3}],{2}],{1}]],"->"->"-"]," "]<>".dat";
@@ -71,6 +71,9 @@ Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToSt
 CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]];
 Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],5,Abort[]]
 Print["End"];
+
+
+
 
 
 
