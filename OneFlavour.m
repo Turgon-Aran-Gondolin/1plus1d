@@ -39,6 +39,7 @@ PVInt::sub="Subtraction method unavailable."
 PVMethod;
 Msum::cal="Info: Start calculating amplitude. This is not a warning. ";
 Msum::done="Info: Evaluation completed. This is not a warning. ";
+AnotherKinematics;
 $PVM;
 
 \[Phi]n;
@@ -173,12 +174,12 @@ NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]
 		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
 		OptionValue[PVMethod]=="Differential",
 		NIntegrate[intgp/(pole-1.)-intgp/pole,{var2,0.,1.}]+
-		(*NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
-		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+*)
+		NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
+		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+
 		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,0,pole-\[Lambda]}]+
-		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,pole+\[Lambda],1}](*+
+		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,pole+\[Lambda],1}]+
 		NIntegrate[ex,{var2,1-\[Lambda],e},{var,s,(3pole-1)/2}]+
-		NIntegrate[ex,{var2,1-\[Lambda],e},{var,(1+pole)/2,e}]*),
+		NIntegrate[ex,{var2,1-\[Lambda],e},{var,(1+pole)/2,e}],
 		True,Message[PVInt::met]
 	]
 ];
@@ -320,8 +321,8 @@ Clear[g];
 {Sqrt[Reverse[vals]]\[Beta],\[Phi]x}
 ];
 accDetermine\[Phi][m1_,m2_,beta_,Nb_]:=If[MatchQ[m1,m2],accDetermine\[Phi]1[m1,m2,beta,Nb],accDetermine\[Phi]2[m1,m2,beta,Nb]];
-accDetermine\[Phi]1[m1_,m2_,beta_,Nb_]:=
-Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm},
+accDetermine\[Phi]1[ma_,mb_,beta_,Nb_]:=
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm,m1=N[ma],m2=N[mb]},
 (*\[Beta]=If[m1\[GreaterEqual]Sqrt[2],First@#,#]&[x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2]];*)
 \[Beta]=x/.FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2];
 (*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
@@ -351,8 +352,8 @@ nfunc=ParallelTable[func[[n]]/norm[[n]],{n,1,Length[func]},DistributedContexts->
 Clear[func,vecs];
 {\[Mu],nfunc}
 ];
-accDetermine\[Phi]2[m1_,m2_,beta_,Nb_]:=
-Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm},
+accDetermine\[Phi]2[ma_,mb_,beta_,Nb_]:=
+Module[{psi,\[Epsilon]=10^-6,Kernel1,Kernel2,hMT,sMT,sMatrix,hMTUp,hMT1,hMatrix,eg,vals,vecs,func,\[Mu],\[Mu]s,nfunc,\[Beta],\[Beta]start=1.1,norm,m1=N[ma],m2=N[mb]},
 \[Beta]=x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<2,x,Reals,2],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<2,x,Reals,2]};
 (*\[Beta]=Flatten[x/.{FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2)==0&&0<x<1,x,Reals,1],FindInstance[x*\[Pi]*Cot[\[Pi]*x]-(1-m2^2)==0&&0<x<1,x,Reals,1]}];*)
 (*While[Chop[\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)]!=0,\[Beta]=x/.FindRoot[x*\[Pi]*Cot[\[Pi]*x]-(m1^2-1)==0,{x,\[Beta]start}];Print["\[Beta]=",\[Beta],"   ",\[Beta]*\[Pi]*Cot[\[Pi]*\[Beta]]-(m1^2-1)];\[Beta]start=\[Beta]start+0.1];*)
@@ -680,7 +681,7 @@ Message[Msum::cal];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
-{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
+{{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2,m3,m4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
 {Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 (*$DistributedContexts:=$Context;*)

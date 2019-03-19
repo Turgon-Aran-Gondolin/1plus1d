@@ -50,10 +50,20 @@ Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]100,Force->True]
 Print["End"];*)
 
 
+m1=0.5;m2=0.749;
+
+
 (* ::Input::Initialization:: *)
 Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
+
+
+(* ::Input::Initialization:: *)
+Solvet[6,4.19022,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
+Print["End"];
+Solvet[6,0.5,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
+Print["End"];
 
 
 (* ::Code:: *)
@@ -89,7 +99,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-4.19022_m2-0.749.wdx"];*)
+(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-13.5565_m2-0.09.wdx"];*)
 
 
 (* ::Code:: *)

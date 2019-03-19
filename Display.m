@@ -77,7 +77,7 @@ Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-n-(0-0-0-0)-type-2ab-2ab.dat";
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*bc 2 ab - 2 ab*)
 
 
@@ -94,7 +94,7 @@ Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*bcsd*)
 
 
@@ -104,6 +104,12 @@ Msumdat[3]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-ty
 Msumdat[4]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd.dat";
 
 
+Msumdat[5]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[6]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[7]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[8]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd-ak.dat";
+
+
 If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
 Msumdat[1]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd.dat";
 Msumdat[2]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd.dat";
@@ -111,11 +117,18 @@ Msumdat[3]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-typ
 Msumdat[4]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd.dat";
 
 
+If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
+Msumdat[5]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[6]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd-ak.dat";
+
+
 (* ::Subsection:: *)
 (*data examine*)
 
 
-Msumdat[#][[1]]&/@Range[4]
+Msumdat[#][[1]]&/@Range[8]
 
 
 (* ::Section::Closed:: *)
@@ -142,9 +155,13 @@ Msumdat[#][[1]]&/@Range[4]
 (*Edit*)
 
 
-iii=4;
-Msumdattmp=Re@Chop[Msumdat[iii]];
+iii=8;
+Msumdattmp=Chop[Msumdat[iii],10^-4];
+Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
+
+
+Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(Element[#[[2]],Reals]&)];
 
 
 (* ::Subsubsection:: *)
@@ -209,7 +226,7 @@ Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{bottomOutlie
 Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+20},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
 
 
-ListPlot[Msumdattmp[[2]],PlotRange->{{Si+5,Si+20},All}]
+ListPlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+5},All},PlotMarkers->{Automatic,Tiny}]
 
 
 (* ::Subsubsection::Closed:: *)
@@ -257,7 +274,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 ,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{4}(*Reverse@*)(*Range[1,8]*)))
+)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{7}(*Reverse@*)(*Range[1,8]*)))
 
 
 ListPlot[Msumdat[2]//Last]
