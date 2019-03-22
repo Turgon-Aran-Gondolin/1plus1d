@@ -50,18 +50,22 @@ Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]100,Force->True]
 Print["End"];*)
 
 
-m1=0.5;m2=0.749;
-
-
 (* ::Input::Initialization:: *)
 Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
 
 
+Solvet[0.749,0.5,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
+Print["End"];
+
+
 (* ::Input::Initialization:: *)
 Solvet[6,4.19022,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
+
+
+(* ::Input::Initialization:: *)
 Solvet[6,0.5,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
@@ -99,7 +103,7 @@ Print["End"];
 
 
 (* ::Input:: *)
-(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-13.5565_m2-0.09.wdx"];*)
+(*{ValsC,\[Phi]xC}=Import["../2-d-data/acceigenstate_m1-0.749_m2-0.5.wdx"];*)
 
 
 (* ::Code:: *)
@@ -278,7 +282,7 @@ ValsA
 
 
 (* ::Input:: *)
-(*\[Lambda]=10^-6;mc1=4.19022;mc2=0.749;*)
+(*\[Lambda]=10^-6;mc2=0.5;mc1=0.749;*)
 
 
 (* ::PageBreak:: *)
@@ -294,7 +298,7 @@ ValsA
 
 
 (* ::Input:: *)
-(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@3*)
+(*ListPlot[ParallelTable[(ValsC[[#]]^2-(mc1^2-1)/x-(mc2^2-1)/(1-x))\[Phi]xC[[#]]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,0,x-\[Lambda]}]+NIntegrate[\[CapitalPhi]C[y][[#]]/(x-y)^2,{y,x+\[Lambda],1}]-2/\[Lambda] \[CapitalPhi]C[x][[#]],{x,\[Lambda],1-\[Lambda],0.02}],Filling->Axis]&@1*)
 
 
 (* ::Input:: *)

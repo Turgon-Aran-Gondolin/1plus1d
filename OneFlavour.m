@@ -45,8 +45,10 @@ $PVM;
 \[Phi]n;
 Mn;
 
-\[Omega]1S;
-\[Omega]2S;
+\[Omega]1S::usage=
+"\[Omega]1S[s][M1,M2,M3,M4]";
+\[Omega]2S::usage=
+"\[Omega]2S[s][M1,M2,M3,M4]";
 \[Omega]1So;
 \[Omega]2So;
 test;
@@ -166,20 +168,39 @@ PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{
 ];
 
 
-NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex},
+Install["~/Programs/Cuba/Cuhre"];
+SetOptions[Cuhre,Verbose->0];
+$IntProgram=NIntegrate(*Cuhre*);
+
+
+NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog},
 	(*Set@@{F[v_],intg/.var->v};*)
+	prog=$IntProgram;
 	Set@@{intgp,intg/.var->pole};(*Print[intgp];*)
-	ex=((intg-intgp)/(var-pole)^2 );
+	ex=(*Re@*)((intg-intgp)/(var-pole)^2 );
 	Which[
 		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
 		OptionValue[PVMethod]=="Differential",
-		NIntegrate[intgp/(pole-1.)-intgp/pole,{var2,0.,1.}]+
-		NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
-		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+
-		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,0,pole-\[Lambda]}]+
-		NIntegrate[ex,{var2,\[Lambda],1.-\[Lambda]},{var,pole+\[Lambda],1}]+
-		NIntegrate[ex,{var2,1-\[Lambda],e},{var,s,(3pole-1)/2}]+
-		NIntegrate[ex,{var2,1-\[Lambda],e},{var,(1+pole)/2,e}],
+		NIntegrate[(intgp/(pole-1)-intgp/pole),{var2,0,1}]+
+		(*prog[ex,{var2,var}\[Element]ImplicitRegion[((*(0<=pole<\[Lambda]&&(0\[LessEqual]var<pole/2||3pole/2<var\[LessEqual]1))||*)(\[Lambda]<pole\[LessEqual]1-\[Lambda]&&(0\[LessEqual]var<pole-\[Lambda]||pole+\[Lambda]<var\[LessEqual]1))(*||(1-\[Lambda]<pole\[LessEqual]1&&(0\[LessEqual]var<(3pole-1)/2||(pole+1)/2<var\[LessEqual]1))*))&&0<var2<1&&0<var<1,{var,var2}]]*)
+		prog[ex,{var2,var}\[Element]ImplicitRegion[
+		(*start*)
+		(*(0<var\[LessEqual]1/2&&((0\[LessEqual]pole<(2 var)/3&&pole<\[Lambda]<1&&0<var2<1)||(2 var<pole<1&&pole<\[Lambda]<1&&0<var2<1)))
+		||(1/2<var<1&&0\[LessEqual]pole<(2 var)/3&&pole<\[Lambda]<1&&0<var2<1)||*)
+		(*meddle*)
+		(0<pole<=1/2&&0<\[Lambda]<pole&&((0<var<pole-\[Lambda]&&0<var2<1)||(pole+\[Lambda]<var<1&&0<var2<1)))
+		||(1/2<pole<1&&((0<\[Lambda]<1-pole&&((0<var<pole-\[Lambda]&&0<var2<1)||(pole+\[Lambda]<var<1&&0<var2<1)))||(\[Lambda]==1-pole&&0<var<pole-\[Lambda]&&0<var2<1)))
+		(*end*)
+		(*||(0<var\[LessEqual]1/2&&1/3 (1+2 var)<pole\[LessEqual]1&&1-pole<\[Lambda]<1&&0<var2<1)
+		||(1/2<var<1&&((0<pole<-1+2 var&&1-pole<\[Lambda]<1&&0<var2<1)||(1/3 (1+2 var)<pole\[LessEqual]1&&1-pole<\[Lambda]<1&&0<var2<1)))*)
+		,{var,var2}]]
+		(*NIntegrate Explicit Limit: *)
+		(*NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
+		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+*)
+		(*prog[ex,{var2,\[Lambda],1-\[Lambda]},{var,0,pole-\[Lambda]}]+
+		prog[ex,{var2,\[Lambda],1-\[Lambda]},{var,pole+\[Lambda],1}]*)
+		(*+NIntegrate[ex,{var2,1-\[Lambda],e},{var,s,(3pole-1)/2}]+
+		NIntegrate[ex,{var2,1-\[Lambda],e},{var,(1+pole)/2,e}]*),
 		True,Message[PVInt::met]
 	]
 ];
@@ -281,7 +302,7 @@ $PVM="Differential";
 
 
 (*Default \[Lambda] value*)
-\[Lambda]=1. 10^-5;
+\[Lambda]=10^-5;
 
 
 (* ::Input::Initialization:: *)
@@ -591,6 +612,7 @@ Print[FileNames[filenamefun[Sequence@@Masslist[[1]]],dir,Infinity]];Abort[];*)
 Do[
 If[FileNames[filenamefun[Sequence@@Masslist[[i]]],dir,Infinity]=={},
 {
+Print[Masslist[[i]]];
 Evaluate[Eigenlist[[i]]]=Determine[Sequence@@Masslist[[i]],\[Beta],OptionValue[MatrixSize]];
 Set@@{Evaluate[\[CapitalPhi]list[[i]]][Global`x_],Boole[0<=Global`x<=1]Eigenlist[[i,2]]};
 Export[dir<>filenamefun[Sequence@@Masslist[[i]]],Eigenlist[[i]]]
