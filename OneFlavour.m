@@ -171,29 +171,33 @@ PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{
 Install["~/Programs/Cuba/Cuhre"];
 SetOptions[Cuhre,Verbose->0];
 $IntProgram=NIntegrate(*Cuhre*);
+$ErrorBar=True;
+If[$ErrorBar,(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False;); ];UsrReap[x_]:=(Reap[x]/.{}->{{0}}),UsrReap=Times];
 
 
 NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog},
 	(*Set@@{F[v_],intg/.var->v};*)
 	prog=$IntProgram;
 	Set@@{intgp,intg/.var->pole};(*Print[intgp];*)
-	ex=(*Re@*)((intg-intgp)/(var-pole)^2 );
+	ex=(*Re@*)((intg-intgp)/(var-pole)^2 )+(intgp/(pole-1)-intgp/pole);
 	Which[
 		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
 		OptionValue[PVMethod]=="Differential",
-		NIntegrate[(intgp/(pole-1)-intgp/pole),{var2,0,1}]+
+		UsrReap[prog[((intg-intgp)/(var-pole)^2 )
+		Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
+		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
+		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]
+		+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*),{var2,0,1},{var,0,1}]]
+		(*NIntegrate[(intgp/(pole-1)-intgp/pole),{var2,0,1}]+*)
 		(*prog[ex,{var2,var}\[Element]ImplicitRegion[((*(0<=pole<\[Lambda]&&(0\[LessEqual]var<pole/2||3pole/2<var\[LessEqual]1))||*)(\[Lambda]<pole\[LessEqual]1-\[Lambda]&&(0\[LessEqual]var<pole-\[Lambda]||pole+\[Lambda]<var\[LessEqual]1))(*||(1-\[Lambda]<pole\[LessEqual]1&&(0\[LessEqual]var<(3pole-1)/2||(pole+1)/2<var\[LessEqual]1))*))&&0<var2<1&&0<var<1,{var,var2}]]*)
-		prog[ex,{var2,var}\[Element]ImplicitRegion[
+		(*prog[((intg-intgp)/(var-pole)^2 )+(intgp/(pole-1)-intgp/pole)Boole[\[Lambda]<pole<1-\[Lambda]],{var2,var}\[Element]ImplicitRegion[(
 		(*start*)
-		(*(0<var\[LessEqual]1/2&&((0\[LessEqual]pole<(2 var)/3&&pole<\[Lambda]<1&&0<var2<1)||(2 var<pole<1&&pole<\[Lambda]<1&&0<var2<1)))
-		||(1/2<var<1&&0\[LessEqual]pole<(2 var)/3&&pole<\[Lambda]<1&&0<var2<1)||*)
+		(*(0<=pole<\[Lambda]&&(0\[LessEqual]var<pole/2||3pole/2<var\[LessEqual]1))||*)
 		(*meddle*)
-		(0<pole<=1/2&&0<\[Lambda]<pole&&((0<var<pole-\[Lambda]&&0<var2<1)||(pole+\[Lambda]<var<1&&0<var2<1)))
-		||(1/2<pole<1&&((0<\[Lambda]<1-pole&&((0<var<pole-\[Lambda]&&0<var2<1)||(pole+\[Lambda]<var<1&&0<var2<1)))||(\[Lambda]==1-pole&&0<var<pole-\[Lambda]&&0<var2<1)))
+		(\[Lambda]<pole\[LessEqual]1-\[Lambda]&&(0\[LessEqual]var<pole-\[Lambda]||pole+\[Lambda]<var\[LessEqual]1))
 		(*end*)
-		(*||(0<var\[LessEqual]1/2&&1/3 (1+2 var)<pole\[LessEqual]1&&1-pole<\[Lambda]<1&&0<var2<1)
-		||(1/2<var<1&&((0<pole<-1+2 var&&1-pole<\[Lambda]<1&&0<var2<1)||(1/3 (1+2 var)<pole\[LessEqual]1&&1-pole<\[Lambda]<1&&0<var2<1)))*)
-		,{var,var2}]]
+		(*||(1-\[Lambda]<pole\[LessEqual]1&&(0\[LessEqual]var<(3pole-1)/2||(pole+1)/2<var\[LessEqual]1))*)
+		)&&0<var<1&&0<var2<1,{var,var2}]]*)
 		(*NIntegrate Explicit Limit: *)
 		(*NIntegrate[ex,{var2,s,\[Lambda]},{var,s,pole/2}]+
 		NIntegrate[ex,{var2,s,\[Lambda]},{var,(3pole)/2,e}]+*)
@@ -310,7 +314,7 @@ $PVM="Differential";
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:=
 Module[{m1,m2,m3,m4,op},op=OptionValue[Op];
 {m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{3,4,1,2},op=="C",{4,3,2,1},op=="P",{2,1,4,3},op=="RQ",{3,4,2,1},op=="RC",{4,3,1,2},op=="RP",{1,2,4,3},op=="R",{2,1,3,4}]]];
-(*Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];*)(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]];
+(*Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];*)(-((4 \[Pi])/Nc))(NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]//UsrReap)];
 
 
 Options[\[ScriptCapitalI]1]=Options[NIntegrate];Options[\[ScriptCapitalI]2]=Options[NIntegrate];Options[\[ScriptCapitalI]3]=Options[NIntegrate];

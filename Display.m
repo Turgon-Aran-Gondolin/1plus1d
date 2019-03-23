@@ -94,7 +94,7 @@ Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*bcsd*)
 
 
@@ -122,6 +122,16 @@ Msumdat[5]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-typ
 Msumdat[6]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd-ak.dat";
 Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd-ak.dat";
 Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd-ak.dat";
+
+
+(* ::Subsection:: *)
+(*3F ac+bb-ab+bc*)
+
+
+Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-ab+bc.dat";
+
+
+Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-ab+bc-ak.dat";
 
 
 (* ::Subsection:: *)
@@ -155,13 +165,16 @@ Msumdat[#][[1]]&/@Range[8]
 (*Edit*)
 
 
-iii=8;
+iii=1;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
 
 
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(Element[#[[2]],Reals]&)];
+
+
+Msumdattmp[[2]]=Msumdattmp[[2]]//Re;
 
 
 (* ::Subsubsection:: *)

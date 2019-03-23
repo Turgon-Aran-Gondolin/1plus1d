@@ -17,7 +17,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->500,AccuracyGoal->15,WorkingPrecision->50(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->50,AccuracyGoal->4(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints->5 10^7(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
@@ -46,8 +46,8 @@ time1=AbsoluteTime[];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
 {n1,n2,n3,n4}={0,0,0,0};
-range={0.001,10,0.1};
-\[Lambda]=10^-4;method="'t Hooft";size=12;
+range={0.001,1,0.01};
+\[Lambda]=10^-3;method="'t Hooft";size=12;
 (*mq=4.19022; mQ=13.5565;
 type=({{a,b},{a,b}}->{{a,b},{a,b}});
 assign={a->mQ,b->mq};*)
@@ -82,6 +82,12 @@ Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToSt
 CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]];
 Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],5,Abort[]]
 Print["End"];
+
+
+
+
+
+
 
 
 
