@@ -172,7 +172,10 @@ Install["~/Programs/Cuba/Cuhre"];
 SetOptions[Cuhre,Verbose->0];
 $IntProgram=NIntegrate(*Cuhre*);
 $ErrorBar=True;
-If[$ErrorBar,(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False;); ];UsrReap[x_]:=(Reap[x]/.{}->{{0}}),UsrReap=Times];
+Clear@UsrReap;
+If[$ErrorBar,
+(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];(*Message[NIntegrate::maxp, l___] := Sow[Last@{l}]*)  original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ];UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
+UsrReap=Times];
 
 
 NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog},
