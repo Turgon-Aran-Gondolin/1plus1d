@@ -98,78 +98,78 @@ Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
 (*bcsd*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd.dat";
-Msumdat[2]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd.dat";
-Msumdat[3]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd.dat";
-Msumdat[4]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd.dat";
+Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-cd+ab.dat";
+Msumdat[2]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-cd+ab.dat";
+Msumdat[3]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-cd+ab.dat";
+Msumdat[4]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab.dat";
 
 
-Msumdat[5]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[6]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[7]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[8]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd-ak.dat";
-
-
-If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
-Msumdat[1]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd.dat";
-Msumdat[2]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd.dat";
-Msumdat[3]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd.dat";
-Msumdat[4]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd.dat";
+Msumdat[5]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[6]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[7]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[8]=<<"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab-ak.dat";
 
 
 If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
-Msumdat[5]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[6]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-ab+cd-ak.dat";
-Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-ab+cd-ak.dat";
+Msumdat[1]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-cd+ab.dat";
+Msumdat[2]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-cd+ab.dat";
+Msumdat[3]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-cd+ab.dat";
+Msumdat[4]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab.dat";
+
+
+If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
+Msumdat[5]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[6]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-cd+ab-ak.dat";
+Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab-ak.dat";
 
 
 (* ::Subsection:: *)
-(*3F ac+bb-ab+bc*)
+(*3F ac+bb-bc+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-ab+bc.dat";
-Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-ab+bc.dat";
-Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-ab+bc.dat";
-Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-ab+bc.dat";
+Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-bc+ab.dat";
+Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-bc+ab.dat";
+Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-bc+ab.dat";
+Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-bc+ab.dat";
 
 
-Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-ab+bc-ak.dat";
-Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-ab+bc-ak.dat";
-Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-ab+bc-ak.dat";
-Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-ab+bc-ak.dat";
+Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-bc+ab-ak.dat";
+Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-bc+ab-ak.dat";
+Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-bc+ab-ak.dat";
+Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-bc+ab-ak.dat";
 
 
 (* ::Subsection:: *)
 (*3F ac+cb-cc+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc.dat";
-Msumdat[2]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc.dat";
-Msumdat[3]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc.dat";
-Msumdat[4]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc.dat";
+Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab.dat";
+Msumdat[2]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab.dat";
+Msumdat[3]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab.dat";
+Msumdat[4]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab.dat";
 
 
-Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc-ak.dat";
-Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc-ak.dat";
-Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc-ak.dat";
-Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-ab+cc-ak.dat";
+Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab-ak.dat";
+Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab-ak.dat";
+Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab-ak.dat";
+Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab-ak.dat";
 
 
 (* ::Subsection:: *)
-(*3F ab+ac-ab+ac*)
+(*3F ac+ab-ac+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ab+ac-ab+ac.dat";
-Msumdat[2]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ab+ac-ab+ac.dat";
-Msumdat[3]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ab+ac-ab+ac.dat";
-Msumdat[4]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ab+ac-ab+ac.dat";
+Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+ab-ac+ab.dat";
+Msumdat[2]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+ab-ac+ab.dat";
+Msumdat[3]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+ab-ac+ab.dat";
+Msumdat[4]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+ab-ac+ab.dat";
 
 
-Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ab+ac-ab+ac-ak.dat";
-Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ab+ac-ab+ac-ak.dat";
-Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ab+ac-ab+ac-ak.dat";
-Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ab+ac-ab+ac-ak.dat";
+Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+ab-ac+ab-ak.dat";
 
 
 (* ::Subsection:: *)
@@ -197,6 +197,13 @@ Msumdat[#][[1]]&/@Range[8]
 
 (* ::Code:: *)
 (*Msumdat*)
+
+
+(* ::Section:: *)
+(*Chop ErrorBar*)
+
+
+CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
 
 
 (* ::Section:: *)
@@ -328,7 +335,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 ,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]]&/@{5}(*Reverse@*)(*Range[1,8]*)))
+)&@(DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@{5}(*Reverse@*)(*Range[1,8]*)))
 
 
 ListPlot[Msumdat[2]//Last]
