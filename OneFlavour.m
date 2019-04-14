@@ -174,7 +174,7 @@ $IntProgram=NIntegrate(*Cuhre*);
 $ErrorBar=True;
 Clear@UsrReap;
 If[$ErrorBar,
-(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];(*Message[NIntegrate::maxp, l___] := Sow[Last@{l}]*)  original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ];UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
+(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ];UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
 UsrReap=Times];
 
 
@@ -296,9 +296,6 @@ $PVM="Differential";
 (*(*Differential PV Method: *)*)
 (*\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[(1/(((y-1) \[Omega]1+(1-x) \[Omega]2)^2))\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] (\[Phi]2[y] \[Phi]3[y \[Omega]1]-\[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]-(y-(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1) (\[Phi]3[\[Omega]1-(1-x) \[Omega]2] Derivative[1][\[Phi]2][(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1]+\[Omega]1 \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] Derivative[1][\[Phi]3][\[Omega]1-(1-x) \[Omega]2])))+(\[Omega]1 \[Omega]2 (\[Phi]1[(x \[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]4[x] \[Phi]2[(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1] \[Phi]3[\[Omega]1-(1-x) \[Omega]2]))/((\[Omega]1^2 (\[Omega]1-(1-x) \[Omega]2) ((\[Omega]1-(1-x) \[Omega]2)/\[Omega]1-1))/\[Omega]1),{x,\[Lambda],1-\[Lambda](*-(1./10^10)*)},{y,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];*)
 (*\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=-4 g^2 NIntegrate[(1/((y \[Omega]1-x)^2))\[Omega]1 (\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] (\[Phi]2[y] \[Phi]4[((y-1) \[Omega]1+\[Omega]2)/\[Omega]2]-\[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2]-(y-x/\[Omega]1) (\[Phi]4[((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2] Derivative[1][\[Phi]2][x/\[Omega]1]+(\[Omega]1 \[Phi]2[x/\[Omega]1] Derivative[1][\[Phi]4][((-1+x/\[Omega]1) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]2)))+(\[Phi]1[(x+\[Omega]2-\[Omega]1)/(1+\[Omega]2-\[Omega]1)] \[Phi]3[x] \[Phi]2[x/\[Omega]1] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2])/((\[Omega]1 x (x/\[Omega]1-1))/\[Omega]1),{x,\[Lambda],1-\[Lambda]},{y,0(*1./10^10*),1-\[Lambda]},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];*)
-
-
-
 
 
 (* ::Input:: *)

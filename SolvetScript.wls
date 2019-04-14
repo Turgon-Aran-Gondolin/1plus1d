@@ -56,6 +56,22 @@ Print["End"];
 
 
 
+Solvet[4.19022,0.045,SolveMethod->"'t Hooft",MatrixSize->15]
+Print["End"];
+
+
+Solvet[0.749,0.045,SolveMethod->"'t Hooft",MatrixSize->15]
+Print["End"];
+
+
+Solvet[13.5565,0.045,SolveMethod->"'t Hooft",MatrixSize->15]
+Print["End"];
+
+
+Solvet[4.19022,0.045,SolveMethod->"'t Hooft",MatrixSize->15]
+Print["End"];
+
+
 Solvet[0.749,0.5,SolveMethod->"'t Hooft",MatrixSize->15,Force->True]
 Print["End"];
 
