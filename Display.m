@@ -49,7 +49,7 @@ Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumd
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/fc8da22f28f9743604026b5eccc8cbc955c83c6e/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*csbar*)
 
 
@@ -71,27 +71,27 @@ Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 
 
 (* ::Subsection::Closed:: *)
-(*cs 2ab-2ab*)
+(*cs ab+ab-ab+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-n-(0-0-0-0)-type-2ab-2ab.dat";
+Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-n-(0-0-0-0)-type-ab+ab-ab+ab.dat";
 
 
-(* ::Subsection::Closed:: *)
-(*bc 2 ab - 2 ab*)
+(* ::Subsection:: *)
+(*bc ab+ab-ab+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-0-0)-type-2ab-2ab.dat";
-Msumdat[2]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-0-0)-type-2ab-2ab.dat";
-Msumdat[3]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
-Msumdat[4]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
+Msumdat[1]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-0-0)-type-ab+ab-ab+ab.dat";
+Msumdat[2]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-0-0)-type-ab+ab-ab+ab.dat";
+Msumdat[3]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-ab+ab-ab+ab.dat";
+Msumdat[4]=<<"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-ab+ab-ab+ab.dat";
 
 
 If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,4.19022`},{i,4}],Print["OK"],Abort[]];
-Msumdat[1]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-0-0)-type-2ab-2ab.dat";
-Msumdat[2]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-0-0)-type-2ab-2ab.dat";
-Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-2ab-2ab.dat";
-Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-2ab-2ab.dat";
+Msumdat[1]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-0-0)-type-ab+ab-ab+ab.dat";
+Msumdat[2]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-0-0)-type-ab+ab-ab+ab.dat";
+Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-ab+ab-ab+ab.dat";
+Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-ab+ab-ab+ab.dat";
 
 
 (* ::Subsection:: *)
@@ -335,7 +335,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 ,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
 ],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@{5}(*Reverse@*)(*Range[1,8]*)))
+)&@(DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@{1}(*Reverse@*)(*Range[1,8]*)))
 
 
 ListPlot[Msumdat[2]//Last]
