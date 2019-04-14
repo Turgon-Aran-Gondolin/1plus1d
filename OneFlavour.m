@@ -41,6 +41,7 @@ Msum::cal="Info: Start calculating amplitude. This is not a warning. ";
 Msum::done="Info: Evaluation completed. This is not a warning. ";
 AnotherKinematics;
 $PVM;
+$ErrorBar;
 
 \[Phi]n;
 Mn;
@@ -59,6 +60,9 @@ test;
 
 Begin["`Private`"]
 
+
+
+VarInit[var_,def_]:=If[!ValueQ[var],var=def,Null];
 
 
 (* ::Section:: *)
@@ -170,8 +174,8 @@ PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{
 
 Install["~/Programs/Cuba/Cuhre"];
 SetOptions[Cuhre,Verbose->0];
-$IntProgram=NIntegrate(*Cuhre*);
-$ErrorBar=True;
+VarInit[$IntProgram,NIntegrate(*Cuhre*)];
+VarInit[$ErrorBar,True];
 Clear@UsrReap;
 If[$ErrorBar,
 (ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ];UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
@@ -272,7 +276,7 @@ Options[\[ScriptCapitalR]\[ScriptCapitalM]1]={I1Option->OptionsPattern[],I2Optio
 (*$PVM="Subtraction"(*"Differential"*);*)
 
 
-$PVM="Differential";
+VarInit[$PVM,"Differential"];
 
 
 (* ::Code:: *)
