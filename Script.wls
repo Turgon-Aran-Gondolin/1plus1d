@@ -45,7 +45,7 @@ CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,Int
 time1=AbsoluteTime[];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
-{n1,n2,n3,n4}={0,0,0,0};
+{n1,n2,n3,n4}={1,1,0,0};
 range={0.001,10,0.1};
 \[Lambda]=10^-3;method="'t Hooft";size=12;
 (*mq=4.19022; mQ=13.5565;

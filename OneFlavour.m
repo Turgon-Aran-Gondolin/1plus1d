@@ -63,6 +63,7 @@ Begin["`Private`"]
 
 
 VarInit[var_,def_]:=If[!ValueQ[var],var=def,Null];
+Attributes[VarInit]={HoldAll};
 
 
 (* ::Section:: *)
@@ -505,7 +506,7 @@ Which[MatchQ[m1,Global`u], m1 =(*Global`u= *)0.045,MatchQ[m1,Global`c], m1=(*Glo
 Print["m1=",m1];
 Message[Msum::cal];
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1}},ParallelTable[Sen=Ssqur^2;\[Omega]1=\[Omega]1S[Sen][M1,M2,M3,M4];\[Omega]2=\[Omega]2S[Sen][M1,M2,M3,M4];(*Print[\[ScriptCapitalI]2[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]];*)
-{Ssqur,EXPR[\[Omega]1,\[Omega]2,I1Option->OptionValue[I1Option],I2Option->OptionValue[I2Option],I3Option->OptionValue[I3Option](*,Evaluate@FilterRules[{opt},Options[NIntegrate]]*)][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]}
+ReleaseHold@Flatten@{Ssqur,EXPR[\[Omega]1,\[Omega]2,I1Option->OptionValue[I1Option],I2Option->OptionValue[I2Option],I3Option->OptionValue[I3Option](*,Evaluate@FilterRules[{opt},Options[NIntegrate]]*)][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m1,M1,M2,M3,M4]}
 ,{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 
@@ -582,7 +583,7 @@ Message[Msum::cal];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];(*Print[$KernelID];*)(*Print[{Ssqur,\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]}];*)
-{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
+ReleaseHold@Flatten@{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 
 
@@ -652,7 +653,7 @@ Message[Msum::cal];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2,m3}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
-{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
+ReleaseHold@Flatten@{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 
 
@@ -712,7 +713,7 @@ Message[Msum::cal];
 (*Print[$Context];*)
 (*DistributeDefinitions[M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,EXPR,\[ScriptCapitalM]0,\[ScriptCapitalI]1,\[ScriptCapitalI]2,\[ScriptCapitalI]3,\[Omega]1S,\[Omega]2S];*)
 {{{n1,n2,n3,n4},{M1,M2,M3,M4},{m1,m2,m3,m4}},ParallelTable[Sen=Ssqur^2;\[Omega]1=(\[Omega]1S/.\[Omega]1S/;OptionValue[AnotherKinematics]->\[Omega]1So)[Sen][M1,M2,M3,M4];\[Omega]2=(\[Omega]2S/.\[Omega]2S/;OptionValue[AnotherKinematics]->\[Omega]2So)[Sen][M1,M2,M3,M4];
-{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
+ReleaseHold@Flatten@{Ssqur,\[ScriptCapitalM][\[Omega]1,\[Omega]2,opt][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][ml,M1,M2,M3,M4]},{Ssqur,Si+OptionValue[SRange][[1]],Si+OptionValue[SRange][[2]],OptionValue[SRange][[3]]},DistributedContexts->{"OneFlavour`Private`","OneFlavour`"}]}
 ];
 (*$DistributedContexts:=$Context;*)
 
