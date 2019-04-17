@@ -204,13 +204,14 @@ Msumdat[#][[1]]&/@Range[8]
 
 
 CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
+CEB2[data_]:=data[[All,1;;2]];
 
 
 (* ::Section:: *)
 (*Edit*)
 
 
-iii=6;
+iii=7;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
@@ -250,8 +251,8 @@ Msumdattmp[[2]]=Delete[#,Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(
 
 
 (*Manually find point exceed difference of 500/digit*)
-(Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(Abs[Subtract@@#[[2]]]>100&),{1},Heads->False])&[Msumdattmp[[2]]]
-Extract[Msumdattmp[[2]],%]
+(Position[Transpose[{#[[1;;All]],MovingMedian[#,1]}],_?(Abs[Subtract@@#[[2]]]>100&),{1},Heads->False])&[Msumdattmp[[2]]//CEB2]
+Extract[Msumdattmp[[2]]//CEB2,%]
 
 
 (*Drop point of position {9/digit} based on manual searching*)
@@ -269,19 +270,19 @@ Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(#[[1]]==115.5356842582988` &)];
 Once@Import["https://raw.githubusercontent.com/antononcube/MathematicaForPrediction/master/QuantileRegression.m"]
 qs={0.01,0.5,0.99};
 {qs[[1]],1-qs[[-1]]}*Length[Msumdattmp[[2]]]
-qfuncs=QuantileRegression[Msumdattmp[[2]],5,qs];
+qfuncs=QuantileRegression[Msumdattmp[[2]]//CEB2,5,qs];
 topOutliers=Select[Msumdattmp[[2]],qfuncs[[-1]][#[[1]]]<#[[2]]&]
 bottomOutliers=Select[Msumdattmp[[2]],qfuncs[[1]][#[[1]]]>#[[2]]&]
-Show[ListLinePlot[Msumdattmp[[2]],PlotRange->All],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
+Show[ListLinePlot[Msumdattmp[[2]]//CEB2,PlotRange->All],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers//CEB2],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers//CEB2],PlotMarkers->{Green,Tiny}]]
 
 
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers},{1}],Flatten[{bottomOutliers},{1}]];
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{topOutliers[[5]]},Depth@#>3&]];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{topOutliers[[1;;5]]},Depth@#>3&]];
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{bottomOutliers[[3]]},Depth@#>3&]];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{bottomOutliers[[1;;5]]},Depth@#>3&]];
 
 
 Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+20},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
@@ -315,6 +316,14 @@ Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]
 
 
 Msumdat[iii]=Msumdattmp;
+
+
+(* ::Section::Closed:: *)
+(*Select Breaking Point*)
+
+
+(Position[Transpose[{#[[3;;All]],MovingAverage[#,3]}],_?(Abs[Subtract@@#[[2]]]>100&),{1},Heads->False])&[Msumdattmp[[2]]//CEB2]
+Extract[Msumdattmp[[2]]//CEB2,%]
 
 
 (* ::Section:: *)
