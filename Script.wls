@@ -17,7 +17,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints->5 10^7(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*)(*,Method->"QuasiMonteCarlo",MaxPoints->5 10^7*)(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
