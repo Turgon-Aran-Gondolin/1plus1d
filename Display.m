@@ -94,7 +94,7 @@ Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-ab+ab-ab+ab.dat
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-ab+ab-ab+ab.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*bcsd*)
 
 
@@ -124,7 +124,7 @@ Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-typ
 Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab-ak.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*3F ac+bb-bc+ab*)
 
 
@@ -211,7 +211,7 @@ CEB2[data_]:=data[[All,1;;2]];
 (*Edit*)
 
 
-iii=7;
+iii=8;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
@@ -318,12 +318,25 @@ Part[Msumdat[[2]],Flatten@Drop[Position[PeakDetect[Msumdat[[2,All,2]],0,3],1],1]
 Msumdat[iii]=Msumdattmp;
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Select Breaking Point*)
 
 
-(Position[Transpose[{#[[3;;All]],MovingAverage[#,3]}],_?(Abs[Subtract@@#[[2]]]>100&),{1},Heads->False])&[Msumdattmp[[2]]//CEB2]
-Extract[Msumdattmp[[2]]//CEB2,%]
+FindDiscontinuity[dat_,\[Sigma]_,s_]:=Partition[FindPeaks[Table[Abs[Divide@@Reverse[dat[[i+2]]-dat[[i+1]]]/Divide@@Reverse[dat[[i+1]]-dat[[i]]] Mean[{dat[[i+2]]-dat[[i+1]],dat[[i+1]]-dat[[i]]}][[2]]],{i,Length[dat]-2}],\[Sigma],s][[All,1]]+1,1];
+FindDiscontinuity[dat_,\[Sigma]_]:=FindDiscontinuity[dat,\[Sigma],Automatic];
+FindDiscontinuity[dat_]:=FindDiscontinuity[dat,Automatic,Automatic];
+
+
+iiii=1;
+dispos=Catch[Do[If[#!={},Throw[#]]&@FindDiscontinuity[Msumdat[iiii][[2]]//Chop//CEB2,1,srp],{srp,20,1,-1}]]
+dispoi=Extract[Msumdat[iiii][[2]],dispos]
+ListPlot[Msumdat[iiii][[2]]//CEB2,PlotRange->All,Epilog-> {Red,PointSize[Medium],Point[dispoi//CEB2]}]
+
+
+$DISPOS[iiii]=dispos[[1]]
+
+
+?$DISPOS
 
 
 (* ::Section:: *)
@@ -340,11 +353,13 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 
 
 (* ::Input::Initialization:: *)
-(Print[("Amp: Threshold: "<>ToString[Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@#[[1]]];fig=Labeled[ListPlot[Select[Re@#[[2]],#\[Element]Reals&]&/@#,PlotRange->{{Min[#1]-.5,2.5Min[#1]}&@(Sequence@@(Transpose[{First[#[[2]]][[1]]-0.1,Last[#[[2]]][[1]]}&/@#])),{All,All}(*All*)},Joined->True,ImageSize->300,PlotLegends->Placed[LineLegend[(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]])&/@#,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right,Top}],Frame->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->MapThread[{Black(*#1*),#2}&,{Take[ColorList,Length@#],Take[LineList,Length@#]}],AspectRatio->9/15,TargetUnits->{"GeV",""}
-,Epilog->MapThread[{(*Thick,*)Dotted,Black(*#2*),Line[{{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],(*Last[#1[[2]]][[2]]*)0},{Max[#1[[1,2,1]]+#1[[1,2,2]],#1[[1,2,3]]+#1[[1,2,4]]],First[#1[[2]]][[2]]}}]}&,{#,Take[ColorList,Length@#]}]
-],
-{"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
-)&@(DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@{4}(*Reverse@*)(*Range[1,8]*)))
+Module[{min=.5,maxt=3,datlis={1,5}(*Reverse@*)(*Range[1,8]*),dat,thre,str,legendfun,length},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
+thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
+str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4,"-ak",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[ListPlot[{Re@#1[[2,;;$DISPOS[datlis[[#2//First]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},PlotRange->{{Min[#]-min,maxt Min[#]}&@#1[[2,1,1]],{All,All}(*All*)},Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,2,#]&@{{Black}~Join~LineList[[#2]]},
+Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
+]&,dat],ImageSize->300,Frame->True,AspectRatio->9/15(*,TargetUnits->{"GeV",""}*)],Placed[LineLegend[LineList[[;;length]],str,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right,Top}]],
+{"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)/GeV"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]&@dat
+]
 
 
 ListPlot[Msumdat[2]//Last]
