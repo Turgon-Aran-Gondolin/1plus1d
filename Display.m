@@ -129,9 +129,9 @@ Msumdat[8]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-typ
 
 
 Msumdat[1]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-bc+ab.dat";
-Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-bc+ab.dat";
-Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-bc+ab.dat";
-Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-bc+ab.dat";
+Msumdat[2]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+bb-bc+ab.dat";
+Msumdat[3]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-bc+ab.dat";
+Msumdat[4]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-bc+ab.dat";
 
 
 Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+bb-bc+ab-ak.dat";

@@ -193,7 +193,7 @@ NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]
 		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
 		OptionValue[PVMethod]=="Differential",
 		UsrReap[prog[((intg-intgp)/(var-pole)^2 )
-		Switch[OptionValue[NIntegrate,Method],Automatic,Boole[(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))],
+		Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)Boole[(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))],
 		"QuasiMonteCarlo",Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
 		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
 		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]]
