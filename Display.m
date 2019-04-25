@@ -117,7 +117,7 @@ Msumdat[3]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-typ
 Msumdat[4]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-1-1)-type-ad+cb-cd+ab.dat";
 
 
-If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,4}],Print["OK"],Abort[]];
+If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.749`,13.5565`,0.09`},{i,5,8}],Print["OK"],Abort[]];
 Msumdat[5]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-0-0)-type-ad+cb-cd+ab-ak.dat";
 Msumdat[6]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(1-1-0-0)-type-ad+cb-cd+ab-ak.dat";
 Msumdat[7]>>"data/Msumdat_m1-4.19022-m2-0.749-m3-13.5565-m4-0.09-n-(0-0-1-1)-type-ad+cb-cd+ab-ak.dat";
@@ -140,7 +140,7 @@ Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+bb-bc
 Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+bb-bc+ab-ak.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*3F ac+cb-cc+ab*)
 
 
@@ -156,7 +156,7 @@ Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc
 Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-0.09-m3-4.19022-n-(0-0-0-0)-type-ac+cb-cc+ab-ak.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*3F ac+ab-ac+ab*)
 
 
@@ -170,6 +170,30 @@ Msumdat[5]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-0-0)-type-ac+ab-ac
 Msumdat[6]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-0-0)-type-ac+ab-ac+ab-ak.dat";
 Msumdat[7]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(0-0-1-1)-type-ac+ab-ac+ab-ak.dat";
 Msumdat[8]=<<"data/Msumdat_m1-0.749-m2-4.19022-m3-0.09-n-(1-1-1-1)-type-ac+ab-ac+ab-ak.dat";
+
+
+(* ::Subsection:: *)
+(*3F bu bd*)
+
+
+Msumdat[1]=<<"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab.dat";
+
+
+Msumdat[5]=<<"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab-ak.dat";
+
+
+If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,0.09`,0.045`},{i,4}],Print["OK"],Abort[]];
+Msumdat[1]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab.dat";(*
+Msumdat[2]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-0-0)-type-ac+ab-ac+ab.dat";
+Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-1-1)-type-ac+ab-ac+ab.dat";
+Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-1-1)-type-ac+ab-ac+ab.dat";*)
+
+
+If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,0.09`,0.045`},{i,5,8}],Print["OK"],Abort[]];
+Msumdat[5]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab-ak.dat";(*
+Msumdat[6]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-0-0)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[7]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-1-1)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[8]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-1-1)-type-ac+ab-ac+ab-ak.dat";*)
 
 
 (* ::Subsection:: *)
@@ -205,13 +229,14 @@ Msumdat[#][[1]]&/@Range[8]
 
 CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
 CEB2[data_]:=data[[All,1;;2]];
+FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
 
 
 (* ::Section:: *)
 (*Edit*)
 
 
-iii=8;
+iii=5;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
@@ -353,7 +378,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 
 
 (* ::Input::Initialization:: *)
-Module[{min=.5,maxt=3,datlis={1,5}(*Reverse@*)(*Range[1,8]*),dat,thre,str,legendfun,length},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
+Module[{min=.5,maxt=3,datlis={1}(*Reverse@*)(*Range[1,8]*),dat,thre,str,legendfun,length},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
 str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4,"-ak",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[ListPlot[{Re@#1[[2,;;$DISPOS[datlis[[#2//First]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},PlotRange->{{Min[#]-min,maxt Min[#]}&@#1[[2,1,1]],{All,All}(*All*)},Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,2,#]&@{{Black}~Join~LineList[[#2]]},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}

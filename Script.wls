@@ -8,8 +8,15 @@
 (* ::Input::Initialization:: *)
 (*<< MMARemoteSSH`*)
 (*LaunchRemoteKernels[];*)
-Kernels[]
-LaunchKernels[];
+(*Kernels[]*)
+SetSystemOptions["ParallelOptions"->"MathLinkTimeout"->20.];
+<<MMARemoteSSH`
+LaunchKernels[8];
+LaunchRemoteKernels[3,7];
+LaunchRemoteKernels[4,7];
+LaunchRemoteKernels[5,8];
+LaunchRemoteKernels[6,24];
+LaunchRemoteKernels[6,24];
 Kernels[]
 
 
@@ -52,16 +59,17 @@ range={0.0001,20,0.1};
 type=({{a,b},{a,b}}->{{a,b},{a,b}});
 assign={a->mQ,b->mq};*)
 (*mq=0.749; mQ=4.19022;md=13.5565;*)
-mQ=0.749; mq=4.19022;md=0.09;
+(*mQ=0.749; mq=4.19022;md=0.09;*)
 (*mQ=0.749; mq=0.09;md=4.19022;*)
 (*mQ=4.19022; mq=0.09;md=0.045;*)
-type=(*({{a,b},{c,a}}->{{a,b},{c,a}})*) ({{a,c},{b,b}}->{{b,c},{a,b}})(*({{a,c},{c,b}}->{{c,c},{a,b}})*) (*({{a,c},{a,b}}->{{a,c},{a,b}})*);
+mQ=13.5565; mq=0.09;md=0.045;
+type=(*({{a,b},{c,a}}->{{a,b},{c,a}})*) (*({{a,c},{b,b}}->{{b,c},{a,b}})*)(*({{a,c},{c,b}}->{{c,c},{a,b}})*) ({{a,c},{a,b}}->{{a,c},{a,b}});
 assign={a->mQ,b->mq,c->md};
 (*mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
 assign={a->mQ,b->mq,c->md,d->mp};*)
-alterkin=(*True*) False;
+alterkin=True (*False*);
 
 kin=If[alterkin,"-ak",""];
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
