@@ -52,15 +52,17 @@ CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,Int
 time1=AbsoluteTime[];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
-{n1,n2,n3,n4}={1,1,0,0};
-range={0.002,0.004,0.00001};
+{n1,n2,n3,n4}={1,1,1,1};
+range={0.001,20,0.1};
+(*range={0.0401,0.05,0.001};*)
 \[Lambda]=10^-3;method="'t Hooft";size=12;
 (*mQ=13.5565;mq=4.19022;*) 
 (*mQ=4.19022;mq=0.749;
 type=(*({{a,b},{a,b}}->{{a,b},{a,b}})*)({{a,a},{b,a}}->{{a,a},{b,a}});
 assign={a->mQ,b->mq};*)
 (*mq=0.749; mQ=4.19022;md=13.5565;*)
-mQ=0.749; mq=4.19022;md=0.09;
+(*mQ=0.749; mq=4.19022;md=0.09;*)
+mQ=4.19022; mq=0.749;md=0.09;
 (*mQ=0.749; mq=0.09;md=4.19022;*)
 (*mQ=4.19022; mq=0.09;md=0.045;*)
 (*mQ=13.5565; mq=0.09;md=0.045;*)
@@ -70,7 +72,7 @@ assign={a->mQ,b->mq,c->md};
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
 assign={a->mQ,b->mq,c->md,d->mp};*)
-alterkin=(*True*) False;
+alterkin=True (*False*);
 
 kin=If[alterkin,"-ak",""];
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
@@ -92,24 +94,6 @@ Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToSt
 CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]];
 Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],5,Abort[]]
 Print["End"];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Return
