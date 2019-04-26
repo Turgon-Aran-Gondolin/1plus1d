@@ -352,13 +352,13 @@ FindDiscontinuity[dat_,\[Sigma]_]:=FindDiscontinuity[dat,\[Sigma],Automatic];
 FindDiscontinuity[dat_]:=FindDiscontinuity[dat,Automatic,Automatic];
 
 
-iiii=1;
+iiii=5;
 dispos=Catch[Do[If[#!={},Throw[#]]&@FindDiscontinuity[Msumdat[iiii][[2]]//Chop//CEB2,1,srp],{srp,20,1,-1}]]
 dispoi=Extract[Msumdat[iiii][[2]],dispos]
 ListPlot[Msumdat[iiii][[2]]//CEB2,PlotRange->All,Epilog-> {Red,PointSize[Medium],Point[dispoi//CEB2]}]
 
 
-$DISPOS[iiii]=dispos[[1]]
+$DISPOS[iiii]=dispos[[2]]
 
 
 ?$DISPOS
@@ -378,7 +378,7 @@ LineList=Table[Dashing[0.002 2^r],{r,1,3}]~Join~{DotDashed}~Join~Table[Dashing[{
 
 
 (* ::Input::Initialization:: *)
-Module[{min=.5,maxt=3,datlis={1}(*Reverse@*)(*Range[1,8]*),dat,thre,str,legendfun,length},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
+Module[{min=.5,maxt=1.5,datlis={5}(*Reverse@*)(*Range[1,8]*),dat,thre,str,legendfun,length},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
 str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4,"-ak",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[ListPlot[{Re@#1[[2,;;$DISPOS[datlis[[#2//First]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},PlotRange->{{Min[#]-min,maxt Min[#]}&@#1[[2,1,1]],{All,All}(*All*)},Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,2,#]&@{{Black}~Join~LineList[[#2]]},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
