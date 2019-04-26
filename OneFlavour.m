@@ -177,10 +177,14 @@ Install["~/Programs/Cuba/Cuhre"];
 SetOptions[Cuhre,Verbose->0];
 VarInit[$IntProgram,NIntegrate(*Cuhre*)];
 VarInit[$ErrorBar,True];
-Switch[OptionValue[NIntegrate,Method],Automatic,msg=NIntegrate::maxp,"QuasiMonteCarlo",msg=NIntegrate::maxp];
+Switch[OptionValue[NIntegrate,Method],Automatic,msg=NIntegrate::eincr,"QuasiMonteCarlo",msg=NIntegrate::maxp];
 Clear@UsrReap;
 If[$ErrorBar,
-(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ];UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
+(ParallelEvaluate[#];#)&@Unevaluated[Unprotect[Message];original=False; 
+	Switch[OptionValue[NIntegrate,Method],
+	Automatic,Message[NIntegrate::eincr, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::eincr, l];original =False);,
+	"QuasiMonteCarlo",Message[NIntegrate::maxp, l___] /; Not[original] := (Sow[Last@{l}]; original = True; Message[NIntegrate::maxp, l];original =False); ]];
+	UsrReap(*=Reap*)[x___]:=(Reap[x]/.{}->{{0}});Attributes[UsrReap]={HoldFirst},
 UsrReap=Times];
 
 
