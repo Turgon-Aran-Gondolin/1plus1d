@@ -553,7 +553,6 @@ Which[
 (Thread[MatchQ[#,{{a_,b_},{a_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{a_,a_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]+\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]
 ];
-Print[Information[\[ScriptCapitalM]]];
 Do[
 If[FileNames[filenamefun[Sequence@@Masslist[[i]]],dir,Infinity]=={},
 {
