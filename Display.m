@@ -70,11 +70,17 @@ Msumdat[5]
 Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*cs ab+ab-ab+ab*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-4.19022-m2-0.749-n-(0-0-0-0)-type-ab+ab-ab+ab.dat";
+datstr1="_m1-4.19022-m2-0.749";datstr2="-type-ab+ab-ab+ab";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
 (* ::Subsection::Closed:: *)
@@ -94,7 +100,7 @@ Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-ab+ab-ab+ab.dat
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-ab+ab-ab+ab.dat";
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*bcsd*)
 
 
@@ -193,7 +199,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F sd+sc-sd+sc*)
 
 
@@ -259,28 +265,70 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
+(* ::Subsection:: *)
+(*3F cu+cd-cu+cd*)
+
+
+datstr1="_m1-4.19022-m2-0.09-m3-0.045";datstr2="-type-ac+ab-ac+ab";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
+
+
+If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.09`,0.045`},{i,4}],Print["OK"],Abort[]];
+Msumdat[1]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
+
+
+If[And@@Table[Msumdat[i][[1,3]]=={4.19022`,0.09`,0.045`},{i,5,8}],Print["OK"],Abort[]];
+Msumdat[5]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
+
+
 (* ::Subsection::Closed:: *)
-(*3F bu bd*)
+(*3F bu+bd-bu+bd*)
 
 
-Msumdat[1]=<<"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab.dat";
+datstr1="_m1-13.5565-m2-0.09-m3-0.045";datstr2="-type-ac+ab-ac+ab";
 
 
-Msumdat[5]=<<"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab-ak.dat";
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
 If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,0.09`,0.045`},{i,4}],Print["OK"],Abort[]];
-Msumdat[1]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab.dat";(*
-Msumdat[2]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-0-0)-type-ac+ab-ac+ab.dat";
-Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-1-1)-type-ac+ab-ac+ab.dat";
-Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-1-1)-type-ac+ab-ac+ab.dat";*)
+Msumdat[1]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
 If[And@@Table[Msumdat[i][[1,3]]=={13.5565`,0.09`,0.045`},{i,5,8}],Print["OK"],Abort[]];
-Msumdat[5]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-0-0)-type-ac+ab-ac+ab-ak.dat";(*
-Msumdat[6]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-0-0)-type-ac+ab-ac+ab-ak.dat";
-Msumdat[7]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(0-0-1-1)-type-ac+ab-ac+ab-ak.dat";
-Msumdat[8]>>"data/Msumdat_m1-13.5565-m2-0.09-m3-0.045-n-(1-1-1-1)-type-ac+ab-ac+ab-ak.dat";*)
+Msumdat[5]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
 (* ::Subsection:: *)
@@ -320,7 +368,7 @@ FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
 REB[data_]:={data[[1]],Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&]};
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Edit*)
 
 
@@ -452,7 +500,7 @@ FindDiscontinuity[dat_]:=FindDiscontinuity[dat,Automatic,Automatic];
 Clear@$DISPOS
 
 
-iiii=4;
+iiii=1;
 dispos=If[MatchQ[#,Null],Abort[],#]&@Catch[Do[If[#!={},Throw[#]]&@FindDiscontinuity[Msumdat[iiii][[2]]//Chop//CEB2,1,srp],{srp,70,1,-1}]]
 dispoi=Check[Extract[Msumdat[iiii][[2]],dispos],"No $DISC"]
 ListPlot[Msumdat[iiii][[2]]//Chop//CEB2,PlotRange->All,Epilog-> {Red,PointSize[Medium],Point[dispoi//Chop//CEB2]}]
@@ -485,7 +533,7 @@ PTest[]:=Print["Halt"];
 
 (* ::Input::Initialization:: *)
 datlis={1}(*Reverse@*)(*Range[1,8]*);
-Module[{min=.0001,maxt=1.8,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Chop[Msumdat[#]//CEB]&/@datlis);
+Module[{min=.0001,maxt=2.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
 str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
