@@ -297,10 +297,10 @@ VarInit[$PVM,"Differential"];
 (*(*Best for one flavour is I2 {y,0,1-1./10^7}*)*)
 
 
-\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=
-	-4 g^2 NIPVInt[(\[Omega]2 \[Phi]1[(x \[Omega]2)/(1-\[Omega]1+\[Omega]2)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/\[Omega]1 ,{y,x},(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1,PVMethod->$PVM];
-\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=
-	-4 g^2 NIPVInt[(\[Phi]1[(x-\[Omega]1+\[Omega]2)/(1-\[Omega]1+\[Omega]2)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[((-1+y) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]1 ,{y,x},x/\[Omega]1,PVMethod->$PVM];
+\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
+	(*-4 g^2 NIPVInt[(\[Omega]2 \[Phi]1[(x \[Omega]2)/(1-\[Omega]1+\[Omega]2)] \[Phi]2[y] \[Phi]3[y \[Omega]1] \[Phi]4[x])/\[Omega]1 ,{y,x},(\[Omega]1-(1-x) \[Omega]2)/\[Omega]1,PVMethod->$PVM];*)
+\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
+	(*-4 g^2 NIPVInt[(\[Phi]1[(x-\[Omega]1+\[Omega]2)/(1-\[Omega]1+\[Omega]2)] \[Phi]2[y] \[Phi]3[x] \[Phi]4[((-1+y) \[Omega]1+\[Omega]2)/\[Omega]2])/\[Omega]1 ,{y,x},x/\[Omega]1,PVMethod->$PVM];*)
 
 
 (* ::Input:: *)
@@ -324,7 +324,7 @@ VarInit[$PVM,"Differential"];
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_?NumberQ,Ma_,Mb_,Mc_,Md_]:=(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m^2-2\[Beta]^2)/(x-\[Omega]1)+(m^2-2\[Beta]^2)/(x-1)-(m^2-2\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m^2-2\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:=
 Module[{m1,m2,m3,m4,op},op=OptionValue[Op];
-{m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{3,4,1,2},op=="C",{4,3,2,1},op=="P",{2,1,4,3},op=="RQ",{3,4,2,1},op=="RC",{4,3,1,2},op=="RP",{1,2,4,3},op=="R",{2,1,3,4}]]];
+{m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{2,1,3,4},op=="C",{1,2,4,3},op=="P",{2,1,4,3},op=="RQ",{2,1,3,4},op=="RC",{1,2,4,3},op=="RP",{2,1,4,3},op=="R",{1,2,3,4}]]];
 (*Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];*)(-((4 \[Pi])/Nc))(NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]//UsrReap)];
 
 

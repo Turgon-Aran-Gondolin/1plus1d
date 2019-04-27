@@ -24,7 +24,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints->5 10^8(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*)(*,Method->"QuasiMonteCarlo",MaxPoints->5 10^8*)(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
@@ -52,7 +52,7 @@ CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,Int
 time1=AbsoluteTime[];
 
 m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
-{n1,n2,n3,n4}={1,1,1,1};
+{n1,n2,n3,n4}={0,0,0,0};
 range={0.001,20,0.1};
 (*range={0.0401,0.05,0.001};*)
 \[Lambda]=10^-3;method="'t Hooft";size=12;
@@ -62,10 +62,10 @@ type=(*({{a,b},{a,b}}->{{a,b},{a,b}})*)({{a,a},{b,a}}->{{a,a},{b,a}});
 assign={a->mQ,b->mq};*)
 (*mq=0.749; mQ=4.19022;md=13.5565;*)
 (*mQ=0.749; mq=4.19022;md=0.09;*)
-mQ=4.19022; mq=0.749;md=0.09;
+(*mQ=4.19022; mq=0.749;md=0.09;*)
 (*mQ=0.749; mq=0.09;md=4.19022;*)
 (*mQ=4.19022; mq=0.09;md=0.045;*)
-(*mQ=13.5565; mq=0.09;md=0.045;*)
+mQ=13.5565; mq=0.09;md=0.045;
 type=(*({{a,b},{c,a}}->{{a,b},{c,a}})*) (*({{a,c},{b,b}}->{{b,c},{a,b}})*)(*({{a,c},{c,b}}->{{c,c},{a,b}})*) ({{a,c},{a,b}}->{{a,c},{a,b}});
 assign={a->mQ,b->mq,c->md};
 (*mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
