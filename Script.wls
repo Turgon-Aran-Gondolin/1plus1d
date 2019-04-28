@@ -24,7 +24,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints-> 5 10^7(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*)(*,Method->"QuasiMonteCarlo",MaxPoints-> 5 10^7*)(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
@@ -47,6 +47,15 @@ Print[$Path];*)
 (* ::Input::Initialization:: *)
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 Get["OneFlavour`"]
+
+OneFlavour`Private`\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
+OneFlavour`Private`\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
+(*OneFlavour`Private`\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{OneFlavour`Private`Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:= (*0;*)
+Module[{m1,m2,m3,m4,op},op=OptionValue[OneFlavour`Private`Op];
+{m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{2,1,3,4},op=="C",{1,2,4,3},op=="P",{2,1,4,3},op=="RQ",{2,1,3,4},op=="RC",{1,2,4,3},op=="RP",{2,1,4,3},op=="R",{1,2,3,4}]]];
+(*Print[(Mc^2+Md^2/\[Omega]2+(m1^2-2 \[Beta]^2)/(x-\[Omega]1)+(m2^2-2 \[Beta]^2)/(x-1)-(m3^2-2 \[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 \[Beta]^2)/x) ];*)(-((4 \[Pi])/OneFlavour`Private`Nc))(NIntegrate[(Mc^2+Md^2/\[Omega]2+(m1^2-2 OneFlavour`Private`\[Beta]^2)/(x-\[Omega]1)+(m2^2-2 OneFlavour`Private`\[Beta]^2)/(x-1)-(m3^2-2 OneFlavour`Private`\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m4^2-2 OneFlavour`Private`\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]//OneFlavour`Private`UsrReap)];*)
+OneFlavour`Private`\[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,Ma_,Mb_,Mc_,Md_]:=OneFlavour`Private`\[ScriptCapitalI]3[(1-\[Omega]1+\[Omega]2)/\[Omega]2,1/\[Omega]2,Op->"P",(Evaluate[If[ListQ[#1],FilterRules[#1,Options[NIntegrate]],{}]]&)[OptionValue[I3Option]]][\[Phi]2,\[Phi]1,\[Phi]4,\[Phi]3][m,Mb,Ma,Md,Mc];
+
 (*If[$PVM=="Differential",(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->False}]],(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->True}]]];*)
 CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,IntegerString[#,10,2]]&@Floor[#/3600],":",IntegerString[Floor[Mod[#,3600]/60],10,2],":",IntegerString[Mod[#,60],10,2]}&@Round[#]]&[AbsoluteTime[]-time1]];MatchQ[file,$Failed],Print["Creating new entry..."],If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"Merge"->True,"Abort"->"Abort"}],Print["Data merge confirmed..."];Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Print["Overwrite confirmed..."],Print["DO NOT SAVE, ABORTING..."];Abort[]]];
 time1=AbsoluteTime[];
@@ -65,14 +74,14 @@ assign={a->mQ,b->mq};*)
 (*mQ=4.19022; mq=0.749;md=0.09;*)
 (*mQ=0.749; mq=0.09;md=4.19022;*)
 (*mQ=4.19022; mq=0.09;md=0.045;*)
-mQ=13.5565; mq=0.09;md=0.045;
+(*mQ=13.5565; mq=0.09;md=0.045;
 type=(*({{a,b},{c,a}}->{{a,b},{c,a}})*) (*({{a,c},{b,b}}->{{b,c},{a,b}})*)(*({{a,c},{c,b}}->{{c,c},{a,b}})*) ({{a,c},{a,b}}->{{a,c},{a,b}});
-assign={a->mQ,b->mq,c->md};
-(*mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
+assign={a->mQ,b->mq,c->md};*)
+mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
-assign={a->mQ,b->mq,c->md,d->mp};*)
-alterkin=(*True*) False;
+assign={a->mQ,b->mq,c->md,d->mp};
+alterkin=True (*False*);
 
 kin=If[alterkin,"-ak",""];
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
