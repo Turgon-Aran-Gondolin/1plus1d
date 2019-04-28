@@ -477,10 +477,11 @@ Msum[mQ_,{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPatter
 Module[{\[Phi]xB,\[CapitalPhi]B,ValsB,\[Phi]x\[Pi],\[CapitalPhi]\[Pi],Vals\[Pi],M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3,Ares,filename,\[Omega]now,m1,m2,M4,\[Phi]4,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]Bi,Si,dir,\[Phi]1a,\[Phi]2a,\[Phi]3a,\[Phi]4a},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mQ;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
-filename=If[m1==m2,"eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
-filenameacc=If[m1==m2,"acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+filename=If[m1==m2,"/eigenstate_m-"<>ToString[m1],"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
+filenameacc=If[m1==m2,"/acceigenstate_m-"<>ToString[m1],"/acceigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2]]<>".wdx";
 (*If[FileNames[filenameacc,dir,Infinity]=={},*)(*If[ChoiceDialog["Choose to use BSW SolveMethod or to use the original solution suggested by 't Hooft, ",{"BSW SolveMethod"\[Rule]True,"Brute force integration"\[Rule]False}],Determine=Determine\[Phi]x,filename=filenameacc;Determine=accDetermine\[Phi]]];*)
-Which[OptionValue[SolveMethod]=="BSW",Determine=Determine\[Phi]x,filename=filenameacc;OptionValue[SolveMethod]=="'t Hooft",Determine=accDetermine\[Phi]];
+Which[OptionValue[SolveMethod]=="BSW",Determine=Determine\[Phi]x,OptionValue[SolveMethod]=="'t Hooft",filename=filenameacc;Determine=accDetermine\[Phi]];
+(*Print[dir<>filename];Import[dir<>filename];Abort[];*)
 If[FileNames[filename,dir,Infinity]=={},
 {
 {ValsB,\[Phi]xB}=Determine[m1,m2,\[Beta],OptionValue[MatrixSize]];
