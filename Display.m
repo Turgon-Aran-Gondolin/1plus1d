@@ -405,7 +405,7 @@ Msumdat[#][[1]]&/@Range[8]
 (*Msumdat*)
 
 
-(* ::Subchapter::Closed:: *)
+(* ::Subchapter:: *)
 (*EDIT*)
 
 
@@ -419,11 +419,11 @@ FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
 REB[data_]:={data[[1]],Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&]};
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Edit Points*)
 
 
-iii=4;
+iii=1;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
@@ -485,7 +485,7 @@ qs={0.01,0.5,0.99};
 qfuncs=QuantileRegression[Msumdattmp[[2]]//CEB2,5,qs];
 topOutliers=Select[Msumdattmp[[2]],qfuncs[[-1]][#[[1]]]<#[[2]]&]
 bottomOutliers=Select[Msumdattmp[[2]],qfuncs[[1]][#[[1]]]>#[[2]]&]
-Show[ListLinePlot[Msumdattmp[[2]]//CEB2,PlotRange->All],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers//CEB2],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers//CEB2],PlotMarkers->{Green,Tiny}]]
+Show[ListLinePlot[#//CEB2,PlotRange->{{#[[1,1]],#[[-1,1]]},All}]&@Msumdattmp[[2]],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers//CEB2],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers//CEB2],PlotMarkers->{Green,Tiny}]]
 
 
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers},{1}],Flatten[{bottomOutliers},{1}]];
@@ -494,22 +494,23 @@ Msumdattmp[[2]]=Complement[Msumdattmp[[2]],Flatten[{topOutliers},{1}],Flatten[{b
 Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{topOutliers[[1;;5]]},Depth@#>3&]];
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{bottomOutliers[[1;;5]]},Depth@#>3&]];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],NestWhile[Flatten[#,1]&,{bottomOutliers[[1]]},Depth@#>3&]];
 
 
-Show[ListLinePlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+20},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
+Show[ListLinePlot[Msumdattmp[[2]]//CEB2,PlotRange->{{Si+0,Si+20},All}],ListPlot[MapIndexed[Callout[#1,#2//First,Below,CalloutStyle->Red]&,topOutliers],PlotMarkers->{Red,Tiny}],ListPlot[MapIndexed[Callout[#1,#2//First]&,bottomOutliers],PlotMarkers->{Green,Tiny}]]
 
 
 Msumdattmp[[2,5]]
 
 
-ListPlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+2},All},PlotMarkers->{Automatic,Tiny}]
+ListPlot[Msumdattmp[[2]]//CEB2,PlotRange->{{Si+0,Si+1},All},PlotMarkers->{Automatic,Tiny}]
 
 
-ListPlot[Msumdattmp[[2]],PlotRange->{{Si+0,Si+2},All},PlotMarkers->{Automatic,Tiny},Epilog->{PointSize[Medium],Red,Point[Msumdattmp[[2,7]]]}]
+ListPlot[Msumdattmp[[2]]//CEB2,PlotRange->{{Si+0,Si+2},All},
+	PlotMarkers->{Automatic,Tiny},Epilog->{PointSize[Medium],Red,Point[Msumdattmp[[2,12,1;;2]]]}]
 
 
-Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{Msumdattmp[[2,7]]}];
+Msumdattmp[[2]]=Complement[Msumdattmp[[2]],{Msumdattmp[[2,12]]}];
 
 
 (* ::Subsubsection::Closed:: *)
@@ -584,11 +585,11 @@ PTest[]:=Print["Halt"];
 
 (* ::Input::Initialization:: *)
 datlis={1}(*Reverse@*)(*Range[1,8]*);
-Module[{min=.2,maxt=2,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
+Module[{min=.2,maxt=1.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
-str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},(*{-10,100}*)(*Automatic*) All},
+str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},{-0.01,0.1}(*Automatic*) (*All*)},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
-])&,dat],ImageSize->250,Frame->True,(*PlotRange->{{thre-min,maxt thre},(*{-3,0.55}*){All,All}},*)AspectRatio->9/15(*,TargetUnits->{"GeV",""}*)],Placed[LineLegend[LineList[[;;length]],str,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right (*Left*),(*Top*) Bottom}]],
+])&,dat],ImageSize->250,Frame->True,(*PlotRange->{{thre-min,maxt thre},(*{-3,0.55}*){All,All}},*)AspectRatio->9/15(*,TargetUnits->{"GeV",""}*)],Placed[LineLegend[LineList[[;;length]],str,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right (*Left*),Top (*Bottom*)}]],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)(GeV)"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
 ]
 
