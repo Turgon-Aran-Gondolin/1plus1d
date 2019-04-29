@@ -175,7 +175,9 @@ PVInt[intg_,var_,pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{
 
 Install["~/Programs/Cuba/Cuhre"];
 SetOptions[Cuhre,Verbose->0];
-VarInit[$IntProgram,NIntegrate(*Cuhre*)];
+Install["~/Programs/Cuba/Suave"];
+SetOptions[Suave,Verbose->0,MaxPoints->10^7];
+VarInit[$IntProgram,NIntegrate (*int*) (*Cuhre*)];
 VarInit[$ErrorBar,True];
 Switch[OptionValue[NIntegrate,Method],Automatic,msg=NIntegrate::eincr,"QuasiMonteCarlo",msg=NIntegrate::maxp];
 Clear@UsrReap;
@@ -188,16 +190,8 @@ If[$ErrorBar,
 UsrReap=Times];
 
 
-NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog},
-	(*Set@@{F[v_],intg/.var->v};*)
-	prog=$IntProgram;
-	Set@@{intgp,intg/.var->pole};(*Print[intgp];*)
-	ex=(*Re@*)((intg-intgp)/(var-pole)^2 )+(intgp/(pole-1)-intgp/pole);
-	Which[
-		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
-		OptionValue[PVMethod]=="Differential",
-		UsrReap[prog[((intg-intgp)/(var-pole)^2 )
-		Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)
+Intg[var_?NumberQ,var2_?NumberQ,intg_,intgp_,pole_]:=(((intg-intgp)/(var-pole)^2 )
+	Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)
 		(*Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
 		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
 		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]*)
@@ -205,7 +199,38 @@ NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]
 		"QuasiMonteCarlo",Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
 		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
 		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]]
-		+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*),{var2,0,1},{var,0,1}]]
+		+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*));
+
+
+NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog,comp,tmp,v1,v2},
+	(*Set@@{F[v_],intg/.var->v};*)
+	prog=$IntProgram;
+	Set@@{intgp,intg/.var->pole};(*Print[intgp];*)
+	ex=(*Re@*)((intg-intgp)/(var-pole)^2 )+(intgp/(pole-1)-intgp/pole);
+	(*Set@@{tmp[v1_?NumberQ,v2_?NumberQ],Evaluate[((intg-intgp)/(var-pole)^2 )
+	Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)
+		(*Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
+		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
+		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]*)
+		Boole[(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))],
+		"QuasiMonteCarlo",Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
+		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
+		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]]
+		+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*)]/.{var\[Rule]v1,var2\[Rule]v2}};*)
+	Which[
+		OptionValue[PVMethod]=="Subtraction",Message[PVInt::sub];Abort[],
+		OptionValue[PVMethod]=="Differential",
+		comp=Compile[{{var,_Real},{var2,_Real}},((intg-intgp)/(var-pole)^2 )
+			Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)
+				(*Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
+				(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
+				||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]*)
+				Boole[(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))],
+				"QuasiMonteCarlo",Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
+				(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
+				||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]]
+				+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*)];
+		UsrReap[prog[comp[var,var2],{var2,0,1},{var,0,1}]]
 		(*NIntegrate[(intgp/(pole-1)-intgp/pole),{var2,0,1}]+*)
 		(*prog[ex,{var2,var}\[Element]ImplicitRegion[((*(0<=pole<\[Lambda]&&(0\[LessEqual]var<pole/2||3pole/2<var\[LessEqual]1))||*)(\[Lambda]<pole\[LessEqual]1-\[Lambda]&&(0\[LessEqual]var<pole-\[Lambda]||pole+\[Lambda]<var\[LessEqual]1))(*||(1-\[Lambda]<pole\[LessEqual]1&&(0\[LessEqual]var<(3pole-1)/2||(pole+1)/2<var\[LessEqual]1))*))&&0<var2<1&&0<var<1,{var,var2}]]*)
 		(*prog[((intg-intgp)/(var-pole)^2 )+(intgp/(pole-1)-intgp/pole)Boole[\[Lambda]<pole<1-\[Lambda]],{var2,var}\[Element]ImplicitRegion[(
