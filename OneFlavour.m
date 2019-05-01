@@ -190,18 +190,6 @@ If[$ErrorBar,
 UsrReap=Times];
 
 
-Intg[var_?NumberQ,var2_?NumberQ,intg_,intgp_,pole_]:=(((intg-intgp)/(var-pole)^2 )
-	Switch[OptionValue[NIntegrate,Method],Automatic,(*Print["Chop"];*)
-		(*Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
-		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
-		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]*)
-		Boole[(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))],
-		"QuasiMonteCarlo",Boole[(0<=pole<\[Lambda]&&(0<=var<pole/2||3pole/2<var<=1))||
-		(\[Lambda]<pole<=1-\[Lambda]&&(0<=var<pole-\[Lambda]||pole+\[Lambda]<var<=1))
-		||(1-\[Lambda]<pole<=1&&(0<=var<(3pole-1)/2||(pole+1)/2<var<=1))]]
-		+(intgp/(pole-1)-intgp/pole)(*Boole[\[Lambda]<pole<1-\[Lambda]]*));
-
-
 NIPVInt[intg_,{var_,var2_},pole_,opt:OptionsPattern[{PVMethod->"Differential"}]]:=Module[{F,v,intgp,s=1. 10^-7,e=1-1. 10^-7,ex,prog,comp,tmp,v1,v2},
 	(*Set@@{F[v_],intg/.var->v};*)
 	prog=$IntProgram;

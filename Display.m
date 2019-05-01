@@ -12,6 +12,16 @@ Get["OneFlavour`"]
 SetDirectory[NotebookDirectory[]];
 
 
+(* ::Section:: *)
+(*Chop ErrorBar*)
+
+
+CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
+CEB2[data_]:=data[[All,1;;2]];
+FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
+REB[data_]:={data[[1]],Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&]};
+
+
 (* ::Subsection:: *)
 (*c*)
 
@@ -97,7 +107,7 @@ Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
 Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*bc ab+ab-ab+ab*)
 
 
@@ -166,21 +176,21 @@ Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-If[And@@Table[Msumdat[i][[1,3]]=={0.749`,4.19022`,0.09`},{i,4}],Print["OK"],Abort[]];
+If[And@@Table[Msumdat[i][[1,3]]=={0.749`,0.09`,4.19022`},{i,4}],Print["OK"],Abort[]];
 Msumdat[1]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
 Msumdat[2]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
 Msumdat[3]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
 Msumdat[4]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
-If[And@@Table[Msumdat[i][[1,3]]=={0.749`,4.19022`,0.09`},{i,5,8}],Print["OK"],Abort[]];
+If[And@@Table[Msumdat[i][[1,3]]=={0.749`,0.09`,4.19022`},{i,5,8}],Print["OK"],Abort[]];
 Msumdat[5]>>("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
 Msumdat[6]>>("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
 Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F sd+cc-cd+sc*)
 
 
@@ -246,7 +256,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*3F sd+sc-sd+sc*)
 
 
@@ -279,7 +289,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*3F cd+cs-cd+cs*)
 
 
@@ -312,7 +322,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F cu+cd-cu+cd*)
 
 
@@ -345,7 +355,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F bu+bd-bu+bd*)
 
 
@@ -410,20 +420,10 @@ Msumdat[#][[1]]&/@Range[8]
 
 
 (* ::Section:: *)
-(*Chop ErrorBar*)
-
-
-CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
-CEB2[data_]:=data[[All,1;;2]];
-FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
-REB[data_]:={data[[1]],Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&]};
-
-
-(* ::Section:: *)
 (*Edit Points*)
 
 
-iii=1;
+iii=4;
 Msumdattmp=Chop[Msumdat[iii],10^-4];
 Msumdattmp[[2]]=Cases[Msumdattmp[[2]],_?(NumberQ[#[[2]]]&)];
 Si=Max[Plus@@Msumdattmp[[1,2,1;;2]],Plus@@Msumdattmp[[1,2,3;;4]]];
@@ -442,7 +442,7 @@ Msumdattmp[[2]]=Msumdattmp[[2]]//Re;
 (*Delete by abs*)
 
 
-Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(Abs[#[[2]]]>10^7&)];
+Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(Abs[#[[2]]]>10^5&)];
 
 
 (* ::Subsubsection:: *)
@@ -588,10 +588,10 @@ PTest[]:=Print["Halt"];
 
 
 (* ::Input::Initialization:: *)
-datlis={1}(*Reverse@*)(*Range[1,8]*);
-Module[{min=.1,maxt=1.2,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
+datlis={5}(*Reverse@*)(*Range[1,8]*);
+Module[{min=.1,maxt=2.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
-str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},{-0.01,0.21}(*Automatic*) (*All*)},
+str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},(*{-0.01,0.21}*)(*Automatic*) All},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
 ])&,dat],ImageSize->250,Frame->True,(*PlotRange->{{thre-min,maxt thre},(*{-3,0.55}*){All,All}},*)AspectRatio->9/15(*,TargetUnits->{"GeV",""}*)],Placed[LineLegend[LineList[[;;length]],str,LegendLayout->{"Column",1}(*,LegendMarkerSize\[Rule]20*),LegendMargins->3,LegendFunction->"Frame"],{Right (*Left*),Top (*Bottom*)}]],
 {"\[ScriptCapitalM]","\!\(\*SqrtBox[\(s\)]\)(GeV)"(*"Sqrt[s]/\[Lambda]"*)},{Reverse@{Left,Top},Reverse@{Bottom,Right}}]
@@ -599,7 +599,7 @@ Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre
 
 
 (* ::Input:: *)
-(*Export[Which[$OperatingSystem=="Windows","NumFig/cs_4.19_0.749_zoom_2.eps",$OperatingSystem=="Unix","~/Github/2DScattering/NumFig/fig"<>datstr1<>"-pos-"<>StringJoin@@Riffle[ToString/@datlis,"-"]<>datstr2<>".pdf"],fig,ImageResolution->300]*)
+(*Export[Which[$OperatingSystem=="Windows","NumFig/cs_4.19_0.749_zoom_2.eps",$OperatingSystem=="Unix","~/Github/2DScattering/NumFig/fig"<>datstr1<>"-pos-"<>StringJoin@@Riffle[ToString/@datlis,"-"]<>datstr2<>".pdf"],fig,ImageResolution->500]*)
 
 
 (* ::Subsubsection::Closed:: *)
