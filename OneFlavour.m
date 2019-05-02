@@ -54,12 +54,19 @@ Mn;
 \[Omega]2So;
 test;
 
+CEB;
+CEB2;
+
 
 (*ParallelEvaluate[Print[$KernelID]];*)
 
 
 Begin["`Private`"]
 
+
+
+CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
+CEB2[data_]:=data[[All,1;;2]];
 
 
 VarInit[var_,def_]:=If[!ValueQ[var],var=def,Null];
