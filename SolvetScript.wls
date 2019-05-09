@@ -387,10 +387,11 @@ ValsA
 
 Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
 FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
+StringOverbar[s_]:="\!\(\*OverscriptBox[\("<>s<>"\), \(_\)]\)";
 
 
 (* ::Code::Initialization:: *)
-m1=FM@"c";m2=FM@"d";
+m1=FM@"b";m2=FM@"s";
 {Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
 
 
