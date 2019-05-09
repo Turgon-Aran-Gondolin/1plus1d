@@ -24,10 +24,10 @@ ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->12];
 (*SetDirectory[NotebookDirectory[]];*)
 (*AppendTo[$Path,NotebookDirectory[]];*)
 (*Print[$Path];*)
-SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
 
 
 (* ::Input::Initialization:: *)
+SetDirectory[If[$InputFileName == "", NotebookDirectory[], Directory[]]];
 Get["OneFlavour`"];
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 m=4.19022;m1=4.19022;m2=0.09;
@@ -388,11 +388,16 @@ ValsA
 Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
 FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
 StringOverbar[s_]:="\!\(\*OverscriptBox[\("<>s<>"\), \(_\)]\)";
+Legend[m1_,m2_,pos_]:=Placed[Framed[Flavour[m1]<>StringOverbar[Flavour[m2]]],{Corner@pos}];
+Corner[num_]:=Switch[num,1,{Left,Top},2,{Right,Top},3,{Left,Bottom},4,{Right,Bottom}];
 
 
 (* ::Code::Initialization:: *)
-m1=FM@"b";m2=FM@"s";
+m1=FM@"s";m2=FM@"s";
 {Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
+
+
+SetOptions[$FrontEnd, PrintingStyleEnvironment -> "Working"]
 
 
 (* ::Input::Initialization:: *)
@@ -400,12 +405,25 @@ fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->None,MaxRe
 
 
 (* ::Input::Initialization:: *)
-fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black,FrameLabel->{"x","\[Phi](x)"},ImageSize->250(*,MaxRecursion\[Rule]15,WorkingPrecision\[Rule]30,PlotPoints\[Rule]10^5*)]
+fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black,FrameLabel->{"x","\[Phi](x)"}(*,LabelStyle\[Rule]Medium*),ImageSize->200 (*,FrameTicks\[Rule]{{Range[0,2,0.2],Automatic}, Automatic}*) (*,MaxRecursion\[Rule]15,WorkingPrecision\[Rule]30,PlotPoints\[Rule]10^5*)]
 
 
 (* ::Input::Initialization:: *)
-fig=ListLinePlot[Table[{x,\[Phi][x][[1]]},{x,Range[0,0.99,0.01]~Join~Range[0.99,1,10^-4]}],PlotRange->All,Frame->True,PlotStyle->Black,FrameLabel->{"x","\[Phi](x)"},ImageSize->250]
+fig=Labeled[Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black(*,FrameLabel\[Rule]{"x","\[Phi](x)"}*) ,ImageSize->200,PlotLegends->Legend[m1,m2,4]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
 
 
 (* ::Input::Initialization:: *)
-Export["~/Github/2DScattering/NumFig/wf-"<>StringJoin@Map[Flavour,{m1,m2}]<>".pdf",fig,ImageResolution->500]
+fig=Labeled[ListLinePlot[Table[{x,\[Phi][x][[1]]},{x,Range[0,0.99,0.01]~Join~Range[0.99,1,10^-4]}],PlotRange->All,Frame->True,PlotStyle->Black,ImageSize->200,PlotLegends->Legend[m1,m2,4]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
+
+
+(* ::Input::Initialization:: *)
+Export["~/Github/2DScattering/NumFig/wf-"<>StringJoin@Map[Flavour,{m1,m2}]<>".pdf",fig,"PDF"]
+Import[%,"PDF"]
+
+
+(* ::Input::Initialization:: *)
+Export["~/Github/2DScattering/NumFig/wf-"<>StringJoin@Map[Flavour,{m1,m2}]<>".png",fig]
+Import[%]
+
+
+DeleteFile["~/Github/2DScattering/NumFig/wf-cc.png"]
