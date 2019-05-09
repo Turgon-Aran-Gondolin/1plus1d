@@ -91,10 +91,10 @@ assign={a->mQ,b->mq,c->md};
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
 assign={a->mQ,b->mq,c->md,d->mp};*)
-alterkin=(*True*) False;
+alterkin=True (*False*);
 
 kin=If[alterkin,"-ak",""];
-filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>").dat";
+filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>")"<>kin<>".dat";
 filenamepart="-n-("<>ToString[n1]<>"-"<>ToString[n2]<>"-"<>ToString[n3]<>"-"<>ToString[n4]<>")-type-"<>StringDelete[StringReplace[ToString[Apply[StringJoin[#1,"+",#2]&,Map[StringJoin,Map[ToString,type,{3}],{2}],{1}]],"->"->"-"]," "]<>kin<>".dat";
 
 Switch[Evaluate@ChoiceDialog["How many flavour is requested? ",{"Length"->Length[assign],"1"->1,"2"->2,"3"->3,"4"->4,"Abort"->5}],1,
