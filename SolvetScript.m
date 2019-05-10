@@ -387,10 +387,11 @@ ValsA
 Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
 FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
 StringOverbar[s_]:="\!\(\*OverscriptBox[\("<>s<>"\), \(_\)]\)";
-Legend[m1_,m2_,pos_]:=Placed[Framed[Flavour[m1]<>StringOverbar[Flavour[m2]]],{Corner@pos}];
+Legend[m1_,m2_,pos_]:=Placed[Framed(*Panel*)[Flavour[m1]<>StringOverbar[Flavour[m2]]],{Corner@pos}];
+Corner[num_]:=Switch[num,1,{Left,Top},2,{Right,Top},3,{Left,Bottom},4,{Right,Bottom}];
 
 
-m1=FM@"c";m2=FM@"s";
+m1=FM@"b";m2=FM@"u";
 {Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
 
 
@@ -406,11 +407,11 @@ fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black,Fram
 
 
 (* ::Input::Initialization:: *)
-fig=Labeled[Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black(*,FrameLabel\[Rule]{"x","\[Phi](x)"}*) ,ImageSize->200,PlotLegends->Legend[m1,m2,{Left,Top}]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
+fig=Labeled[Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black(*,FrameLabel\[Rule]{"x","\[Phi](x)"}*) ,ImageSize->200,PlotLegends->Legend[m1,m2,3]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
 
 
 (* ::Input::Initialization:: *)
-fig=Labeled[ListLinePlot[Table[{x,\[Phi][x][[1]]},{x,Range[0,0.99,0.01]~Join~Range[0.99,1,10^-4]}],PlotRange->All,Frame->True,PlotStyle->Black,ImageSize->200,PlotLegends->Legend[m1,m2]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
+fig=Labeled[ListLinePlot[Table[{x,\[Phi][x][[1]]},{x,Range[0,0.99,0.01]~Join~Range[0.99,1,10^-4]}],PlotRange->All,Frame->True,PlotStyle->Black,ImageSize->200,PlotLegends->Legend[m1,m2,1]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
 
 
 (* ::Input::Initialization:: *)

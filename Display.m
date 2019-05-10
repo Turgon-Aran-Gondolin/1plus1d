@@ -73,10 +73,35 @@ Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
 Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
+
+
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/master/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
 
 
 Msumdat=<<"https://github.com/Turgon-Aran-Gondolin/1plus1d/raw/fc8da22f28f9743604026b5eccc8cbc955c83c6e/data/Msumdat_m-0.749-n-(0-0-0-0).dat";
+
+
+(* ::Subsection:: *)
+(*b*)
+
+
+datstr1="_m-13.5565";datstr2="";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
 (* ::Subsection::Closed:: *)
@@ -594,8 +619,8 @@ PTest[]:=Print["Halt"];
 
 
 (* ::Input::Initialization:: *)
-datlis={1}(*Reverse@*)(*Range[1,8]*);
-Module[{min=.1,maxt=2.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
+datlis={5}(*Reverse@*)(*Range[1,8]*);
+Module[{min=.5,maxt=1.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
 str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},(*{-0.01,0.21}*)(*Automatic*) All},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
