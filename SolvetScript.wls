@@ -392,8 +392,7 @@ Legend[m1_,m2_,pos_]:=Placed[Framed[Flavour[m1]<>StringOverbar[Flavour[m2]]],{Co
 Corner[num_]:=Switch[num,1,{Left,Top},2,{Right,Top},3,{Left,Bottom},4,{Right,Bottom}];
 
 
-(* ::Code::Initialization:: *)
-m1=FM@"s";m2=FM@"s";
+m1=FM@"d";m2=FM@"d";
 {Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
 
 
@@ -409,7 +408,7 @@ fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black,Fram
 
 
 (* ::Input::Initialization:: *)
-fig=Labeled[Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black(*,FrameLabel\[Rule]{"x","\[Phi](x)"}*) ,ImageSize->200,PlotLegends->Legend[m1,m2,4]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
+fig=Labeled[Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black(*,FrameLabel\[Rule]{"x","\[Phi](x)"}*) ,ImageSize->200,PlotLegends->Legend[m1,m2,1]],{"x","\[Phi](x)"},Reverse/@{{Bottom,Right},{Left,Top}},RotateLabel->False,LabelStyle->{FontFamily->"Arial"}]
 
 
 (* ::Input::Initialization:: *)

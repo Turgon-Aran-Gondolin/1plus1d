@@ -12,7 +12,7 @@
 SetSystemOptions["ParallelOptions"->"MathLinkTimeout"->20.];
 <<MMARemoteSSH`
 LaunchKernels[8];
-LaunchRemoteKernels[3,7];
+(*LaunchRemoteKernels[3,7];*)
 LaunchRemoteKernels[4,7];
 LaunchRemoteKernels[5,8];
 (*LaunchRemoteKernels[6,24];
@@ -25,7 +25,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion,CompiledFunction::cfsa]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*)(*,Method->"QuasiMonteCarlo",MaxPoints-> 10^9*)(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints-> 10^8(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
@@ -67,9 +67,11 @@ OneFlavour`Private`\[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]
 
 (*If[$PVM=="Differential",(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->False}]],(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,Method->{Automatic,"SymbolicProcessing"->True}]]];*)
 CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,IntegerString[#,10,2]]&@Floor[#/3600],":",IntegerString[Floor[Mod[#,3600]/60],10,2],":",IntegerString[Mod[#,60],10,2]}&@Round[#]]&[AbsoluteTime[]-time1]];MatchQ[file,$Failed],Print["Creating new entry..."],If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"Merge"->True,"Abort"->"Abort"}],Print["Data merge confirmed..."];Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Print["Overwrite confirmed..."],Print["DO NOT SAVE, ABORTING..."];Abort[]]];
+Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
+FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
 time1=AbsoluteTime[];
 
-m=0.749; (*mq=0.749; mQ=4.19022;md=13.5565;*)
+m=FM["u"]; (*mq=0.749; mQ=4.19022;md=13.5565;*)
 {n1,n2,n3,n4}={0,0,0,0};
 (*range={0.001,1,0.01};*)
 range={0.001,20,0.1};
@@ -91,7 +93,7 @@ assign={a->mQ,b->mq,c->md};
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
 assign={a->mQ,b->mq,c->md,d->mp};*)
-alterkin=True (*False*);
+alterkin=(*True*) False;
 
 kin=If[alterkin,"-ak",""];
 filenamepartn="-n-("<>StringDrop[StringJoin@((ToString[#]<>"-")&/@{n1,n2,n3,n4}),-1]<>")"<>kin<>".dat";

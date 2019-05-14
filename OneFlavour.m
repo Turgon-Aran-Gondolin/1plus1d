@@ -57,6 +57,10 @@ test;
 CEB;
 CEB2;
 
+Flavour;
+FM;
+StringOverbar;
+
 
 (*ParallelEvaluate[Print[$KernelID]];*)
 
@@ -67,6 +71,13 @@ Begin["`Private`"]
 
 CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
 CEB2[data_]:=data[[All,1;;2]];
+
+
+Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
+FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
+
+
+StringOverbar[s_]:="\!\(\*OverscriptBox[\("<>s<>"\), \(_\)]\)";
 
 
 VarInit[var_,def_]:=If[!ValueQ[var],var=def,Null];
@@ -345,7 +356,7 @@ VarInit[$PVM,"Differential"];
 
 
 (* ::Input::Initialization:: *)
-\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_?NumberQ,Ma_,Mb_,Mc_,Md_]:=(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m^2-2\[Beta]^2)/(x-\[Omega]1)+(m^2-2\[Beta]^2)/(x-1)-(m^2-2\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m^2-2\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]];
+\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_?NumberQ,Ma_,Mb_,Mc_,Md_]:=(-((4 \[Pi])/Nc))NIntegrate[(Mc^2+Md^2/\[Omega]2+(m^2-2\[Beta]^2)/(x-\[Omega]1)+(m^2-2\[Beta]^2)/(x-1)-(m^2-2\[Beta]^2)/(x-\[Omega]1+\[Omega]2)-(m^2-2\[Beta]^2)/x) \[Phi]1[(x-\[Omega]1+\[Omega]2)/(1+\[Omega]2-\[Omega]1)] \[Phi]2[x/\[Omega]1] \[Phi]3[x] \[Phi]4[(x-\[Omega]1+\[Omega]2)/\[Omega]2],{x,0,1},Evaluate[FilterRules[{opt},Options[NIntegrate]]]]//UsrReap;
 \[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:= (*0;*)
 Module[{m1,m2,m3,m4,op},op=OptionValue[Op];
 {m1,m2,m3,m4}=ml[[Which[op=="I",{1,2,3,4},op=="Q",{2,1,3,4},op=="C",{1,2,4,3},op=="P",{2,1,4,3},op=="RQ",{2,1,3,4},op=="RC",{1,2,4,3},op=="RP",{2,1,4,3},op=="R",{1,2,3,4}]]];
