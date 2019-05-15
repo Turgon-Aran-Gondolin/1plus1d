@@ -56,6 +56,8 @@ test;
 
 CEB;
 CEB2;
+FlattenDat;
+REB;
 
 Flavour;
 FM;
@@ -71,6 +73,9 @@ Begin["`Private`"]
 
 CEB[data_]:={data[[1]],data[[2,All,1;;2]]};
 CEB2[data_]:=data[[All,1;;2]];
+FlattenDat[data_]:=MapAt[Map[Flatten[#]&,#]&,data,2];
+REB[data_]:={data[[1]],Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&]};
+REB2[data_]:=Sort[PadRight[#,3,0]&/@data[[2]],#1[[1]]<#2[[1]]&];
 
 
 Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
