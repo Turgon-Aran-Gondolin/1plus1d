@@ -371,6 +371,9 @@ Module[{m1,m2,m3,m4,op},op=OptionValue[Op];
 Options[\[ScriptCapitalI]1]=Options[NIntegrate];Options[\[ScriptCapitalI]2]=Options[NIntegrate];Options[\[ScriptCapitalI]3]=Options[NIntegrate];
 
 
+StepF[x_] := 1/2 (1 + Sign[x]);
+
+
 (* ::Section:: *)
 (*Solve 't Hooft eqn*)
 
@@ -584,7 +587,8 @@ Which[
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,b_},{b_,b_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[(#+\[ScriptCapitalR][#])&[\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]],
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[(#+\[ScriptCapitalP][#]+\[ScriptCapitalC][#]+\[ScriptCapitalP][\[ScriptCapitalC][#]])&[\[ScriptCapitalM]0t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]](*MVG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]*),
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=(*Evaluate[(#+\[ScriptCapitalP][#]+\[ScriptCapitalC][#]+\[ScriptCapitalP][\[ScriptCapitalC][#]])&[\[ScriptCapitalM]0t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]]*)
+MVG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4],
 (Thread[MatchQ[#,{{a_,b_},{a_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,b_},{a_,b_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 (Thread[MatchQ[#,{{a_,a_},{b_,b_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,a_},{a_,b_}}]&[{ParC,ParD}],And]),
