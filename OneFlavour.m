@@ -565,7 +565,7 @@ ReleaseHold@Flatten@{Ssqur,EXPR[\[Omega]1,\[Omega]2,I1Option->OptionValue[I1Opti
 
 
 Msum2[{mQ_,mq_},{n1_?IntegerQ,n2_?IntegerQ,n3_?IntegerQ,n4_?IntegerQ},opt:OptionsPattern[{SRange->{10^-3,2,0.01},Lambda->10^-6,SolveMethod->"BSW",MatrixSize->500,DataDir->dirglo,gvalue->gglo,ProcessType->({{a,b},{b,a}}->{{a,b},{b,a}}),AssignQuark->{a->m1,b->m2},I1Option->OptionsPattern[],I2Option->OptionsPattern[],I3Option->OptionsPattern[],AnotherKinematics->False}]]:=
-Module[{\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,filenamefun,\[Omega]now,ml,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list,\[Omega]1o,\[Omega]2o,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t},
+Module[{\[ScriptCapitalM]0t,\[Phi]x1,\[CapitalPhi]1,Vals1,\[Phi]x2,\[CapitalPhi]2,Vals2,\[Phi]x3,\[CapitalPhi]3,Vals3,\[Phi]x4,\[CapitalPhi]4,Vals4,M1,M2,M3,M4,\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4,Ares,filename,filenamefun,\[Omega]now,ml,m1,m2,\[Omega]1,\[Omega]2,Sen,filenameacc,Determine,Mseq,\[CapitalPhi]temp,dir,Si,ParA,ParB,ParC,ParD,\[ScriptCapitalM],\[ScriptCapitalM]0\[ScriptCapitalC]t,\[ScriptCapitalM]1t,Eigenlist,Masslist,\[CapitalPhi]list,\[Omega]1o,\[Omega]2o,\[Phi]1t,\[Phi]2t,\[Phi]3t,\[Phi]4t},
 (*SetSharedVariable[m2,m1];*)
 m1=mQ;m2=mq;\[Lambda]=OptionValue[Lambda];g=OptionValue[gvalue];dir=OptionValue[DataDir];
 filename[m1_,m2_]:=Which[m1==m2,"/eigenstate_m-"<>ToString[m1],m1>m2,"/eigenstate_m1-"<>ToString[m1]<>"_m2-"<>ToString[m2],m1<m2,"/eigenstate_m1-"<>ToString[m2]<>"_m2-"<>ToString[m1]]<>".wdx";
@@ -584,7 +584,7 @@ Which[
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,b_},{b_,b_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[(#+\[ScriptCapitalR][#])&[\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]],
 (Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{a_,b_},{b_,a_}}]&[{ParC,ParD}],And]),
-\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=MVG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4],
+\[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=Evaluate[(#+\[ScriptCapitalP][#]+\[ScriptCapitalC][#]+\[ScriptCapitalP][\[ScriptCapitalC][#]])&[\[ScriptCapitalM]0t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4]]](*MVG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]+MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4]*),
 (Thread[MatchQ[#,{{a_,b_},{a_,a_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,b_},{a_,b_}}]&[{ParC,ParD}],And]),
 \[ScriptCapitalM][\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1,\[Omega]2,opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4],
 (Thread[MatchQ[#,{{a_,a_},{b_,b_}}]&[{ParA,ParB}],And])&&(Thread[MatchQ[#,{{b_,a_},{a_,b_}}]&[{ParC,ParD}],And]),
@@ -629,6 +629,7 @@ Set@@{\[Phi]4[x_],\[Phi]4t[x/.x/;(OrderedQ[Masslist[[4]]])->1-x]};
 (*Print[\[Phi]1[y]];*)
 Mseq=Sequence[M1,M2,M3,M4];Si=Max[M1+M2,M3+M4];
 Print["M1=",M1,"  M2=",M2,"  M3=",M3,"  M4=",M4];
+\[ScriptCapitalM]0t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]0[\[Omega]1,\[Omega]2][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 \[ScriptCapitalM]0\[ScriptCapitalC]t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=MHG[\[Omega]1,\[Omega]2,(*Evaluate@FilterRules[{opts},Options[NIntegrate]]*)opts][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4];
 \[ScriptCapitalM]1t[\[Omega]1_,\[Omega]2_,opts__][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:=\[ScriptCapitalM]1[\[Omega]1,\[Omega]2,FilterRules[{opts},Options[\[ScriptCapitalM]1]]][\[Phi]1,\[Phi]2,\[Phi]3,\[Phi]4][m,M1,M2,M3,M4];
 ml={ParB[[2]],ParA[[2]],ParA[[1]],ParB[[1]]}/.OptionValue[AssignQuark];

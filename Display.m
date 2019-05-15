@@ -126,6 +126,25 @@ Msumdat[2]={Msumdat[2][[1]],(List@@Msumdat[2][[2]])[[1]]}
 
 
 (* ::Subsection:: *)
+(*ud+du*)
+
+
+datstr1="_m1-0.045-m2-0.09";datstr2="-type-ab+ba-ab+ba";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
+Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
+Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
+Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
+Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
+
+
+(* ::Subsection:: *)
 (*cs ab+ab-ab+ab*)
 
 
