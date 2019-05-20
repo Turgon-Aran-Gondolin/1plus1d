@@ -11,12 +11,13 @@
 (*Kernels[]*)
 SetSystemOptions["ParallelOptions"->"MathLinkTimeout"->20.];
 <<MMARemoteSSH`
-(*LaunchKernels[8];*)
-(*LaunchRemoteKernels[3,7];
+LaunchKernels[8];
+LaunchRemoteKernels[3,7];
 LaunchRemoteKernels[4,7];
-LaunchRemoteKernels[5,8];*)
-LaunchRemoteKernels[6,24];
-LaunchRemoteKernels[6,24];
+LaunchRemoteKernels[5,8];
+(*LaunchRemoteKernels[6,24];
+LaunchRemoteKernels[6,24];*)
+(*LaunchRemoteKernels[6,8];*)
 Kernels[]
 
 
@@ -24,7 +25,7 @@ Kernels[]
 SetDirectory[If[MatchQ[$ScriptCommandLine,{}], NotebookDirectory[], Directory[]]];
 (*If[MatchQ[$ScriptCommandLine,{}],Once[LaunchKernels[Input["Kernel Number",16,WindowSize->Small]]],num=ToExpression[$ScriptCommandLine[[2]]];Once[LaunchKernels[num]]];*)
 (ParallelEvaluate[#];#)&@Unevaluated[Off[General::stop,NIntegrate::slwcon,NIntegrate::precw,NIntegrate::zeroregion,CompiledFunction::cfsa]];
-(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*),Method->"QuasiMonteCarlo",MaxPoints-> 10^7(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[NIntegrate,MaxRecursion->200,AccuracyGoal->6(*,WorkingPrecision\[Rule]50*)(*,Method->"QuasiMonteCarlo",MaxPoints-> 10^9*)(*,Method\[Rule]{"LocalAdaptive","SingularityHandler"\[Rule]None}*)(*,Method\[Rule]{"DuffyCoordinates","Corners"\[Rule]{{0,0},{0,1},{1,0},{1,1}}}*)]];
 (*SetOptions[$Output, FormatType->OutputForm];*)
 (*AppendTo[$Path,NotebookDirectory[]];
 Print[$Path];*)
@@ -44,10 +45,13 @@ Print[$Path];*)
 (*ParallelEvaluate[Information@OneFlavour`Private`\[ScriptCapitalI]1];*)
 
 
-(* ::Code::Initialization:: *)
 Clear[\[Phi]x,m2,\[Phi],vals,M1,M2,M3,\[Phi]1,\[Phi]2,\[Phi]3];
 Get["OneFlavour`"]
 
+DistributeDefinitions["OneFlavour`"];
+(ParallelEvaluate[#];#)&@Unevaluated[SetOptions[OneFlavour`Private`\[ScriptCapitalI]3,Method->Automatic]];
+
+Print["Load Complete\n"];
 (*OneFlavour`Private`\[ScriptCapitalI]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
 OneFlavour`Private`\[ScriptCapitalI]2[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][m_,M1_,M2_,M3_,M4_]:= 0;
 OneFlavour`Private`\[ScriptCapitalI]3[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[{OneFlavour`Private`Op->"I"}]][\[Phi]1_,\[Phi]2_,\[Phi]3_,\[Phi]4_][ml_?ListQ,Ma_,Mb_,Mc_,Md_]:= (*0;*)
@@ -65,10 +69,11 @@ OneFlavour`Private`\[ScriptCapitalM]1[\[Omega]1_,\[Omega]2_,opt:OptionsPattern[]
 CheckDup[file_]:=If[Print["Time consumed: ",StringJoin[{If[#>=100,ToString@#,IntegerString[#,10,2]]&@Floor[#/3600],":",IntegerString[Floor[Mod[#,3600]/60],10,2],":",IntegerString[Mod[#,60],10,2]}&@Round[#]]&[AbsoluteTime[]-time1]];MatchQ[file,$Failed],Print["Creating new entry..."],If[ChoiceDialog["Discard old result or not? ",{"Yes"->False,"Merge"->True,"Abort"->"Abort"}],Print["Data merge confirmed..."];Msumdat[[2]]=DeleteDuplicatesBy[Sort[file[[2]]~Join~Msumdat[[2]]],First],Print["Overwrite confirmed..."],Print["DO NOT SAVE, ABORTING..."];Abort[]]];
 time1=AbsoluteTime[];
 
-m=4.19022; (*mq=0.749; mQ=4.19022;md=13.5565;*)
+m=0.749; (*mq=0.749; mQ=4.19022;md=13.5565;*)
 {n1,n2,n3,n4}={0,0,0,0};
-range={0.001,1,0.05};
-(*range={0.001,20,0.1};*)
+(*range={0.001,1,0.01};*)
+range={0.001,20,0.1};
+(*range={0.001,20,0.5};*)
 \[Lambda]=10^-4;method="'t Hooft";size=12;
 (*mQ=13.5565;mq=4.19022;*) 
 (*mQ=4.19022;mq=0.749;
@@ -79,13 +84,13 @@ assign={a->mQ,b->mq};*)
 (*mQ=4.19022; mq=0.749;md=0.09;*)
 (*mQ=0.749; mq=0.09;md=4.19022;*)
 (*mQ=4.19022; mq=0.09;md=0.045;*)
-(*mQ=13.5565; mq=0.09;md=0.045;
+mQ=13.5565; mq=0.09;md=0.045;
 type=(*({{a,b},{c,a}}->{{a,b},{c,a}})*) (*({{a,c},{b,b}}->{{b,c},{a,b}})*)(*({{a,c},{c,b}}->{{c,c},{a,b}})*) ({{a,c},{a,b}}->{{a,c},{a,b}});
-assign={a->mQ,b->mq,c->md};*)
-mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
+assign={a->mQ,b->mq,c->md};
+(*mq=0.749; mQ=4.19022;md=13.5565;mp=0.09;
 (*mq=4.19022; mQ=0.749;md=6;mp=0.5;*)
 type=({{a,d},{c,b}}->{{c,d},{a,b}})(*({{a,d},{b,a}}->{{c,d},{b,c}})*);
-assign={a->mQ,b->mq,c->md,d->mp};
+assign={a->mQ,b->mq,c->md,d->mp};*)
 alterkin=(*True*) False;
 
 kin=If[alterkin,"-ak",""];
@@ -106,7 +111,8 @@ CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToS
 Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>filenamepart],
 4,Msumdat=Msum4[{mQ,mq,md,mp},{n1,n2,n3,n4},SRange->range,Lambda->\[Lambda],SolveMethod->method,MatrixSize->size,ProcessType->type,AssignQuark->assign(*{a->mQ,b->md,c->mq}*),AnotherKinematics->alterkin];Message[Msum::done];
 CheckDup[Get["data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart]];
-Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],5,Abort[]]
+Put[Msumdat,"data/Msumdat_m1-"<>ToString[mQ]<>"-m2-"<>ToString[mq]<>"-m3-"<>ToString[md]<>"-m4-"<>ToString[mp]<>filenamepart],
+5,Abort[]]
 Print["End"];
 
 

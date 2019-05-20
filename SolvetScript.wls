@@ -9,7 +9,7 @@
 <<MMARemoteSSH`
 Parallel`Settings`$MathLinkTimeout=30;
 (*LaunchRemoteKernels[];*)
-LaunchKernels[];
+LaunchKernels[4];
 Kernels[]
 
 
@@ -48,6 +48,10 @@ Print["End"];*)
 (*m=4.19022;
 Solvet[m,m,SolveMethod->"BSW",MatrixSize\[Rule]100,Force->True]
 Print["End"];*)
+
+
+(* ::Section::Closed:: *)
+(*Evaluate*)
 
 
 (* ::Input::Initialization:: *)
@@ -96,6 +100,10 @@ Print["End"];
 
 (* ::Code:: *)
 (*(*DynamicSetting[(mb=MC[Setting[#]];Setting[#])&,SetterBar["c",{"c","s","u","chiralu"}]]*)*)
+
+
+(* ::Section::Closed:: *)
+(*Verify*)
 
 
 (* ::Input:: *)
@@ -371,3 +379,32 @@ ValsA
 
 (* ::Input:: *)
 (*Manipulate[Plot[x*\[Pi]*Cot[\[Pi]*x]-(1-m1^2),{x,0,2}],{m1,0.1,10}]*)
+
+
+(* ::Section:: *)
+(*Plot*)
+
+
+Flavour[val_]:=Switch[val,4.19022,"c",0.749,"s",13.5565,"b",0.09,"d",0.045,"u"];
+FM[val_]:=Switch[val,"c",4.19022,"s",0.749,"b",13.5565,"d",0.09,"u",0.045];
+
+
+(* ::Code::Initialization:: *)
+m1=FM@"c";m2=FM@"d";
+{Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
+
+
+(* ::Input::Initialization:: *)
+fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->None,MaxRecursion->15,Filling->Axis,FillingStyle->Gray]
+
+
+(* ::Input::Initialization:: *)
+fig=Plot[\[Phi][x][[1]],{x,0,1},PlotRange->All,Frame->True,PlotStyle->Black,FrameLabel->{"x","\[Phi](x)"},ImageSize->250(*,MaxRecursion\[Rule]15,WorkingPrecision\[Rule]30,PlotPoints\[Rule]10^5*)]
+
+
+(* ::Input::Initialization:: *)
+fig=ListLinePlot[Table[{x,\[Phi][x][[1]]},{x,Range[0,0.99,0.01]~Join~Range[0.99,1,10^-4]}],PlotRange->All,Frame->True,PlotStyle->Black,FrameLabel->{"x","\[Phi](x)"},ImageSize->250]
+
+
+(* ::Input::Initialization:: *)
+Export["~/Github/2DScattering/NumFig/wf-"<>StringJoin@Map[Flavour,{m1,m2}]<>".pdf",fig,ImageResolution->500]
