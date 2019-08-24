@@ -1,5 +1,5 @@
 # 1plus1d, a Mathematica package for 1+1 dimensional QCD calculation
-keywords: 1+1 dimensional; 't Hooft equation
+**keywords: 1+1 dimensional; 't Hooft equation**
 
 
 ## Usage: 
