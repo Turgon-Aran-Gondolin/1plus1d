@@ -9,7 +9,7 @@
 <<MMARemoteSSH`
 Parallel`Settings`$MathLinkTimeout=30;
 (*LaunchRemoteKernels[];*)
-LaunchKernels[4];
+LaunchKernels[];
 Kernels[]
 
 
@@ -392,7 +392,7 @@ Legend[m1_,m2_,pos_]:=Placed[Framed[Flavour[m1]<>StringOverbar[Flavour[m2]]],{Co
 Corner[num_]:=Switch[num,1,{Left,Top},2,{Right,Top},3,{Left,Bottom},4,{Right,Bottom}];
 
 
-m1=FM@"d";m2=FM@"d";
+m1=FM@"s";m2=FM@"b";
 {Val,\[Phi][x_]}=Solvet[m1,m2,SolveMethod->"'t Hooft",MatrixSize->15];
 
 

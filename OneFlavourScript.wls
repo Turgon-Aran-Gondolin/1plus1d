@@ -1,7 +1,7 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
-Once[LaunchKernels[8]]
+Once[LaunchKernels[48]]
 ParallelEvaluate[Off[General::stop,NIntegrate::slwcon]];
 ParallelEvaluate@SetOptions[NIntegrate,MaxRecursion->100,AccuracyGoal->10];
 AppendTo[$Path,DirectoryName@$InputFileName];

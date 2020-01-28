@@ -6,6 +6,7 @@
 
 (* ::Input::Initialization:: *)
 AppendTo[$Path,NotebookDirectory[]];
+LaunchKernels[1];
 Get["OneFlavour`"]
 
 
@@ -133,15 +134,35 @@ datstr1="_m1-0.045-m2-0.09";datstr2="-type-ab+ba-ab+ba";
 
 
 Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
-Msumdat[2]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>".dat");
-Msumdat[3]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>".dat");
-Msumdat[4]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>".dat");
 
 
 Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
-Msumdat[6]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-0-0)"<>datstr2<>"-ak.dat");
-Msumdat[7]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
-Msumdat[8]=<<("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
+
+
+(* ::Subsection:: *)
+(*sd+ds ab+ba-ab+ba*)
+
+
+datstr1="_m1-0.749-m2-0.09";datstr2="-type-ab+ba-ab+ba";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
+
+
+(* ::Subsection:: *)
+(*sd+ds ab+ba-ab+ba*)
+
+
+datstr1="_m1-0.749-m2-0.09";datstr2="-type-aa+ba-aa+ba";
+
+
+Msumdat[1]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>".dat");
+
+
+Msumdat[5]=<<("data/Msumdat"<>datstr1<>"-n-(0-0-0-0)"<>datstr2<>"-ak.dat");
 
 
 (* ::Subsection:: *)
@@ -174,7 +195,7 @@ Msumdat[3]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(0-0-1-1)-type-ab+ab-ab+ab.dat
 Msumdat[4]>>"data/Msumdat_m1-13.5565-m2-4.19022-n-(1-1-1-1)-type-ab+ab-ab+ab.dat";
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*bcsd*)
 
 
@@ -207,7 +228,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F sc+bs-sc+bs*)
 
 
@@ -306,7 +327,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F sd+sc-sd+sc*)
 
 
@@ -339,7 +360,7 @@ Msumdat[7]>>("data/Msumdat"<>datstr1<>"-n-(0-0-1-1)"<>datstr2<>"-ak.dat");
 Msumdat[8]>>("data/Msumdat"<>datstr1<>"-n-(1-1-1-1)"<>datstr2<>"-ak.dat");
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*3F cd+cs-cd+cs*)
 
 
@@ -524,7 +545,7 @@ Msumdattmp[[2]]=Drop[Msumdattmp[[2]],{-2}];
 Msumdattmp[[2]]=DeleteCases[Msumdattmp[[2]],_?(#[[1]]==115.5356842582988` &)];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*QuantileRegression*)
 
 
@@ -639,7 +660,7 @@ PTest[]:=Print["Halt"];
 
 (* ::Input::Initialization:: *)
 datlis={1}(*Reverse@*)(*Range[1,8]*);
-Module[{min=.5,maxt=1.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
+Module[{min=.5,maxt=6.5,dat,thre,str,legendfun,length,datindex},length=Length@datlis;dat=DimensionConvertion/@(Re@Chop[Msumdat[#]//CEB]&/@datlis);
 thre=Max[#[[1,2,1]]+#[[1,2,2]],#[[1,2,3]]+#[[1,2,4]]]&@dat[[1]];
 str=(ToString[#[[1,1,1]]]<>"+"<>ToString[#[[1,1,2]]]<>"\[Rule]"<>ToString[#[[1,1,3]]]<>"+"<>ToString[#[[1,1,4]]]&[DimensionConvertion@Chop[Msumdat[#]//CEB]])<>If[#>4," (back)",""]&/@datlis;Print[("Amp: Threshold: "<>ToString[thre]<>" GeV\nQuark mass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,3]],List->StringJoin]<>" \nmass: "<>ReplaceAll[ToString[#]<>" GeV "&/@#[[1,2]],List->StringJoin]<>"")&@dat[[1]]];fig=Labeled[Legended[Show[MapIndexed[(datindex=First[#2];ListPlot[If[ListQ@$DISPOS[datlis[[datindex]]],{Re@#1[[2,;;$DISPOS[datlis[[datindex]]][[1]]]],Re@#1[[2,$DISPOS[datlis[[#2//First]]][[1]]+1;;]]},{Re@#1[[2]]}],Joined->True,(*FrameLabel->{Row[{Spacer@400,"GeV"}],"\[ScriptCapitalM]"},*)PlotStyle->PadRight[#,If[ListQ[$DISPOS[datlis[[datindex]]]],2,1],#]&@{{Black}~Join~LineList[[#2]]},PlotRange->{{thre-min,maxt thre},(*{-0.01,0.21}*)(*Automatic*) All},
 Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre,First[#1[[2]]][[2]]}}]}
@@ -649,7 +670,11 @@ Epilog->{(*Thick,*)Dotted,Black(*#2*),Line[{{thre,(*Last[#1[[2]]][[2]]*)0},{thre
 
 
 (* ::Input:: *)
-(*Export[Which[$OperatingSystem=="Windows","NumFig/cs_4.19_0.749_zoom_2.eps",$OperatingSystem=="Unix","~/Github/2DScattering/NumFig/fig"<>datstr1<>"-pos-"<>StringJoin@@Riffle[ToString/@datlis,"-"]<>datstr2<>".pdf"],fig,ImageResolution->500]*)
+(*Export[Which[$OperatingSystem=="Windows","NumFig/cs_4.19_0.749_zoom_2.eps",$OperatingSystem=="Unix","~/Github/2DScattering/NumFig/fig"<>datstr1<>"-pos-"<>StringJoin@@Riffle[ToString/@datlis,"-"]<>datstr2<>".pdf"],fig,"PDF",ImageResolution->300]*)
+
+
+(* ::Code:: *)
+(*Import[%]*)
 
 
 (* ::Subsubsection::Closed:: *)
